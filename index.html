@@ -3,90 +3,153 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diamond Interior Designer | Premium Luxury Spaces</title>
   
-  <meta name="description" content="Diamond Interior Designer - Premium luxury interior design services in Mumbai, Maharashtra. Specializing in Modular Kitchens, Bedroom Interiors, Living Room Designs, Hotel Interiors, and bespoke commercial spaces.">
-  <meta name="keywords" content="Interior Designer in Mumbai, Luxury Interior Design Maharashtra, Modular Kitchen Mumbai, Premium Bedroom Interior, Modern Living Room Design, Hotel Interior Design, Diamond Interior Designer, Home Decor Experts Mumbai">
+  <title>Diamond Interior Designer | Best Luxury Home Decor & Modular Kitchen Mumbai</title>
+  <meta name="description" content="Diamond Interior Designer offers premium luxury home interiors, modular kitchens, living rooms, bedroom designs, and office spaces in Mumbai, Maharashtra. Get top-class custom interior layouts.">
+  <meta name="keywords" content="Interior Designer in Mumbai, Luxury Home Interior Maharashtra, Best Modular Kitchen Mumbai, Premium Bedroom Design, TV Unit Design Mumbai, False Ceiling Experts, Wardrobe Design, Living Room Decor, Diamond Interior Designer Contact">
   <meta name="author" content="Diamond Interior Designer">
+  <meta name="robots" content="index, follow">
+  
   <meta property="og:title" content="Diamond Interior Designer | Premium Luxury Spaces">
-  <meta property="og:description" content="Transform your residential and commercial spaces with Mumbai's premium luxury interior designers.">
+  <meta property="og:description" content="Transforming residential and commercial architectural structures into luxury masterpieces across Mumbai, Maharashtra.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://diamondinteriordesigner.in">
 
   <link rel="icon" type="image/png" href="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4QAqRXhpZgAASUkqAAgAAAABADEBAgAHAAAAGgAAAAAAAABQaWNhc2EAAPYAAAAsU3BhY2VzAA...">
+  <link rel="apple-touch-icon" href="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4QAqRXhpZgAASUkqAAgAAAABADEBAgAHAAAAGgAAAAAAAABQaWNhc2EAAPYAAAAsU3BhY2VzAA...">
   
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
-      --primary: #111111;
-      --accent: #bfa15f; /* Classic Gold */
-      --text-dark: #222222;
+      --primary-color: #111111;
+      --accent-gold: #bfa15f; /* Royal Classic Gold */
+      --gold-glow: rgba(191, 161, 95, 0.2);
+      --text-dark: #1a1a1a;
+      --text-muted: #666666;
       --text-light: #ffffff;
-      --bg-gray: #fcfbf7;
-      --transition: all 0.4s ease;
+      --bg-luxury: #fbfaf6;
+      --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+      --hover-shadow: 0 20px 40px rgba(191, 161, 95, 0.15);
+      --transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Montserrat', sans-serif; color: var(--text-dark); background-color: var(--bg-gray); line-height: 1.65; }
-    h1, h2, h3, .brand-name { font-family: 'Playfair Display', serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+    body { font-family: 'Montserrat', sans-serif; color: var(--text-dark); background-color: var(--bg-luxury); line-height: 1.7; overflow-x: hidden; }
+    h1, h2, h3, h4, .brand-name { font-family: 'Playfair Display', serif; letter-spacing: 0.5px; }
 
-    header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(17, 17, 17, 0.98); z-index: 1000; border-bottom: 1px solid rgba(191, 161, 95, 0.25); }
-    .nav-container { max-width: 1300px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
+    /* Top Premium Navigation Bar */
+    header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(17, 17, 17, 0.96); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid rgba(191, 161, 95, 0.2); }
+    .nav-container { max-width: 1300px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
     
     .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text-light); }
-    .logo-img { height: 45px; width: auto; object-fit: contain; border-radius: 4px; border: 1px solid rgba(191, 161, 95, 0.4); }
-    .brand-name { font-size: 22px; font-weight: 700; letter-spacing: 1.5px; }
-    .brand-name span { color: var(--accent); }
+    .logo-img { height: 50px; width: auto; object-fit: contain; border-radius: 4px; border: 1px solid var(--accent-gold); }
+    .brand-name { font-size: 24px; font-weight: 700; letter-spacing: 2px; }
+    .brand-name span { color: var(--accent-gold); }
 
-    nav ul { display: flex; list-style: none; gap: 28px; }
-    nav a { color: var(--text-light); text-decoration: none; font-size: 13px; font-weight: 500; text-transform: uppercase; transition: var(--transition); }
-    nav a:hover, nav a.active { color: var(--accent); }
+    nav ul { display: flex; list-style: none; gap: 32px; align-items: center; }
+    nav a { color: var(--text-light); text-decoration: none; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; transition: var(--transition); padding: 5px 0; position: relative; }
+    nav a:hover, nav a.active { color: var(--accent-gold); }
+    nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent-gold); transition: var(--transition); }
+    nav a:hover::after { width: 100%; }
 
+    .menu-btn { display: none; color: var(--text-light); font-size: 26px; cursor: pointer; }
+
+    /* Hero Video/Image Fullscreen Section */
     .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--text-light); padding: 0 20px; }
-    .hero-content h1 { font-size: 52px; margin-bottom: 20px; font-weight: 700; }
-    .hero-content h1 span { color: var(--accent); }
-    .hero-content p { font-size: 19px; max-width: 650px; margin: 0 auto 35px; font-weight: 300; }
+    .hero-content h1 { font-size: 58px; margin-bottom: 25px; font-weight: 700; line-height: 1.2; animation: fadeInDown 1s ease; }
+    .hero-content h1 span { color: var(--accent-gold); text-shadow: 0 0 15px var(--gold-glow); }
+    .hero-content p { font-size: 21px; max-width: 750px; margin: 0 auto 40px; font-weight: 300; color: #f4edd9; letter-spacing: 1px; }
     
-    .btn-gold { display: inline-block; padding: 14px 40px; border: 2px solid var(--accent); color: var(--accent); text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; transition: var(--transition); }
-    .btn-gold:hover { background: var(--accent); color: var(--primary); }
+    .btn-gold { display: inline-block; padding: 15px 45px; border: 2px solid var(--accent-gold); color: var(--accent-gold); text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 13px; letter-spacing: 2px; transition: var(--transition); background: transparent; position: relative; overflow: hidden; z-index: 1; }
+    .btn-gold::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 100%; background: var(--accent-gold); transition: var(--transition); z-index: -1; }
+    .btn-gold:hover { color: var(--primary-color); box-shadow: 0 10px 30px rgba(191, 161, 95, 0.4); transform: translateY(-3px); }
+    .btn-gold:hover::before { width: 100%; }
 
-    section { padding: 100px 20px; max-width: 1300px; margin: 0 auto; }
-    .section-title { text-align: center; font-size: 38px; margin-bottom: 60px; font-weight: 700; position: relative; padding-bottom: 18px; }
-    .section-title span { color: var(--accent); }
-    .section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 70px; height: 3px; background: var(--accent); }
+    /* Global Sections Styling */
+    section { padding: 120px 20px; max-width: 1300px; margin: 0 auto; }
+    .section-title { text-align: center; font-size: 42px; margin-bottom: 70px; font-weight: 700; position: relative; padding-bottom: 22px; text-transform: capitalize; }
+    .section-title span { color: var(--accent-gold); }
+    .section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 90px; height: 3px; background: var(--accent-gold); }
 
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 35px; }
-    .service-card { background: white; padding: 45px 35px; text-align: center; border-radius: 4px; box-shadow: 0 5px 20px rgba(0,0,0,0.03); transition: var(--transition); }
-    .service-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
-    .service-icon { font-size: 44px; color: var(--accent); margin-bottom: 22px; }
+    /* Services Grid Layout */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+    .service-card { background: white; padding: 50px 35px; text-align: center; border-radius: 8px; box-shadow: var(--card-shadow); border: 1px solid rgba(0,0,0,0.02); transition: var(--transition); position: relative; }
+    .service-card:hover { transform: translateY(-10px); box-shadow: var(--hover-shadow); border-color: var(--accent-gold); }
+    .service-icon { font-size: 50px; color: var(--accent-gold); margin-bottom: 25px; transition: transform 0.3s ease; }
+    .service-card:hover .service-icon { transform: scale(1.1); }
+    .service-card h3 { font-size: 24px; margin-bottom: 15px; font-weight: 600; }
+    .service-card p { color: var(--text-muted); font-size: 15px; }
 
-    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-    .gallery-item { position: relative; overflow: hidden; height: 280px; border-radius: 6px; cursor: pointer; }
-    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+    /* Premium Statistics Counters Section */
+    .stats-section { background: var(--primary-color); color: white; text-align: center; padding: 80px 20px; border-top: 2px solid var(--accent-gold); border-bottom: 2px solid var(--accent-gold); }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; max-width: 1300px; margin: 0 auto; }
+    .stat-item h2 { font-size: 48px; color: var(--accent-gold); font-weight: 700; margin-bottom: 10px; }
+    .stat-item p { font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #cccccc; }
+
+    /* Luxury Work Showcase Portfolio Gallery */
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+    .gallery-item { position: relative; overflow: hidden; height: 320px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); cursor: pointer; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1); }
     .gallery-item:hover img { transform: scale(1.08); }
-    .gallery-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(17,17,17,0.85); display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: var(--transition); color: var(--text-light); }
+    .gallery-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(17,17,17,0.88); display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: var(--transition); color: var(--text-light); text-align: center; padding: 25px; }
     .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-overlay h4 { font-size: 24px; color: var(--accent-gold); margin-bottom: 8px; }
+    .gallery-overlay p { font-size: 14px; letter-spacing: 1px; color: #dddddd; }
 
-    .contact-wrapper { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; background: white; padding: 50px; border-radius: 6px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); }
-    .info-item { display: flex; align-items: center; gap: 18px; margin-bottom: 25px; }
-    .info-item i { color: var(--accent); font-size: 22px; width: 25px; }
-    .info-item a { color: var(--text-dark); text-decoration: none; font-weight: 500; }
+    /* Premium Testimonials Reviews Section */
+    .testimonials { background: #f5f3eb; max-width: 100%; padding: 120px 20px; }
+    .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1300px; margin: 0 auto; }
+    .review-card { background: white; padding: 40px; border-radius: 8px; box-shadow: var(--card-shadow); position: relative; }
+    .review-card i { color: var(--accent-gold); font-size: 24px; margin-bottom: 20px; display: block; }
+    .review-card p { font-style: italic; color: #444444; margin-bottom: 20px; }
+    .review-card h5 { font-size: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 
-    .contact-form { display: flex; flex-direction: column; gap: 18px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-    .contact-form input, .contact-form select, .contact-form textarea { width: 100%; padding: 14px 18px; border: 1px solid #e2e2e2; border-radius: 4px; font-family: inherit; font-size: 14px; }
-    .btn-submit { background: var(--primary); color: white; padding: 14px; font-weight: 600; text-transform: uppercase; border: none; cursor: pointer; transition: var(--transition); }
-    .btn-submit:hover { background: var(--accent); }
+    /* Premium Form & Contact Info Box */
+    .contact-wrapper { display: grid; grid-template-columns: 1fr 1.3fr; gap: 70px; background: white; padding: 60px; border-radius: 12px; box-shadow: var(--card-shadow); border: 1px solid rgba(0,0,0,0.01); }
+    .info-box h3 { font-size: 32px; margin-bottom: 20px; color: var(--primary-color); }
+    .info-box p { color: var(--text-muted); margin-bottom: 40px; }
+    .info-item { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; font-size: 16px; }
+    .info-item i { color: var(--accent-gold); font-size: 24px; width: 30px; text-align: center; }
+    .info-item a { color: var(--text-dark); text-decoration: none; font-weight: 500; transition: var(--transition); }
+    .info-item a:hover { color: var(--accent-gold); }
 
-    footer { background: var(--primary); color: rgba(255,255,255,0.6); text-align: center; padding: 40px 20px; border-top: 3px solid var(--accent); }
+    .contact-form { display: flex; flex-direction: column; gap: 22px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .contact-form input, .contact-form select, .contact-form textarea { width: 100%; padding: 16px 20px; border: 1px solid #e5e5e0; background: #fafafa; font-family: inherit; font-size: 14px; border-radius: 6px; transition: var(--transition); color: var(--text-dark); }
+    .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { outline: none; border-color: var(--accent-gold); background: #ffffff; box-shadow: 0 0 15px rgba(191, 161, 95, 0.15); }
+    
+    .btn-submit { background: var(--primary-color); color: white; border: 2px solid var(--primary-color); padding: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; border-radius: 6px; cursor: pointer; transition: var(--transition); font-size: 14px; }
+    .btn-submit:hover { background: transparent; color: var(--primary-color); border-color: var(--primary-color); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
-    .floating-actions { position: fixed; bottom: 30px; right: 30px; z-index: 99999; display: flex; flex-direction: column; gap: 12px; }
-    .float-btn { width: 56px; height: 56px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; text-decoration: none; font-size: 26px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: var(--transition); }
-    .float-btn:hover { transform: scale(1.12); }
+    /* Footer Layout Elements */
+    footer { background: var(--primary-color); color: rgba(255,255,255,0.55); text-align: center; padding: 50px 20px; border-top: 4px solid var(--accent-gold); font-size: 14px; }
+
+    /* Dynamic Fixed Action Bar Layout Layer */
+    .floating-actions { position: fixed; bottom: 35px; right: 35px; z-index: 99999; display: flex; flex-direction: column; gap: 15px; }
+    .float-btn { width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; text-decoration: none; font-size: 28px; box-shadow: 0 8px 25px rgba(0,0,0,0.25); transition: var(--transition); }
+    .float-btn:hover { transform: scale(1.15) translateY(-5px); }
     .float-wa { background-color: #25D366; }
     .float-phone { background-color: #007bff; }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-3px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 992px) {
+      .contact-wrapper { grid-template-columns: 1fr; padding: 40px; gap: 50px; }
+    }
+
+    @media (max-width: 768px) {
+      .menu-btn { display: block; }
+      nav ul { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--primary-color); padding: 30px; border-bottom: 2px solid var(--accent-gold); text-align: center; gap: 25px; }
+      nav ul.show { display: flex; }
+      .hero-content h1 { font-size: 38px; }
+      .section-title { font-size: 32px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -97,9 +160,10 @@
         <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4QAqRXhpZgAASUkqAAgAAAABADEBAgAHAAAAGgAAAAAAAABQaWNhc2EAAPYAAAAsU3BhY2VzAA..." alt="Diamond Interior Logo" class="logo-img">
         <span class="brand-name">DIAMOND <span>INTERIOR</span></span>
       </a>
+      <div class="menu-btn" id="mobile-toggle"><i class="fa-solid fa-bars"></i></div>
       <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
+        <ul id="nav-links">
+          <li><a href="#" class="active">Home</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#ourwork">Our Work</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -111,8 +175,8 @@
   <section class="hero">
     <div class="hero-content">
       <h1>Elevate Your Space with <span>Luxury</span></h1>
-      <p>We craft premium, bespoke residential and commercial environments across Mumbai, Maharashtra.</p>
-      <a href="#contact" class="btn-gold">Book Consultation</a>
+      <p>Crafting bespoke residential and ultra-premium commercial layouts precisely across Mumbai, Maharashtra.</p>
+      <a href="#contact" class="btn-gold">Book Free Consultation</a>
     </div>
   </section>
 
@@ -122,52 +186,80 @@
       <div class="service-card">
         <i class="fa-solid fa-kitchen-set service-icon"></i>
         <h3>Modular Kitchen</h3>
-        <p>Ultra-modern layouts, smart space optimization, and luxury matte finishes.</p>
+        <p>Ergonomic luxury kitchens with anti-scratch intelligent layouts, premium acrylic/matte finishes, and seamless organizer systems.</p>
       </div>
       <div class="service-card">
         <i class="fa-solid fa-bed service-icon"></i>
         <h3>Bedroom Interior</h3>
-        <p>Elegant master suite themes, premium wardrobes, and ambient lighting.</p>
+        <p>Bespoke master suites integrated with high-end customized sliding wardrobes, luxury headboard panels, and premium multi-tier ambient lighting.</p>
       </div>
       <div class="service-card">
         <i class="fa-solid fa-couch service-icon"></i>
         <h3>Living Room Design</h3>
-        <p>Bespoke styling panels, luxury accents, and high-end decor arrangements.</p>
-      </div>
-      <div class="service-card">
-        <i class="fa-solid fa-hotel service-icon"></i>
-        <h3>Hotel Interior Design</h3>
-        <p>Premium lobby planning and grand hospitality lounge architecture styling solutions.</p>
+        <p>Grand main hall transformations complete with luxury custom furniture arrangements, elegant feature walls, and bespoke ceiling structures.</p>
       </div>
     </div>
   </section>
 
-  <section id="ourwork" style="background: #f7f6f0; max-width: 100%; padding: 100px 20px;">
+  <div class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <h2>10+</h2>
+        <p>Years Experience</p>
+      </div>
+      <div class="stat-item">
+        <h2>500+</h2>
+        <p>Luxury Spaces Done</p>
+      </div>
+      <div class="stat-item">
+        <h2>100%</h2>
+        <p>Happy Clients</p>
+      </div>
+    </div>
+  </div>
+
+  <section id="ourwork" style="background: #f6f5ee; max-width: 100%; padding: 120px 20px;">
     <div style="max-width: 1300px; margin: 0 auto;">
       <h2 class="section-title">Our Work Done By <span>Diamond Interiors</span></h2>
       <div class="gallery-grid">
         <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=600&q=80" alt="Work 1">
-          <div class="gallery-overlay"><h4 style="padding-top:110px; color:#bfa15f;">Living Lounge</h4></div>
+          <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=600&q=80" alt="Living Architecture">
+          <div class="gallery-overlay"><h4>Luxury Living Room</h4><p>Premium Mumbai Layout</p></div>
         </div>
         <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80" alt="Work 2">
-          <div class="gallery-overlay"><h4 style="padding-top:110px; color:#bfa15f;">Modular Kitchen</h4></div>
+          <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80" alt="Modular Design Setup">
+          <div class="gallery-overlay"><h4>Modular Kitchen Concept</h4><p>Elite Seamless Finish</p></div>
         </div>
         <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=600&q=80" alt="Work 3">
-          <div class="gallery-overlay"><h4 style="padding-top:110px; color:#bfa15f;">Master Bedroom</h4></div>
+          <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=600&q=80" alt="Bespoke Bedroom Suite">
+          <div class="gallery-overlay"><h4>Master Bedroom Interior</h4><p>Warm Ambient Space</p></div>
         </div>
       </div>
     </div>
   </section>
+
+  <div class="testimonials">
+    <h2 class="section-title">What Our Clients <span>Say</span></h2>
+    <div class="review-grid">
+      <div class="review-card">
+        <i class="fa-solid fa-quote-left"></i>
+        <p>"Diamond Interior completely transformed our modular kitchen and living room into a palace-like look. Their attention to luxury finishes is incredible."</p>
+        <h5>- Rajesh Sharma, Mumbai</h5>
+      </div>
+      <div class="review-card">
+        <i class="fa-solid fa-quote-left"></i>
+        <p>"The best high-end interior designers in Maharashtra. They delivered my luxury master bedroom layout exactly on time. Highly professional!"</p>
+        <h5>- Priya Deshmukh, Thane</h5>
+      </div>
+    </div>
+  </div>
 
   <section id="contact">
     <h2 class="section-title">Get In <span>Touch</span></h2>
     <div class="contact-wrapper">
       <div class="info-box">
         <h3>Let's Create Magic</h3>
-        <p>Contact us today for a professional design consultation session.</p>
+        <p>Contact us today for a completely customized high-end residential or commercial layout strategy analysis with our elite team.</p>
         <div class="info-item">
           <i class="fa-solid fa-location-dot"></i>
           <span>Mumbai, Maharashtra, India</span>
@@ -190,18 +282,25 @@
         
         <div>
           <select name="project_category" required>
-            <option value="" disabled selected>Select Project Category</option>
+            <option value="" disabled selected>Choose Category</option>
             <option value="Modular Kitchen">Modular Kitchen</option>
-            <option value="Home Design">Home Design</option>
-            <option value="Living Room">Living Room Design</option>
-            <option value="Bathroom">Bathroom Design</option>
-            <option value="Bedroom">Bedroom Interior</option>
-            <option value="Hotel Interior">Hotel Interior Design</option>
+            <option value="Bedroom Interior">Bedroom Interior</option>
+            <option value="Living Room Design">Living Room Design</option>
+            <option value="Bathroom Interior">Bathroom Interior</option>
+            <option value="TV Unit Design">TV Unit Design</option>
+            <option value="Wardrobe Design">Wardrobe Design</option>
+            <option value="Office Interior">Office Interior</option>
+            <option value="False Ceiling">False Ceiling</option>
+            <option value="Luxury Sofa">Luxury Sofa</option>
+            <option value="Dining Area">Dining Area</option>
+            <option value="Wall Panel Design">Wall Panel Design</option>
+            <option value="Full Home Interior">Full Home Interior</option>
+            <option value="Other">Other</option>
           </select>
         </div>
         
         <div>
-          <textarea name="message" rows="5" placeholder="Your requirements..." required></textarea>
+          <textarea name="message" rows="5" placeholder="Tell us about your custom design ideas and space requirements..." required></textarea>
         </div>
         <button type="submit" class="btn-submit">Send Message</button>
       </form>
@@ -221,5 +320,13 @@
     </a>
   </div>
 
+  <script>
+    // Mobile Navigation Burger Trigger Toggle Component
+    const mobileBtn = document.getElementById('mobile-toggle');
+    const linksList = document.getElementById('nav-links');
+    mobileBtn.addEventListener('click', () => {
+      linksList.classList.toggle('show');
+    });
+  </script>
 </body>
 </html>
