@@ -1,506 +1,179 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="theme-color" content="#0f0d0b" />
-
-  <title>Diamond Interiors | Premium Interior Designer in Mumbai & Thane (15+ Yrs Exp)</title>
-  
-  <meta name="description" content="Authentic luxury interior design services in Mumbai & Thane. Experience 100% realistic site execution, smart modular kitchens, and custom luxury wardrobes from a team with 15+ years of expertise." />
-  <meta name="keywords" content="Interior Designer Mumbai, Realistic Interior Design, Modern Home Design Thane, Luxury Living Room, Authentic Kitchen Design, Best Interior Designer Mumbai, 15 years experience" />
-  <meta name="author" content="Diamond Interiors" />
-  <meta name="robots" content="index, follow" />
-  
-  <link rel="canonical" href="https://www.diamondinteriors.in/" />
-
-  <link rel="icon" type="image/png" href="1000046175.png" />
-  <link rel="apple-touch-icon" href="1000046175.png" />
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-  <style>
-    :root{
-      --bg:#ffffff;
-      --bg2:#f8f9fa;
-      --card:#ffffff;
-      --card2:#1a1714;
-      --text:#1c1c1e;
-      --muted:#636366;
-      --gold:#cf9f4f;
-      --gold-dark:#b3843b;
-      --gold-light:#f5e6cd;
-      --line:#e5e5ea;
-      --shadow:0 20px 40px rgba(0,0,0,0.06);
-      --radius:14px;
-      --max:1200px;
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background-color: var(--bg);
-      color:var(--text);
-      line-height:1.6;
-      overflow-x:hidden;
-    }
-
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%; display:block; object-fit:cover;}
-
-    .container{
-      width:min(var(--max), calc(100% - 40px));
-      margin:0 auto;
-    }
-
-    /* Floating Contact Actions */
-    .floating-contact {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      z-index: 1001;
-    }
-    .float-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 1.8rem;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-      transition: all 0.3s ease;
-    }
-    .float-icon:hover { transform: scale(1.1) translateY(-3px); }
-    .float-whatsapp { background-color: #25D366; }
-    .float-phone { background-color: var(--gold); }
-
-    /* Navigation */
-    .nav{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background:rgba(255,255,255,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom:1px solid var(--line);
-    }
-    .nav-inner{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:14px 0;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-    .brand img{
-      width:46px;
-      height:46px;
-      border-radius:10px;
-      border: 1px solid var(--gold);
-    }
-    .brand h1{
-      margin:0;
-      font-size:1.35rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    .menu{ display:flex; align-items:center; gap:28px; }
-    .menu a{
-      color:var(--muted);
-      font-size:0.95rem;
-      font-weight: 500;
-      transition:.2s ease;
-    }
-    .menu a:hover, .menu a.active{ color:var(--text); }
-
-    /* Hero Section */
-    .hero{
-      padding:90px 0;
-      background-image: radial-gradient(circle at 90% 10%, var(--gold-light) 0%, transparent 40%);
-      background-color: var(--bg2);
-      border-bottom: 1px solid var(--line);
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:50px;
-      align-items:center;
-    }
-    .hero-copy h2{
-      font-size:clamp(2.6rem, 4.5vw, 4rem);
-      line-height:1.15;
-      margin:0 0 20px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-    .hero-copy h2 span{ color: var(--gold); }
-    .hero-copy p{
-      color:var(--muted);
-      font-size:1.15rem;
-      margin:0 0 35px;
-    }
-
-    /* High Feature Highlight Badges */
-    .spec-badges {
-      display: flex;
-      gap: 15px;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-    }
-    .spec-tag {
-      background: #ffffff;
-      border: 1px solid var(--line);
-      padding: 8px 16px;
-      border-radius: 99px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-    }
-    .spec-tag i { color: var(--gold); }
-
-    .hero-image-wrapper {
-      position: relative;
-      border-radius: var(--radius);
-      padding: 10px;
-      background: #ffffff;
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-    }
-    .hero-image{
-      border-radius:8px;
-      overflow:hidden;
-      aspect-ratio: 4 / 3;
-    }
-
-    /* Section Control */
-    section{padding:90px 0}
-    .section-head{
-      text-align: center;
-      margin-bottom:60px;
-    }
-    .section-head h2{
-      margin:0 0 12px;
-      font-size:clamp(2rem, 3.5vw, 2.8rem);
-      font-weight: 700;
-    }
-    .section-head p{ color:var(--muted); font-size: 1.1rem; }
-
-    /* Interactive Gallery System with Filters */
-    .gallery-filter-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-    .filter-btn {
-      background: var(--bg2);
-      border: 1px solid var(--line);
-      padding: 10px 22px;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      font-size: 0.95rem;
-    }
-    .filter-btn.active, .filter-btn:hover {
-      background: var(--text);
-      color: #ffffff;
-      border-color: var(--text);
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap: 30px;
-    }
-    .gallery-item {
-      background: var(--card);
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      transition: transform 0.3s ease;
-    }
-    .gallery-item:hover { transform: translateY(-5px); }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    .img-container {
-      position: relative;
-      aspect-ratio: 3 / 2;
-      overflow: hidden;
-      background: #eee;
-    }
-    .img-container img { width: 100%; height: 100%; transition: transform 0.6s ease; }
-    .gallery-item:hover .img-container img { transform: scale(1.04); }
-
-    /* Premium Status Badge over Real Images */
-    .real-badge {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      background: rgba(28, 28, 30, 0.85);
-      backdrop-filter: blur(5px);
-      color: #fff;
-      padding: 6px 12px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      border-radius: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-
-    .gallery-info { padding: 20px; }
-    .gallery-info h3 { margin: 0 0 6px; font-size: 1.2rem; font-weight: 600; }
-    .gallery-info p { margin: 0; color: var(--muted); font-size: 0.9rem; }
-
-    /* High Tech Materials Specification Section */
-    .material-section { background-color: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .tech-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-    }
-    .tech-card {
-      background: var(--card);
-      padding: 30px;
-      border-radius: var(--radius);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-    }
-    .tech-card i { font-size: 2rem; color: var(--gold); margin-bottom: 15px; display: block;}
-    .tech-card h3 { margin: 0 0 10px; font-size: 1.25rem; font-weight: 600; }
-    .tech-card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
-
-    /* Contact Block */
-    .contact-card{
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 50px;
-      border-radius: var(--radius);
-      background: var(--card);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      text-align: center;
-    }
-    .contact-card h3 { font-size: 2.2rem; margin: 0 0 12px; letter-spacing: -0.02em; }
-    .contact-card p { color: var(--muted); margin-bottom: 35px; font-size: 1.1rem; }
+    <title>Diamond Interiors - Premium Interior Designer in Mumbai</title>
+    <meta name="description" content="Diamond Interiors: Premium interior design services in Mumbai, Thane, and Maharashtra. 15+ years experience. Get a free quote for residential and commercial spaces.">
+    <meta name="keywords" content="interior designer mumbai, premium home design, modular kitchen, luxury interiors thane">
     
-    .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      border-radius:8px;
-      padding:15px 32px;
-      font-weight:600;
-      font-size: 1rem;
-      transition: all 0.2s ease;
-      cursor: pointer;
-    }
-    .btn-primary{ background-color: var(--text); color:#fff; border: 1px solid var(--text); }
-    .btn-primary:hover { background-color: var(--gold); border-color: var(--gold); }
-    .btn-outline{ border: 2px solid var(--gold); color:var(--gold); background: transparent; }
-    .btn-outline:hover { background: var(--gold-light); }
+    <link rel="icon" type="image/png" href="images/logo_icon.png"> <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap">
+    
+    <style>
+        /* Base styles */
+        body { font-family: 'Poppins', sans-serif; background-color: #121212; color: #E0E0E0; margin: 0; padding: 0; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; color: #D4AF37; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
-    footer{
-      background:#ffffff;
-      border-top:1px solid var(--line);
-      padding:40px 0;
-      text-align:center;
-      color:var(--muted);
-      font-size: 0.95rem;
-    }
+        /* Header (Updated with Logo and Contact Icons) */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px; border-bottom: 1px solid #333; position: relative; }
+        .logo-container { display: flex; align-items: center; }
+        .logo-img { max-height: 50px; margin-right: 15px; } /* Updated to use provided logo */
+        .header-title-wrapper { display: flex; flex-direction: column; }
+        .header-title-wrapper h1 { font-size: 24px; margin: 0; font-weight: 700; color: #D4AF37; line-height: 1.2; }
+        .header-title-wrapper p { font-size: 10px; color: #aaa; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
+        .header-right { display: flex; align-items: center; }
+        .header-right a { color: #D4AF37; font-size: 20px; margin-left: 20px; transition: color 0.3s; }
+        .header-right a:hover { color: #fff; }
+        .menu-icon { font-size: 24px; cursor: pointer; color: #D4AF37; margin-left: 20px; }
 
-    @media(max-width:992px){
-      .hero-grid{ grid-template-columns:1fr; text-align: center; }
-      .spec-badges { justify-content: center; }
-      .contact-card { padding: 30px; }
-    }
-  </style>
+        /* Hero Section */
+        .hero { position: relative; height: 100vh; overflow: hidden; display: flex; justify-content: center; align-items: center; text-align: center; }
+        .hero-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5; z-index: -1; }
+        .hero-content { z-index: 1; padding: 0 20px; }
+        .hero h2 { font-size: 48px; margin-bottom: 15px; line-height: 1.2; }
+        .hero p { font-size: 16px; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto; color: #ccc; }
+        .btn { padding: 12px 30px; font-weight: 500; border-radius: 5px; transition: all 0.3s; cursor: pointer; display: inline-block; }
+        .btn-primary { background-color: #D4AF37; color: #121212; border: none; }
+        .btn-primary:hover { background-color: #fff; color: #121212; }
+
+        /* Experience and Trust */
+        .experience { text-align: center; margin-top: -60px; z-index: 2; position: relative; }
+        .exp-badge { display: inline-block; padding: 15px 30px; background-color: #D4AF37; color: #121212; border-radius: 50px; font-weight: 700; font-size: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .exp-text { color: #121212; font-size: 14px; display: block; font-weight: 500; }
+
+        /* Our Projects (Image Gallery - Updated) */
+        .projects { padding: 80px 0; }
+        .projects h2 { text-align: center; margin-bottom: 50px; font-size: 36px; }
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
+        .project-card { position: relative; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .project-card img { width: 100%; height: 300px; object-fit: cover; transition: transform 0.3s ease; display: block; }
+        .project-card:hover img { transform: scale(1.05); }
+        .project-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0)); color: #fff; text-align: left; }
+        .project-info h4 { font-family: 'Poppins', sans-serif; margin: 0 0 5px; font-size: 18px; color: #fff; }
+        .project-info p { margin: 0; font-size: 12px; color: #ccc; }
+
+        /* Get Free Quote Bar (Floating at Bottom) */
+        .quote-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background-color: #1a1a1a; padding: 15px 30px; border-radius: 50px; display: flex; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.6); z-index: 100; border: 1px solid #333; gap: 15px; width: 90%; max-width: 600px; justify-content: space-between; }
+        .quote-text { color: #E0E0E0; font-size: 14px; margin: 0; }
+        .quote-btn { padding: 10px 25px; border-radius: 25px; font-size: 14px; font-weight: 500; }
+
+        /* Floating Contact Icons (Left Side) */
+        .floating-contact { position: fixed; bottom: 30px; left: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 100; }
+        .contact-icon { width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #fff; font-size: 24px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: transform 0.3s; cursor: pointer; }
+        .contact-icon:hover { transform: scale(1.1); }
+        .icon-whatsapp { background-color: #25D366; }
+        .icon-phone { background-color: #D4AF37; }
+        .icon-email { background-color: #4285F4; }
+
+    </style>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 </head>
 <body>
 
-  <div class="floating-contact">
-    <a href="https://wa.me/919152838906" class="float-icon float-whatsapp" target="_blank" title="Chat on WhatsApp">
-      <i class="fa-brands fa-whatsapp"></i>
-    </a>
-    <a href="tel:+919152838906" class="float-icon float-phone" title="Call Designer">
-      <i class="fa-solid fa-phone"></i>
-    </a>
-  </div>
+    <header class="container">
+        <div class="logo-container">
+            <img src="images/logo_icon.png" alt="Diamond Interiors Logo" class="logo-img"> <div class="header-title-wrapper">
+                <h1>Diamond Interiors</h1>
+                <p>Premium Interior Design Studio</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <a href="tel:+919152838906"><i class="fas fa-phone-alt"></i></a>
+            <i class="fas fa-bars menu-icon"></i>
+        </div>
+    </header>
 
-  <nav class="nav">
-    <div class="container nav-inner">
-      <div class="brand">
-        <img src="1000046175.png" alt="Diamond Interiors Premium Logo" />
-        <h1>Diamond Interiors</h1>
-      </div>
-      <div class="menu">
-        <a href="#home" class="active">Home</a>
-        <a href="#gallery">Project Gallery</a>
-        <a href="#materials">Our Quality</a>
-        <a href="#contact">Contact</a>
-      </div>
+    <section class="hero">
+        <img src="images/hero_premium_lounge.png" alt="Diamond Interiors - Premium Home Design" class="hero-img"> <div class="hero-content">
+            <h2>We Design Elegant Spaces<br>That Feel Premium.</h2>
+            <p>Diamond Interiors creates modern interiors for homes, offices, hotels, modular kitchens, wardrobes, false ceilings, flooring and complete turnkey projects across Mumbai and Maharashtra.</p>
+            <a href="#contact" class="btn btn-primary">हमारे प्रोजेक्ट्स देखें</a>
+        </div>
+    </section>
+
+    <div class="experience">
+        <div class="exp-badge">
+            15+
+            <span class="exp-text">वर्षों का अनुभव</span>
+        </div>
     </div>
-  </nav>
 
-  <header id="home" class="hero">
-    <div class="container hero-grid">
-      <div class="hero-copy">
-        <h2>Premium <span>Interior Design</span> With 15+ Years Experience.</h2>
-        <p>We deliver high-end, highly functional luxury residential interior layouts completely custom-tailored across Mumbai and Thane regions.</p>
+    <section class="projects container">
+        <h2>हमारे द्वारा किये गए प्रोजेक्ट्स (कार्य)</h2>
+        <p style="text-align: center; color: #aaa; margin-bottom: 40px;">Diamond Interiors द्वारा मुंबई और महाराष्ट्र में पूर्ण किये गए कुछ चुनिंदा प्रोजेक्ट्स की झलक।</p>
         
-        <div class="spec-badges">
-          <div class="spec-tag"><i class="fa-solid fa-circle-check"></i> 100% Real Site Execution</div>
-          <div class="spec-tag"><i class="fa-solid fa-award"></i> 15+ Yrs Industry Expertise</div>
-          <div class="spec-tag"><i class="fa-solid fa-cube"></i> Interactive Space Planning</div>
-        </div>
+        <div class="project-grid">
+            
+            <div class="project-card">
+                <img src="images/false_ceiling_design.png" alt="Diamond Interiors False Ceiling Design Mumbai">
+                <div class="project-info">
+                    <h4>मॉडर्न फॉल्स सीलिंग</h4>
+                    <p>बांद्रा, मुंबई</p>
+                </div>
+            </div>
 
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Book Free Consultation</a>
+            <div class="project-card">
+                <img src="images/bedroom_interiors_wardrobe.png" alt="Diamond Interiors Bedroom Design Wardrobe">
+                <div class="project-info">
+                    <h4>प्रीमियम बेडरूम और वार्डरोब</h4>
+                    <p>जुहू, मुंबई</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="images/modular_kitchen_lshape.png" alt="Diamond Interiors Modular Kitchen Mumbai">
+                <div class="project-info">
+                    <h4>एल-शेप मॉड्युलर किचन</h4>
+                    <p>अंधेरी, मुंबई</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="images/parallel_kitchen_luxury.png" alt="Diamond Interiors Luxury Kitchen Thane">
+                <div class="project-info">
+                    <h4>लक्ज़री पैरेलल किचन</h4>
+                    <p>ठाणे</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="images/modular_kitchen_modern_beige.png" alt="Diamond Interiors Modern Kitchen Interior">
+                <div class="project-info">
+                    <h4>बेज थीम मॉड्युलर किचन</h4>
+                    <p>नवी मुंबई</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="images/compact_kitchen_white_finish.png" alt="Diamond Interiors Compact Kitchen Design">
+                <div class="project-info">
+                    <h4>कॉम्पैक्ट व्हाइट किचन</h4>
+                    <p>वर्सोवा, मुंबई</p>
+                </div>
+            </div>
+
         </div>
-      </div>
-      <div class="hero-image-wrapper">
-        <div class="hero-image">
-          <img src="1000046175.png" alt="Realistic Premium Bedroom & Wardrobe Execution" />
-        </div>
-      </div>
+    </section>
+
+    <div class="floating-contact">
+        <a href="https://wa.me/919152838906" target="_blank" class="contact-icon icon-whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="tel:+919152838906" class="contact-icon icon-phone"><i class="fas fa-phone-alt"></i></a>
+        <a href="mailto:contact@diamondinteriors.in" class="contact-icon icon-email"><i class="fas fa-envelope"></i></a>
     </div>
-  </header>
 
-  <section id="gallery">
-    <div class="container">
-      <div class="section-head">
-        <h2>Our Live Project Gallery</h2>
-        <p>Genuine high-definition glimpses of our interior works completed across luxury developments.</p>
-      </div>
-
-      <div class="gallery-filter-buttons">
-        <button class="filter-btn active">All Projects</button>
-        <button class="filter-btn">Modular Kitchens</button>
-        <button class="filter-btn">Luxury Bedrooms</button>
-        <button class="filter-btn">False Ceilings</button>
-      </div>
-      
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <div class="img-container">
-            <span class="real-badge">✨ Live Real Shot</span>
-            <img src="1000045500.png" alt="Realistic Living Room Interior Execution Portfolio" />
-          </div>
-          <div class="gallery-info">
-            <h3>Luxury Lounge & Living Room</h3>
-            <p>Custom marble finish layouts with dynamic architectural accent louvers.</p>
-          </div>
-        </div>
-
-        <div class="gallery-item">
-          <div class="img-container">
-            <span class="real-badge">✨ Live Real Shot</span>
-            <img src="1000045811.jpg" alt="Realistic Modular Kitchen Design Asset" />
-          </div>
-          <div class="gallery-info">
-            <h3>Premium High-Gloss Kitchen</h3>
-            <p>Seamless integrated profiling handles mixed with optimal counter ambient lighting.</p>
-          </div>
-        </div>
-
-        <div class="gallery-item">
-          <div class="img-container">
-            <span class="real-badge">✨ Live Real Shot</span>
-            <img src="1000046175.png" alt="Realistic Master Bedroom Wardrobe Execution" />
-          </div>
-          <div class="gallery-info">
-            <h3>Master Bedroom Suite Wardrobe</h3>
-            <p>Full-height soft-touch sliding systems paired with integrated vanity dressers.</p>
-          </div>
-        </div>
-        
-        <div class="gallery-item">
-          <div class="img-container">
-            <span class="real-badge">✨ Live Real Shot</span>
-            <img src="1000045908.png" alt="Realistic False Ceiling Lighting Execution" />
-          </div>
-          <div class="gallery-info">
-            <h3>Multi-Tier False Ceiling Styling</h3>
-            <p>Dual-tone structured linear wooden design with premium flush tracks.</p>
-          </div>
-        </div>
-      </div>
+    <div class="quote-bar">
+        <p class="quote-text">Have a Project in Mind? Let's design your dream space.</p>
+        <a href="mailto:contact@diamondinteriors.in?subject=Free Quote Inquiry" class="btn btn-primary quote-btn">Get Free Quote</a>
     </div>
-  </section>
 
-  <section id="materials" class="material-section">
-    <div class="container">
-      <div class="section-head">
-        <h2>Engineered for Premium Quality</h2>
-        <p>We source only robust, premium-grade structural materials for maximum finish longevity.</p>
-      </div>
-
-      <div class="tech-grid">
-        <div class="tech-card">
-          <i class="fa-solid fa-gem"></i>
-          <h3>Anti-Scratch Acrylic</h3>
-          <p>Ultra-glossy surface materials providing intense scratch resistance and easy-wipe cleaning.</p>
-        </div>
-        <div class="tech-card">
-          <i class="fa-solid fa-sliders"></i>
-          <h3>Soft-Close Channels</h3>
-          <p>German-engineered soft-closing mechanism hardware integration across all storage units.</p>
-        </div>
-        <div class="tech-card">
-          <i class="fa-solid fa-faucet-drip"></i>
-          <h3>Waterproof Core Ply</h3>
-          <p>Heavy-duty, calibrated boiling waterproof plywood bases preventing layout warp issues.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="container">
-      <div class="contact-card">
-        <h3>Ready to Design Your Space?</h3>
-        <p>Leverage our 15+ years of experience. Get in touch directly with our lead interior consultants for a free layout consultation and pricing estimation break-up.</p>
-        <div class="btn-group">
-          <a href="https://wa.me/919152838906" class="btn btn-primary" target="_blank">
-            <i class="fa-brands fa-whatsapp"></i> Connect on WhatsApp
-          </a>
-          <a href="tel:+919152838906" class="btn btn-outline">
-            <i class="fa-solid fa-phone"></i> Direct Call 9152838906
-          </a>
-          <a href="#contact" class="btn btn-outline" style="border-color: var(--text); color: var(--text);">
-            <i class="fa-solid fa-map-location-dot"></i> Book Site Visit
-          </a>
-           <a href="#contact" class="btn btn-outline" style="border-color: var(--muted); color: var(--muted);">
-            <i class="fa-solid fa-cube"></i> Explore 3D Designs
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <p>&copy; 2026 Diamond Interiors. Proudly Serving Mumbai & Thane with 15+ Years of Trust. All Rights Reserved.</p>
-    </div>
-  </footer>
+    <script>
+        // Placeholder for future interactivity
+    </script>
 
 </body>
 </html>
