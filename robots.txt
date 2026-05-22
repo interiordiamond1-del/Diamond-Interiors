@@ -1,0 +1,95 @@
+# =========================================================
+# ROBOTS.TXT — DIAMOND INTERIOR DESIGN
+# Website: https://diamondinteriordesigner.in/
+# =========================================================
+
+User-agent: *
+Allow: /
+
+# =========================
+# MAIN IMPORTANT PAGES
+# =========================
+Allow: /index.html
+Allow: /about.html
+Allow: /services.html
+Allow: /projects.html
+Allow: /gallery.html
+Allow: /contact.html
+Allow: /blog.html
+
+# =========================
+# BLOCK LOW VALUE URLS
+# =========================
+Disallow: /admin/
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /cgi-bin/
+Disallow: /backup/
+Disallow: /cache/
+Disallow: /search/
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+
+# =========================
+# BLOCK FILE TYPES
+# =========================
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*?replytocom=
+Disallow: /*?share=
+Disallow: /*?amp
+Disallow: /*?utm_source=
+Disallow: /*?utm_medium=
+Disallow: /*?utm_campaign=
+
+# =========================
+# ALLOW IMPORTANT ASSETS
+# =========================
+Allow: /assets/
+Allow: /images/
+Allow: /css/
+Allow: /js/
+
+# =========================
+# GOOGLEBOT
+# =========================
+User-agent: Googlebot
+Allow: /
+
+# =========================
+# BINGBOT
+# =========================
+User-agent: Bingbot
+Allow: /
+
+# =========================
+# IMAGE INDEXING
+# =========================
+User-agent: Googlebot-Image
+Allow: /images/
+
+# =========================
+# CRAWL SETTINGS
+# =========================
+Crawl-delay: 1
+
+# =========================
+# SITEMAP
+# =========================
+Sitemap: https://diamondinteriordesigner.in/sitemap.xml
+
+# =========================
+# PREFERRED DOMAIN
+# =========================
+Host: https://diamondinteriordesigner.in
+
+# =========================================================
+# LOCAL SEO TARGET KEYWORDS
+# Interior Design Mumbai
+# Interior Design Navi Mumbai
+# Interior Design Maharashtra
+# Interior Design Thane
+# Interior Design Near Me
+# Hotel Interior Design Mumbai
+# Luxury Interior Designer Mumbai
+# =========================================================
