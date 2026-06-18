@@ -103,7 +103,7 @@
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth;font-size:16px}
+    html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden;touch-action:pan-y}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.001ms!important;transition-duration:.001ms!important}}
     body{
       font-family:'DM Sans',ui-sans-serif,system-ui,sans-serif;
@@ -111,6 +111,8 @@
       color:var(--text);
       line-height:1.7;
       overflow-x:hidden;
+      touch-action:pan-y;
+      width:100%;
     }
     a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%;height:auto;object-fit:cover}
@@ -136,7 +138,7 @@
     .topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding:8px 0;gap:12px;flex-wrap:wrap}
     .topbar a{color:var(--gold-bright);font-weight:600}
     .topbar a:hover{color:#fff}
-    .topbar-left{display:flex;gap:20px;align-items:center}
+    .topbar-left{display:flex;gap:20px;align-items:center;flex-wrap:wrap;min-width:0}
 
     /* NAV */
     .nav{
@@ -1172,3 +1174,4 @@ lb.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tsX;if(M
 </script>
 </body>
 </html>
+
