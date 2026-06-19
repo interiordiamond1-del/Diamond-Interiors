@@ -1,133 +1,956 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
+  <!-- ══════════════════════════════════════════════════════════
+       DIAMOND INTERIORS — SITEMAP
+       Website : https://diamondinteriordesigner.in/
+       Phone   : +91 9152838906
+       Updated : 2026-06-19
+       Covers  : Mumbai · Thane · Navi Mumbai · Maharashtra
+  ══════════════════════════════════════════════════════════ -->
+
+  <!-- ── HOMEPAGE ── -->
   <url>
     <loc>https://diamondinteriordesigner.in/</loc>
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://diamondinteriordesigner.in/file_000000009fa871fdab87743e8eae5ba3.png</image:loc>
+      <image:title>Interior Design in Mumbai Thane Navi Mumbai — Diamond Interiors</image:title>
+    </image:image>
   </url>
 
+  <!-- ── CORE PAGES ── -->
   <url>
     <loc>https://diamondinteriordesigner.in/about.html</loc>
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://diamondinteriordesigner.in/contact.html</loc>
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://diamondinteriordesigner.in/services.html</loc>
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.95</priority>
   </url>
 
   <url>
-    <loc>https://diamondinteriordesigner.in/home-interior-design.html</loc>
-    <lastmod>2026-05-23</lastmod>
+    <loc>https://diamondinteriordesigner.in/gallery.html</loc>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/completed-projects.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/blog.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ── AI / LLM / AEO / GEO PAGES ── -->
+  <url>
+    <loc>https://diamondinteriordesigner.in/aeo.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/geo.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/llmo.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/aiseo.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/eeat.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ── SERVICE PAGES ── -->
+  <url>
+    <loc>https://diamondinteriordesigner.in/home-interior-design.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
   </url>
 
   <url>
     <loc>https://diamondinteriordesigner.in/luxury-interior-design.html</loc>
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/modular-kitchen-design.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/bedroom-interior-design.html</loc>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
+    <loc>https://diamondinteriordesigner.in/living-room-interior-design.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/wardrobe-design.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/false-ceiling-design.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/flooring-design.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/tv-unit-design.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/pooja-unit-design.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/turnkey-interior-design.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
     <loc>https://diamondinteriordesigner.in/office-interior-design.html</loc>
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://diamondinteriordesigner.in/hotel-interior-design.html</loc>
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <priority>0.95</priority>
   </url>
 
-  <url>
-    <loc>https://diamondinteriordesigner.in/completed-projects.html</loc>
-    <lastmod>2026-05-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
+  <!-- ── PRIMARY LOCATION PAGES ── -->
   <url>
     <loc>https://diamondinteriordesigner.in/interior-design-mumbai.html</loc>
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://diamondinteriordesigner.in/interior-design-thane.html</loc>
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://diamondinteriordesigner.in/interior-design-navi-mumbai.html</loc>
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://diamondinteriordesigner.in/interior-design-maharashtra.html</loc>
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://diamondinteriordesigner.in/interior-design-near-me.html</loc>
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.95</priority>
   </url>
 
+  <!-- ── BEST / RANKING PAGES ── -->
   <url>
     <loc>https://diamondinteriordesigner.in/best-interior-designer-mumbai.html</loc>
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.95</priority>
   </url>
 
   <url>
     <loc>https://diamondinteriordesigner.in/interior-designer-thane.html</loc>
-    <lastmod>2026-05-23</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.95</priority>
   </url>
 
   <url>
-    <loc>https://diamondinteriordesigner.in/gallery.html</loc>
-    <lastmod>2026-05-23</lastmod>
+    <loc>https://diamondinteriordesigner.in/best-interior-designer-thane.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/best-interior-designer-navi-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- ══════════════════════════════════════════════════════════
+       MUMBAI NEIGHBOURHOOD PAGES
+  ══════════════════════════════════════════════════════════ -->
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-andheri.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-bandra.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-borivali.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-powai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-goregaon.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-malad.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-kandivali.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-ghatkopar.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-mulund.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-chembur.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-kurla.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-santacruz.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-dadar.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-worli.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-lower-parel.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-juhu.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-vile-parle.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-colaba.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-matunga.html</loc>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://diamondinteriordesigner.in/blog.html</loc>
-    <lastmod>2026-05-23</lastmod>
-    <changefreq>daily</changefreq>
+    <loc>https://diamondinteriordesigner.in/interior-designer-sion.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- ══════════════════════════════════════════════════════════
+       THANE NEIGHBOURHOOD PAGES
+  ══════════════════════════════════════════════════════════ -->
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-thane-west.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-thane-east.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-ghodbunder-road.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-hiranandani-estate.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-kasarvadavali.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-majiwada.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-wagle-estate.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-vartak-nagar.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-pokhran-road.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-patlipada.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-balkum.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-kalwa.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-mumbra.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-diva.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ══════════════════════════════════════════════════════════
+       NAVI MUMBAI NEIGHBOURHOOD PAGES
+  ══════════════════════════════════════════════════════════ -->
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-vashi.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-nerul.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-kharghar.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-belapur.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-panvel.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-seawoods.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-airoli.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-ulwe.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-kamothe.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-ghansoli.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-koparkhairane.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-sanpada.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-juinagar.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-taloja.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ══════════════════════════════════════════════════════════
+       EXTENDED MMR REGION PAGES
+  ══════════════════════════════════════════════════════════ -->
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-kalyan.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-dombivli.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-mira-road.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-bhayander.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-vasai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-virar.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-nalasopara.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-badlapur.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-ambernath.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-ulhasnagar.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-designer-bhiwandi.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SERVICE × LOCATION COMBINATION PAGES
+       (High-value long-tail landing pages)
+  ══════════════════════════════════════════════════════════ -->
+
+  <!-- Modular Kitchen × Location -->
+  <url>
+    <loc>https://diamondinteriordesigner.in/modular-kitchen-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/modular-kitchen-thane.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/modular-kitchen-navi-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Turnkey × Location -->
+  <url>
+    <loc>https://diamondinteriordesigner.in/turnkey-interior-design-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/turnkey-interior-design-thane.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/turnkey-interior-design-navi-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Bedroom × Location -->
+  <url>
+    <loc>https://diamondinteriordesigner.in/bedroom-interior-design-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/bedroom-interior-design-thane.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/bedroom-interior-design-navi-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- False Ceiling × Location -->
+  <url>
+    <loc>https://diamondinteriordesigner.in/false-ceiling-design-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/false-ceiling-design-thane.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/false-ceiling-design-navi-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Wardrobe × Location -->
+  <url>
+    <loc>https://diamondinteriordesigner.in/wardrobe-design-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/wardrobe-design-thane.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Luxury × Location -->
+  <url>
+    <loc>https://diamondinteriordesigner.in/luxury-interior-design-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/luxury-interior-design-thane.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/luxury-interior-design-navi-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Hotel Interior × Location -->
+  <url>
+    <loc>https://diamondinteriordesigner.in/hotel-interior-design-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/hotel-interior-design-thane.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Office Interior × Location -->
+  <url>
+    <loc>https://diamondinteriordesigner.in/office-interior-design-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/office-interior-design-thane.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/office-interior-design-navi-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Home Interior × Location -->
+  <url>
+    <loc>https://diamondinteriordesigner.in/home-interior-design-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/home-interior-design-thane.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/home-interior-design-navi-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Flat Interior × Location -->
+  <url>
+    <loc>https://diamondinteriordesigner.in/flat-interior-design-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/flat-interior-design-thane.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/flat-interior-design-navi-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Living Room × Location -->
+  <url>
+    <loc>https://diamondinteriordesigner.in/living-room-interior-design-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/living-room-interior-design-thane.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Flooring × Location -->
+  <url>
+    <loc>https://diamondinteriordesigner.in/flooring-design-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/flooring-design-thane.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Interior Design Cost Pages (high search intent) -->
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-design-cost-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-design-cost-thane.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://diamondinteriordesigner.in/interior-design-cost-navi-mumbai.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
 </urlset>
