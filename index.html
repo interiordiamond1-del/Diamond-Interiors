@@ -88,22 +88,46 @@
     }
   }
   </script>
-<script>
-  // Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyAFEcOjXg-UgcDLixJaidvDLmo065tHnYc",
-    authDomain: "diamond-interior.firebaseapp.com",
-    projectId: "diamond-interior",
-    storageBucket: "diamond-interior.firebasestorage.app",
-    messagingSenderId: "743080237212",
-    appId: "1:743080237212:web:3801f08600dd2b54293559",
-    measurementId: "G-VPJ952EL89"
-  };
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diamond Interiors | Luxury Architecture & Interior Design Mumbai</title>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAFEcOjXg-UgcDLixJaidvDLmo065tHnYc",
+      authDomain: "diamond-interior.firebaseapp.com",
+      databaseURL: "https://diamond-interior-default-rtdb.firebaseio.com",
+      projectId: "diamond-interior",
+      storageBucket: "diamond-interior.firebasestorage.app",
+      messagingSenderId: "743080237212",
+      appId: "1:743080237212:web:3801f08600dd2b54293559",
+      measurementId: "G-VPJ952EL89"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+  </script>
+</head>
+<body>
+  <!-- Aapka website ka structure yahan aayega -->
+  <div id="portfolio-container"></div>
+  <div id="hero-container"></div>
+  <div id="reels-container"></div>
 
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  const database = firebase.database();
-</script>
+  <script>
+    // Data fetch karne ka logic
+    db.ref('portfolio').on('value', snapshot => {
+      const data = snapshot.val();
+      // Yahan DOM update karein
+    });
+    // Baaki modules ke liye bhi same logic
+  </script>
+</body>
+</html>
+
 
   <style>
     :root {
