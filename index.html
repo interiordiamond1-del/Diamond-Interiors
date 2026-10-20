@@ -831,6 +831,282 @@
     document.getElementById('lightboxModal').classList.remove('open');
   }
 </script>
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diamond Interiors | Luxury Interior Design Mumbai & Thane</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+
+  <style>
+    :root {
+      --void: #060403;
+      --surface: #0e0a07;
+      --surface-2: #16110b;
+      --card: #120d09;
+      --gold: #c9943a;
+      --gold-bright: #f3cf7a;
+      --platinum: #eae2d3;
+      --text-muted: #9f9382;
+      --border: rgba(201, 148, 58, 0.25);
+      --grad-gold: linear-gradient(135deg, #f5d485 0%, #c9943a 50%, #7e561a 100%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--void);
+      color: var(--platinum);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(6, 4, 3, 0.9);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold-bright);
+    }
+    .nav-links a {
+      color: var(--platinum);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-left: 24px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold-bright); }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.4);
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.8rem;
+      background: rgba(201, 148, 58, 0.25);
+      color: var(--gold-bright);
+      padding: 6px 16px;
+      border-radius: 50px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    /* Sections */
+    section { padding: 80px 40px; max-width: 1200px; margin: 0 auto; }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      color: var(--gold-bright);
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    /* Grid Layouts */
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 30px;
+    }
+    .card-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-media {
+      height: 240px;
+      width: 100%;
+      object-fit: cover;
+      background: #000;
+    }
+    .card-body { padding: 24px; flex: 1; }
+    .card-title { font-size: 1.2rem; font-weight: 600; color: #fff; margin-bottom: 4px; }
+    .card-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      background: rgba(201, 148, 58, 0.15);
+      color: var(--gold-bright);
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+    .card-loc { font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; gap: 4px; }
+
+    /* Reels Section */
+    .reels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .reel-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .reel-media { height: 350px; width: 100%; object-fit: cover; }
+    .reel-body { padding: 16px; }
+    .reel-title { font-size: 0.95rem; font-weight: 600; color: #fff; }
+
+    @media (max-width: 768px) {
+      .nav { padding: 16px 20px; }
+      .hero-title { font-size: 2.5rem; }
+      section { padding: 60px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="logo">Diamond Interiors</div>
+    <div class="nav-links">
+      <a href="#portfolio">Our Work</a>
+      <a href="#reels">Video Tours</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div id="heroBgContainer">
+      <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-4.0.3" class="hero-bg" alt="Luxury Interior">
+    </div>
+    <div class="hero-content">
+      <span class="hero-tag">Mumbai & Thane's Premier Studio</span>
+      <h1 class="hero-title">Crafting Luxury Living</h1>
+    </div>
+  </header>
+
+  <section id="portfolio">
+    <h2 class="section-title">Portfolio Showcase</h2>
+    <div id="portfolioGrid" class="items-grid"></div>
+  </section>
+
+  <section id="reels" style="background: var(--surface);">
+    <h2 class="section-title">Project Video Walkthroughs</h2>
+    <div id="reelsGrid" class="reels-grid"></div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Get in Touch</h2>
+    <div style="text-align: center; color: var(--text-muted);">
+      <p style="margin-bottom: 8px;">+91 9152838906 | interiordiamond1@gmail.com</p>
+      <p>1, 1, Kasarvadavali, Thane West, Thane, Maharashtra 400615, India</p>
+    </div>
+  </section>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAFEcOjXg-UgcDLiXJaidvDLmo065tHnYc",
+      authDomain: "diamond-interior.firebaseapp.com",
+      databaseURL: "https://diamond-interior-default-rtdb.firebaseio.com",
+      projectId: "diamond-interior",
+      storageBucket: "diamond-interior.appspot.com",
+      messagingSenderId: "743080237212",
+      appId: "1:743080237212:web:3801f08600dd2b54293559",
+      measurementId: "G-VPJ952EL89"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    db.ref('hero_videos').limitToLast(1).on('value', snap => {
+      const data = snap.val();
+      const container = document.getElementById('heroBgContainer');
+      if (data) {
+        const item = Object.values(data)[0];
+        container.innerHTML = `<video src="${item.videoUrl}" class="hero-bg" autoplay muted loop playsinline></video>`;
+      }
+    });
+
+    db.ref('portfolio').on('value', snap => {
+      const data = snap.val();
+      const grid = document.getElementById('portfolioGrid');
+      grid.innerHTML = '';
+      if (data) {
+        Object.values(data).reverse().forEach(item => {
+          grid.innerHTML += `
+            <div class="card-item">
+              <img src="${item.image}" class="card-media" alt="${item.title}">
+              <div class="card-body">
+                <span class="card-tag">${item.category.toUpperCase()}</span>
+                <div class="card-title">${item.title}</div>
+                <div class="card-loc">📍 ${item.location}</div>
+              </div>
+            </div>
+          `;
+        });
+      }
+    });
+
+    db.ref('reels').on('value', snap => {
+      const data = snap.val();
+      const grid = document.getElementById('reelsGrid');
+      grid.innerHTML = '';
+      if (data) {
+        Object.values(data).reverse().forEach(item => {
+          grid.innerHTML += `
+            <div class="reel-item">
+              <video src="${item.videoUrl}" class="reel-media" controls></video>
+              <div class="reel-body">
+                <div class="reel-title">${item.title}</div>
+              </div>
+            </div>
+          `;
+        });
+      }
+    });
+  </script>
+</body>
+</html>
 
 </body>
 </html>
