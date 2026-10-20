@@ -88,6 +88,22 @@
     }
   }
   </script>
+<script>
+  // Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAFEcOjXg-UgcDLixJaidvDLmo065tHnYc",
+    authDomain: "diamond-interior.firebaseapp.com",
+    projectId: "diamond-interior",
+    storageBucket: "diamond-interior.firebasestorage.app",
+    messagingSenderId: "743080237212",
+    appId: "1:743080237212:web:3801f08600dd2b54293559",
+    measurementId: "G-VPJ952EL89"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const database = firebase.database();
+</script>
 
   <style>
     :root {
