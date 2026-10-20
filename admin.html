@@ -2,22 +2,25 @@
 <html lang="en-IN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>Enterprise Admin Portal | Diamond Interiors</title>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Firebase App, Realtime Database & Storage SDKs -->
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script>
+
   <script>
     const firebaseConfig = {
-      apiKey: "AIzaSyAFEcOjXg-UgcDLixJaidvDLmo065tHnYc",
+      apiKey: "AIzaSyAFEcOjXg-UgcDLiXJaidvDLmo065tHnYc",
       authDomain: "diamond-interior.firebaseapp.com",
       databaseURL: "https://diamond-interior-default-rtdb.firebaseio.com",
       projectId: "diamond-interior",
-      storageBucket: "diamond-interior.firebasestorage.app",
+      storageBucket: "diamond-interior.appspot.com",
       messagingSenderId: "743080237212",
       appId: "1:743080237212:web:3801f08600dd2b54293559",
       measurementId: "G-VPJ952EL89"
@@ -25,6 +28,7 @@
 
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
+    const storage = firebase.storage();
   </script>
 
   <style>
@@ -35,7 +39,7 @@
       --card: #120d09;
       --gold: #c9943a;
       --gold-bright: #f3cf7a;
-      --platinum: #eae3d2;
+      --platinum: #eae2d3;
       --text-muted: #9f9382;
       --border: rgba(201, 148, 58, 0.2);
       --border-focus: rgba(243, 207, 122, 0.6);
@@ -49,538 +53,498 @@
       color: var(--platinum);
       font-family: 'Plus Jakarta Sans', sans-serif;
       min-height: 100vh;
-      overflow-x: hidden;
+      display: flex;
     }
 
-    .topbar {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 20px; background: rgba(14, 10, 7, 0.96);
-      backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);
-      position: sticky; top: 0; z-index: 100;
-    }
-    .brand-group { display: flex; align-items: center; gap: 12px; }
-    .brand-icon {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: var(--grad-gold); color: #160c02;
-      display: grid; place-items: center; font-size: 1.1rem; font-weight: 900;
-    }
-    .brand-name {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.35rem; font-weight: 700; color: #fff;
-    }
-    .menu-btn {
-      background: var(--surface-2); border: 1px solid var(--border);
-      color: var(--gold-bright); width: 40px; height: 40px;
-      border-radius: 10px; display: grid; place-items: center;
-      cursor: pointer; font-size: 1.2rem;
-    }
-
-    .app-shell { display: flex; min-height: calc(100vh - 65px); }
+    /* Sidebar Navigation */
     .sidebar {
-      width: var(--sidebar-w); background: var(--surface);
-      border-right: 1px solid var(--border); padding: 20px 16px;
-      display: flex; flex-direction: column; gap: 8px;
-      transition: transform 0.3s ease;
+      width: var(--sidebar-w);
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
     }
-    @media (max-width: 900px) {
-      .sidebar {
-        position: fixed; top: 65px; bottom: 0; left: 0; z-index: 99;
-        transform: translateX(-100%);
-      }
-      .sidebar.open { transform: translateX(0); }
+    .brand-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--gold-bright);
+      text-transform: uppercase;
+      padding-left: 8px;
     }
+    .nav-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
     .nav-btn {
-      display: flex; align-items: center; gap: 10px;
-      padding: 12px 16px; border-radius: 12px;
-      border: 1px solid transparent; background: transparent;
-      color: var(--text-muted); font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.9rem; font-weight: 600; cursor: pointer;
-      text-align: left; width: 100%; transition: all 0.2s;
+      width: 100%;
+      text-align: left;
+      padding: 12px 14px;
+      border-radius: 8px;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .nav-btn:hover { background: var(--surface-2); color: var(--gold-bright); }
-    .nav-btn.active {
-      background: rgba(201, 148, 58, 0.12); border-color: var(--border);
+    .nav-btn:hover, .nav-btn.active {
+      background: var(--surface-2);
+      border-color: var(--border);
       color: var(--gold-bright);
     }
 
-    .main-stage {
-      flex: 1; padding: 20px 16px 80px; max-width: 900px; margin: 0 auto;
+    /* Main Container */
+    .main-content {
+      flex: 1;
+      padding: 36px 40px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
+    .view-panel { display: none; }
+    .view-panel.active { display: block; }
 
-    .panel-module { display: none; }
-    .panel-module.active { display: block; }
-    .card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 18px; padding: 22px 18px; margin-bottom: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    .header-box { margin-bottom: 28px; }
+    .header-box h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      color: var(--gold-bright);
+      margin-bottom: 6px;
     }
-    .card-title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.5rem; color: #fff; margin-bottom: 4px;
-    }
-    .card-subtitle {
-      font-size: 0.82rem; color: var(--text-muted); margin-bottom: 20px;
-    }
+    .header-box p { color: var(--text-muted); font-size: 0.95rem; }
 
-    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
-    label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 700; }
-    input, select {
-      width: 100%; border-radius: 12px; border: 1px solid var(--border);
-      background: rgba(0, 0, 0, 0.45); color: #fff;
-      padding: 12px 14px; font-family: inherit; font-size: 0.92rem; outline: none;
+    /* Form Design */
+    .form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 40px;
     }
-    input:focus, select:focus {
-      border-color: var(--border-focus);
-      box-shadow: 0 0 0 3px rgba(201, 148, 58, 0.15);
-    }
-
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      border-radius: 12px; padding: 14px 20px; font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.92rem; font-weight: 700; cursor: pointer; border: none; width: 100%;
-      transition: transform 0.15s;
-    }
-    .btn:active { transform: scale(0.98); }
-    .btn-gold {
-      background: var(--grad-gold); color: #170d03;
-      box-shadow: 0 6px 20px rgba(201, 148, 58, 0.25);
-    }
-
-    .showcase-grid { display: flex; flex-direction: column; gap: 16px; }
-    .showcase-card {
-      background: var(--surface-2); border: 1px solid var(--border);
-      border-radius: 16px; overflow: hidden; position: relative;
-    }
-    .showcase-media {
-      width: 100%; height: 210px; object-fit: cover; background: #000; display: block;
-    }
-    .badge-tag {
-      position: absolute; top: 12px; left: 12px;
-      background: rgba(14, 10, 7, 0.85); border: 1px solid var(--border);
-      color: var(--gold-bright); font-size: 0.72rem; font-weight: 700;
-      padding: 4px 10px; border-radius: 8px; backdrop-filter: blur(6px);
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
       text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      color: var(--text-muted);
     }
-    .action-badge-group {
-      position: absolute; top: 12px; right: 12px;
-      display: flex; gap: 6px;
+    .form-control {
+      width: 100%;
+      padding: 12px 14px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s ease;
     }
-    .icon-btn {
-      background: rgba(14, 10, 7, 0.85); border: 1px solid var(--border);
-      width: 34px; height: 34px; border-radius: 8px; display: grid;
-      place-items: center; color: #fff; cursor: pointer; font-size: 0.85rem;
+    .form-control:focus { border-color: var(--gold-bright); }
+    .file-input-wrapper {
+      position: relative;
+      background: var(--surface-2);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
     }
-    .icon-btn:hover { border-color: var(--gold-bright); }
-    .icon-btn.delete { color: #f87171; }
+    .file-input-wrapper input[type="file"] {
+      width: 100%;
+      cursor: pointer;
+    }
 
-    .showcase-body { padding: 14px 16px; }
-    .showcase-title { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
-    .showcase-sub { font-size: 0.8rem; color: var(--text-muted); display: flex; align-items: center; gap: 4px; }
-
-    .banner-alert {
-      display: none; padding: 12px 16px; border-radius: 12px;
-      margin-bottom: 20px; font-size: 0.85rem; font-weight: 600;
+    .submit-btn {
+      background: var(--grad-gold);
+      color: #000;
+      font-weight: 700;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: opacity 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
-    .banner-alert.success { display: block; background: rgba(34, 197, 94, 0.14); border: 1px solid rgba(34, 197, 94, 0.4); color: #4ade80; }
-    .banner-alert.error { display: block; background: rgba(239, 68, 68, 0.14); border: 1px solid rgba(239, 68, 68, 0.4); color: #f87171; }
+    .submit-btn:hover { opacity: 0.9; }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-    .modal-backdrop {
-      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85);
-      z-index: 200; place-items: center; padding: 20px;
+    /* Grid Layout for Uploaded Items */
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
     }
-    .modal-backdrop.active { display: grid; }
-    .edit-modal-box {
-      background: var(--card); border: 1px solid var(--border-focus);
-      border-radius: 18px; max-width: 500px; width: 100%; padding: 24px;
-      max-height: 90vh; overflow-y: auto;
+    .card-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-thumb {
+      height: 180px;
+      background: #000;
+      width: 100%;
+      object-fit: cover;
+    }
+    .card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .card-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 6px; color: #fff; }
+    .card-meta { font-size: 0.85rem; color: var(--gold); margin-bottom: 14px; }
+    .delete-btn {
+      background: rgba(255, 75, 75, 0.15);
+      border: 1px solid rgba(255, 75, 75, 0.4);
+      color: #ff6b6b;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .delete-btn:hover {
+      background: rgba(255, 75, 75, 0.3);
+    }
+    .status-msg {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      body { flex-direction: column; }
+      .sidebar { width: 100%; height: auto; position: static; }
+      .main-content { padding: 20px; }
     }
   </style>
 </head>
 <body>
 
-<header class="topbar">
-  <div class="brand-group">
-    <div class="brand-icon">✦</div>
-    <div class="brand-name">Diamond Interiors</div>
-  </div>
-  <button class="menu-btn" onclick="toggleSidebar()">☰</button>
-</header>
-
-<div class="app-shell">
-  <aside class="sidebar" id="sidebar">
-    <button class="nav-btn active" onclick="switchTab('portfolio')">🖼️ Portfolio Photos</button>
-    <button class="nav-btn" onclick="switchTab('topHero')">🎬 Top Loop Videos</button>
-    <button class="nav-btn" onclick="switchTab('reels')">📱 Video Walkthroughs</button>
+  <aside class="sidebar">
+    <div class="brand-logo">Diamond Interiors</div>
+    <ul class="nav-list">
+      <li><button class="nav-btn active" onclick="switchTab('portfolio')">📸 Portfolio Photos</button></li>
+      <li><button class="nav-btn" onclick="switchTab('hero')">🎞️ Top Loop Videos</button></li>
+      <li><button class="nav-btn" onclick="switchTab('reels')">🎬 Video Walkthroughs</button></li>
+    </ul>
   </aside>
 
-  <main class="main-stage">
-    <div id="statusBanner" class="banner-alert"></div>
+  <main class="main-content">
+    
+    <!-- 1. PORTFOLIO PHOTOS -->
+    <section id="tab-portfolio" class="view-panel active">
+      <div class="header-box">
+        <h1>Portfolio Showcase</h1>
+        <p>Directly choose images from your gallery/PC to publish on the website.</p>
+      </div>
 
-    <!-- MODULE 1: PORTFOLIO -->
-    <section id="portfolioModule" class="panel-module active">
-      <div class="card">
-        <h2 class="card-title">Add New Portfolio Project</h2>
-        <p class="card-subtitle">Website gallery ke liye real-time photo add karein.</p>
-        <form id="addPortForm">
+      <div class="form-card">
+        <form id="portfolioForm" onsubmit="handlePortfolioSubmit(event)">
           <div class="form-group">
-            <label>Project Title / Name</label>
-            <input type="text" id="addPortTitle" placeholder="e.g. Modern Kitchen" required>
-          </div>
-          <div class="form-group">
-            <label>Location City / Area</label>
-            <input type="text" id="addPortLoc" placeholder="e.g. Thane West, Mumbai" required>
+            <label>Project Title</label>
+            <input type="text" id="pTitle" class="form-control" placeholder="e.g. 3BHK Luxury Hiranandani Penthouse" required>
           </div>
           <div class="form-group">
             <label>Category</label>
-            <select id="addPortCat">
-              <option value="Kitchens">Kitchens</option>
-              <option value="Bedrooms">Bedrooms</option>
-              <option value="Living & Dining">Living & Dining</option>
-              <option value="Commercial & Hotels">Commercial & Hotels</option>
+            <select id="pCategory" class="form-control">
+              <option value="Residential">Residential Interiors</option>
+              <option value="Modular Kitchen">Modular Kitchen</option>
+              <option value="Commercial">Commercial / Corporate</option>
+              <option value="Luxury Living">Luxury Living</option>
             </select>
           </div>
           <div class="form-group">
-            <label>Image Direct Link (URL)</label>
-            <input type="url" id="addPortUrl" placeholder="https://example.com/photo.jpg" required>
+            <label>Direct Image Upload (Gallery / Files)</label>
+            <div class="file-input-wrapper">
+              <input type="file" id="pImageFile" accept="image/*" required>
+            </div>
           </div>
-          <button type="submit" class="btn btn-gold">➕ Publish to Live Portfolio</button>
+          <button type="submit" id="pSubmitBtn" class="submit-btn">Upload & Add to Portfolio</button>
+          <div id="pStatus" class="status-msg"></div>
         </form>
       </div>
 
-      <div class="card">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-          <h3 class="card-title" style="font-size:1.3rem;">Live Portfolio Showcase</h3>
-          <span id="portCount" style="font-size:0.8rem; color:var(--gold-bright);">0 Projects Shown</span>
-        </div>
-        <div class="showcase-grid" id="portGrid"></div>
-      </div>
+      <h2 style="font-size: 1.3rem; margin-bottom: 16px; color: var(--gold-bright);">Active Portfolio Items</h2>
+      <div id="portfolioGrid" class="items-grid"></div>
     </section>
 
-    <!-- MODULE 2: HERO LOOP -->
-    <section id="topHeroModule" class="panel-module">
-      <div class="card">
-        <h2 class="card-title">Add Top Hero Video</h2>
-        <p class="card-subtitle">Homepage ke top background banner par auto-playing video.</p>
-        <form id="addHeroForm">
+    <!-- 2. HERO LOOP VIDEOS -->
+    <section id="tab-hero" class="view-panel">
+      <div class="header-box">
+        <h1>Hero Header Loop Video</h1>
+        <p>Upload a background video loop for the top banner.</p>
+      </div>
+
+      <div class="form-card">
+        <form id="heroForm" onsubmit="handleHeroSubmit(event)">
           <div class="form-group">
             <label>Showcase Title</label>
-            <input type="text" id="addHeroTitle" placeholder="e.g. Signature Luxury Living" required>
+            <input type="text" id="hTitle" class="form-control" placeholder="e.g. Signature Thane Living" required>
           </div>
           <div class="form-group">
-            <label>Badge Tag</label>
-            <input type="text" id="addHeroTag" placeholder="e.g. LUXURY ARCHITECTURE" required>
+            <label>Direct Video File Upload (MP4 / WebM)</label>
+            <div class="file-input-wrapper">
+              <input type="file" id="hVideoFile" accept="video/mp4,video/webm" required>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Direct MP4 Video Link</label>
-            <input type="url" id="addHeroUrl" placeholder="https://example.com/video.mp4" required>
-          </div>
-          <button type="submit" class="btn btn-gold">➕ Add to Top Loop</button>
+          <button type="submit" id="hSubmitBtn" class="submit-btn">Upload Video</button>
+          <div id="hStatus" class="status-msg"></div>
         </form>
       </div>
 
-      <div class="card">
-        <h3 class="card-title" style="font-size:1.3rem; margin-bottom:16px;">Active Banner Loop Videos</h3>
-        <div class="showcase-grid" id="heroGrid"></div>
-      </div>
+      <h2 style="font-size: 1.3rem; margin-bottom: 16px; color: var(--gold-bright);">Active Banner Videos</h2>
+      <div id="heroGrid" class="items-grid"></div>
     </section>
 
-    <!-- MODULE 3: REELS -->
-    <section id="reelsModule" class="panel-module">
-      <div class="card">
-        <h2 class="card-title">Add Video Walkthrough (Reel)</h2>
-        <p class="card-subtitle">Project ke video tour add karein.</p>
-        <form id="addReelForm">
+    <!-- 3. REELS & WALKTHROUGHS -->
+    <section id="tab-reels" class="view-panel">
+      <div class="header-box">
+        <h1>Video Walkthroughs (Reels)</h1>
+        <p>Upload project walkthroughs or site reels directly.</p>
+      </div>
+
+      <div class="form-card">
+        <form id="reelForm" onsubmit="handleReelSubmit(event)">
           <div class="form-group">
             <label>Video Title</label>
-            <input type="text" id="addReelTitle" placeholder="e.g. 2BHK Penthouse Tour" required>
+            <input type="text" id="rTitle" class="form-control" placeholder="e.g. 2BHK Finished Flat Tour" required>
           </div>
           <div class="form-group">
-            <label>Badge / Feature</label>
-            <input type="text" id="addReelTag" placeholder="e.g. 45-DAY TURNKEY" required>
+            <label>Upload Reel Video (MP4)</label>
+            <div class="file-input-wrapper">
+              <input type="file" id="rVideoFile" accept="video/mp4,video/webm" required>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Direct MP4 Video Link</label>
-            <input type="url" id="addReelUrl" placeholder="https://example.com/reel.mp4" required>
-          </div>
-          <button type="submit" class="btn btn-gold">➕ Update Promotional Video</button>
+          <button type="submit" id="rSubmitBtn" class="submit-btn">Upload Reel</button>
+          <div id="rStatus" class="status-msg"></div>
         </form>
       </div>
 
-      <div class="card">
-        <h3 class="card-title" style="font-size:1.3rem; margin-bottom:16px;">Active Video Walkthroughs</h3>
-        <div class="showcase-grid" id="reelsGrid"></div>
-      </div>
+      <h2 style="font-size: 1.3rem; margin-bottom: 16px; color: var(--gold-bright);">Active Walkthroughs</h2>
+      <div id="reelsGrid" class="items-grid"></div>
     </section>
+
   </main>
-</div>
 
-<!-- EDIT MODAL -->
-<div class="modal-backdrop" id="editModal">
-  <div class="edit-modal-box">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-      <h3 style="color:var(--gold-bright); font-family:'Cormorant Garamond', Georgia, serif; font-size:1.4rem;">Edit Media Item</h3>
-      <button onclick="closeEditModal()" style="background:none; border:none; color:#fff; font-size:1.2rem; cursor:pointer;">✕</button>
-    </div>
-    
-    <form id="editForm">
-      <input type="hidden" id="editItemStore">
-      <input type="hidden" id="editItemId">
+  <script>
+    // Tab Switching
+    function switchTab(tab) {
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
 
-      <div class="form-group">
-        <label>Title / Project Name</label>
-        <input type="text" id="editTitle" required>
-      </div>
+      document.getElementById('tab-' + tab).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
 
-      <div class="form-group" id="editExtraFieldGroup">
-        <label id="editExtraFieldLabel">Location / Badge</label>
-        <input type="text" id="editExtraField">
-      </div>
+    // Helper: Upload file to Firebase Storage & return Download URL
+    async function uploadToStorage(file, folderPath) {
+      const fileName = `${Date.now()}_${file.name.replace(/\s+/g, '_')}`;
+      const storageRef = storage.ref(`${folderPath}/${fileName}`);
+      const uploadTask = await storageRef.put(file);
+      return await uploadTask.ref.getDownloadURL();
+    }
 
-      <div class="form-group" id="editCatGroup">
-        <label>Category</label>
-        <select id="editCatSelect">
-          <option value="Kitchens">Kitchens</option>
-          <option value="Bedrooms">Bedrooms</option>
-          <option value="Living & Dining">Living & Dining</option>
-          <option value="Commercial & Hotels">Commercial & Hotels</option>
-        </select>
-      </div>
+    // --- 1. Portfolio Handlers ---
+    async function handlePortfolioSubmit(e) {
+      e.preventDefault();
+      const title = document.getElementById('pTitle').value;
+      const category = document.getElementById('pCategory').value;
+      const file = document.getElementById('pImageFile').files[0];
+      const btn = document.getElementById('pSubmitBtn');
+      const status = document.getElementById('pStatus');
 
-      <div class="form-group">
-        <label>Update Media URL</label>
-        <input type="url" id="editNewMediaUrl" placeholder="https://example.com/media.jpg" required>
-      </div>
+      if (!file) return;
 
-      <button type="submit" class="btn btn-gold">💾 Save Changes (Live Update)</button>
-    </form>
-  </div>
-</div>
+      try {
+        btn.disabled = true;
+        status.innerText = "Uploading image to Firebase Storage...";
+        status.style.color = "var(--gold-bright)";
 
-<script>
-function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+        const downloadURL = await uploadToStorage(file, 'portfolio_images');
 
-function switchTab(modId) {
-  document.querySelectorAll('.panel-module').forEach(m => m.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  
-  const target = document.getElementById(modId + 'Module');
-  if (target) target.classList.add('active');
+        status.innerText = "Saving to database...";
+        await db.ref('portfolio').push({
+          title: title,
+          category: category,
+          image: downloadURL,
+          createdAt: Date.now()
+        });
 
-  const btn = Array.from(document.querySelectorAll('.nav-btn')).find(b => b.getAttribute('onclick')?.includes(modId));
-  if (btn) btn.classList.add('active');
+        document.getElementById('portfolioForm').reset();
+        status.innerText = "Successfully uploaded and published!";
+        status.style.color = "#4ade80";
+      } catch (err) {
+        status.innerText = "Upload failed: " + err.message;
+        status.style.color = "#f87171";
+      } finally {
+        btn.disabled = false;
+        setTimeout(() => status.innerText = "", 4000);
+      }
+    }
 
-  if (window.innerWidth <= 900) document.getElementById('sidebar').classList.remove('open');
-}
+    // Real-time listener for Portfolio
+    db.ref('portfolio').on('value', snap => {
+      const grid = document.getElementById('portfolioGrid');
+      grid.innerHTML = '';
+      const data = snap.val();
 
-function showAlert(msg, type = "success") {
-  const el = document.getElementById('statusBanner');
-  el.className = `banner-alert ${type}`;
-  el.textContent = msg;
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  setTimeout(() => { el.style.display = 'none'; }, 4000);
-}
+      if (!data) {
+        grid.innerHTML = '<p style="color:var(--text-muted)">No projects uploaded yet.</p>';
+        return;
+      }
 
-// REALTIME LISTENERS DIRECTLY FROM FIREBASE
-function listenToDatabase() {
-  // 1. Portfolio Sync
-  db.ref('portfolio').on('value', snapshot => {
-    const data = snapshot.val() || {};
-    const items = Object.keys(data).map(key => ({ id: key, ...data[key] }));
-    document.getElementById('portCount').textContent = `${items.length} Projects Shown`;
-    const portGrid = document.getElementById('portGrid');
-    portGrid.innerHTML = "";
-
-    items.forEach(item => {
-      portGrid.innerHTML += `
-        <div class="showcase-card">
-          <span class="badge-tag">${item.category}</span>
-          <div class="action-badge-group">
-            <button class="icon-btn" title="Edit Item" onclick="openEditModal('portfolio', '${item.id}')">✏️</button>
-            <button class="icon-btn delete" title="Delete Item" onclick="removeItem('portfolio', '${item.id}')">🗑️</button>
+      Object.entries(data).forEach(([key, val]) => {
+        grid.innerHTML += `
+          <div class="card-item">
+            <img src="${val.image}" class="card-thumb" alt="${val.title}">
+            <div class="card-body">
+              <div>
+                <div class="card-title">${val.title}</div>
+                <div class="card-meta">${val.category || 'General'}</div>
+              </div>
+              <button class="delete-btn" onclick="deleteItem('portfolio', '${key}')">Delete Project</button>
+            </div>
           </div>
-          <img class="showcase-media" src="${item.url}" alt="${item.title}">
-          <div class="showcase-body">
-            <div class="showcase-title">${item.title}</div>
-            <div class="showcase-sub">📍 ${item.location}</div>
-          </div>
-        </div>
-      `;
+        `;
+      });
     });
-  });
 
-  // 2. Hero Videos Sync
-  db.ref('hero_videos').on('value', snapshot => {
-    const data = snapshot.val() || {};
-    const items = Object.keys(data).map(key => ({ id: key, ...data[key] }));
-    const heroGrid = document.getElementById('heroGrid');
-    heroGrid.innerHTML = "";
+    // --- 2. Hero Video Handlers ---
+    async function handleHeroSubmit(e) {
+      e.preventDefault();
+      const title = document.getElementById('hTitle').value;
+      const file = document.getElementById('hVideoFile').files[0];
+      const btn = document.getElementById('hSubmitBtn');
+      const status = document.getElementById('hStatus');
 
-    items.forEach(item => {
-      heroGrid.innerHTML += `
-        <div class="showcase-card">
-          <span class="badge-tag">${item.tag || 'HERO LOOP'}</span>
-          <div class="action-badge-group">
-            <button class="icon-btn" title="Edit Item" onclick="openEditModal('hero_videos', '${item.id}')">✏️</button>
-            <button class="icon-btn delete" title="Delete Item" onclick="removeItem('hero_videos', '${item.id}')">🗑️</button>
+      if (!file) return;
+
+      try {
+        btn.disabled = true;
+        status.innerText = "Uploading video (this may take a moment)...";
+        status.style.color = "var(--gold-bright)";
+
+        const downloadURL = await uploadToStorage(file, 'hero_videos');
+
+        status.innerText = "Saving video details...";
+        await db.ref('hero_videos').push({
+          title: title,
+          videoUrl: downloadURL,
+          createdAt: Date.now()
+        });
+
+        document.getElementById('heroForm').reset();
+        status.innerText = "Hero video uploaded successfully!";
+        status.style.color = "#4ade80";
+      } catch (err) {
+        status.innerText = "Upload failed: " + err.message;
+        status.style.color = "#f87171";
+      } finally {
+        btn.disabled = false;
+        setTimeout(() => status.innerText = "", 4000);
+      }
+    }
+
+    db.ref('hero_videos').on('value', snap => {
+      const grid = document.getElementById('heroGrid');
+      grid.innerHTML = '';
+      const data = snap.val();
+
+      if (!data) {
+        grid.innerHTML = '<p style="color:var(--text-muted)">No hero videos added.</p>';
+        return;
+      }
+
+      Object.entries(data).forEach(([key, val]) => {
+        grid.innerHTML += `
+          <div class="card-item">
+            <video src="${val.videoUrl}" class="card-thumb" muted autoplay loop></video>
+            <div class="card-body">
+              <div class="card-title">${val.title}</div>
+              <button class="delete-btn" onclick="deleteItem('hero_videos', '${key}')">Remove Video</button>
+            </div>
           </div>
-          <video class="showcase-media" src="${item.url}" controls autoplay loop muted playsinline></video>
-          <div class="showcase-body">
-            <div class="showcase-title">${item.title}</div>
-          </div>
-        </div>
-      `;
+        `;
+      });
     });
-  });
 
-  // 3. Reels Sync
-  db.ref('reels').on('value', snapshot => {
-    const data = snapshot.val() || {};
-    const items = Object.keys(data).map(key => ({ id: key, ...data[key] }));
-    const reelsGrid = document.getElementById('reelsGrid');
-    reelsGrid.innerHTML = "";
+    // --- 3. Reels Handlers ---
+    async function handleReelSubmit(e) {
+      e.preventDefault();
+      const title = document.getElementById('rTitle').value;
+      const file = document.getElementById('rVideoFile').files[0];
+      const btn = document.getElementById('rSubmitBtn');
+      const status = document.getElementById('rStatus');
 
-    items.forEach(item => {
-      reelsGrid.innerHTML += `
-        <div class="showcase-card">
-          <span class="badge-tag">${item.tag || 'WALKTHROUGH'}</span>
-          <div class="action-badge-group">
-            <button class="icon-btn" title="Edit Item" onclick="openEditModal('reels', '${item.id}')">✏️</button>
-            <button class="icon-btn delete" title="Delete Item" onclick="removeItem('reels', '${item.id}')">🗑️</button>
+      if (!file) return;
+
+      try {
+        btn.disabled = true;
+        status.innerText = "Uploading reel video...";
+        status.style.color = "var(--gold-bright)";
+
+        const downloadURL = await uploadToStorage(file, 'reel_videos');
+
+        status.innerText = "Saving reel...";
+        await db.ref('reels').push({
+          title: title,
+          videoUrl: downloadURL,
+          createdAt: Date.now()
+        });
+
+        document.getElementById('reelForm').reset();
+        status.innerText = "Reel uploaded successfully!";
+        status.style.color = "#4ade80";
+      } catch (err) {
+        status.innerText = "Upload failed: " + err.message;
+        status.style.color = "#f87171";
+      } finally {
+        btn.disabled = false;
+        setTimeout(() => status.innerText = "", 4000);
+      }
+    }
+
+    db.ref('reels').on('value', snap => {
+      const grid = document.getElementById('reelsGrid');
+      grid.innerHTML = '';
+      const data = snap.val();
+
+      if (!data) {
+        grid.innerHTML = '<p style="color:var(--text-muted)">No reels added.</p>';
+        return;
+      }
+
+      Object.entries(data).forEach(([key, val]) => {
+        grid.innerHTML += `
+          <div class="card-item">
+            <video src="${val.videoUrl}" class="card-thumb" controls></video>
+            <div class="card-body">
+              <div class="card-title">${val.title}</div>
+              <button class="delete-btn" onclick="deleteItem('reels', '${key}')">Remove Reel</button>
+            </div>
           </div>
-          <video class="showcase-media" src="${item.url}" controls playsinline></video>
-          <div class="showcase-body">
-            <div class="showcase-title">${item.title}</div>
-          </div>
-        </div>
-      `;
+        `;
+      });
     });
-  });
-}
 
-// FORM SUBMISSIONS TO FIREBASE
-document.getElementById('addPortForm').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const title = document.getElementById('addPortTitle').value.trim();
-  const location = document.getElementById('addPortLoc').value.trim();
-  const category = document.getElementById('addPortCat').value;
-  const url = document.getElementById('addPortUrl').value.trim();
-
-  db.ref('portfolio').push({ title, location, category, url }, (err) => {
-    if (!err) {
-      showAlert("✅ Naya project Firebase par sync ho gaya!");
-      document.getElementById('addPortForm').reset();
-    } else {
-      showAlert("❌ Error: " + err.message, "error");
+    // Universal Delete Helper
+    async function deleteItem(collection, key) {
+      if (confirm("Are you sure you want to delete this item?")) {
+        await db.ref(`${collection}/${key}`).remove();
+      }
     }
-  });
-});
-
-document.getElementById('addHeroForm').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const title = document.getElementById('addHeroTitle').value.trim();
-  const tag = document.getElementById('addHeroTag').value.trim();
-  const url = document.getElementById('addHeroUrl').value.trim();
-
-  db.ref('hero_videos').push({ title, tag, url }, (err) => {
-    if (!err) {
-      showAlert("✅ Hero video Firebase par sync ho gayi!");
-      document.getElementById('addHeroForm').reset();
-    } else {
-      showAlert("❌ Error: " + err.message, "error");
-    }
-  });
-});
-
-document.getElementById('addReelForm').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const title = document.getElementById('addReelTitle').value.trim();
-  const tag = document.getElementById('addReelTag').value.trim();
-  const url = document.getElementById('addReelUrl').value.trim();
-
-  db.ref('reels').push({ title, tag, url }, (err) => {
-    if (!err) {
-      showAlert("✅ Reel video Firebase par sync ho gayi!");
-      document.getElementById('addReelForm').reset();
-    } else {
-      showAlert("❌ Error: " + err.message, "error");
-    }
-  });
-});
-
-// DELETE DIRECTLY FROM FIREBASE
-function removeItem(path, id) {
-  if (confirm("Kya aap ise database se permanently remove karna chahte hain?")) {
-    db.ref(`${path}/${id}`).remove()
-      .then(() => showAlert("✅ Item successfully remove ho gaya."))
-      .catch(err => showAlert("❌ Error removing: " + err.message, "error"));
-  }
-}
-
-// EDIT MODAL HANDLING
-function openEditModal(path, id) {
-  db.ref(`${path}/${id}`).once('value').then(snapshot => {
-    const item = snapshot.val();
-    if (!item) return;
-
-    document.getElementById('editItemStore').value = path;
-    document.getElementById('editItemId').value = id;
-    document.getElementById('editTitle').value = item.title || "";
-    document.getElementById('editNewMediaUrl').value = item.url || "";
-
-    const extraGroup = document.getElementById('editExtraFieldGroup');
-    const catGroup = document.getElementById('editCatGroup');
-
-    if (path === 'portfolio') {
-      extraGroup.style.display = 'block';
-      document.getElementById('editExtraFieldLabel').textContent = "Location City / Area";
-      document.getElementById('editExtraField').value = item.location || "";
-      catGroup.style.display = 'block';
-      document.getElementById('editCatSelect').value = item.category || "Kitchens";
-    } else {
-      extraGroup.style.display = 'block';
-      document.getElementById('editExtraFieldLabel').textContent = "Badge / Tagline";
-      document.getElementById('editExtraField').value = item.tag || "";
-      catGroup.style.display = 'none';
-    }
-
-    document.getElementById('editModal').classList.add('active');
-  });
-}
-
-function closeEditModal() {
-  document.getElementById('editModal').classList.remove('active');
-}
-
-document.getElementById('editForm').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const path = document.getElementById('editItemStore').value;
-  const id = document.getElementById('editItemId').value;
-
-  const updates = {
-    title: document.getElementById('editTitle').value.trim(),
-    url: document.getElementById('editNewMediaUrl').value.trim()
-  };
-
-  if (path === 'portfolio') {
-    updates.location = document.getElementById('editExtraField').value.trim();
-    updates.category = document.getElementById('editCatSelect').value;
-  } else {
-    updates.tag = document.getElementById('editExtraField').value.trim();
-  }
-
-  db.ref(`${path}/${id}`).update(updates)
-    .then(() => {
-      closeEditModal();
-      showAlert("✅ Changes live database par update ho gaye!");
-    })
-    .catch(err => showAlert("❌ Update error: " + err.message, "error"));
-});
-
-// Boot listener
-window.addEventListener('DOMContentLoaded', () => {
-  listenToDatabase();
-});
-</script>
-
+  </script>
 </body>
 </html>
