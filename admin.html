@@ -11,22 +11,21 @@
 
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
-<script>
-  // Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyAFEcOjXg-UgcDLixJaidvDLmo065tHnYc",
-    authDomain: "diamond-interior.firebaseapp.com",
-    projectId: "diamond-interior",
-    storageBucket: "diamond-interior.firebasestorage.app",
-    messagingSenderId: "743080237212",
-    appId: "1:743080237212:web:3801f08600dd2b54293559",
-    measurementId: "G-VPJ952EL89"
-  };
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAFEcOjXg-UgcDLixJaidvDLmo065tHnYc",
+      authDomain: "diamond-interior.firebaseapp.com",
+      databaseURL: "https://diamond-interior-default-rtdb.firebaseio.com",
+      projectId: "diamond-interior",
+      storageBucket: "diamond-interior.firebasestorage.app",
+      messagingSenderId: "743080237212",
+      appId: "1:743080237212:web:3801f08600dd2b54293559",
+      measurementId: "G-VPJ952EL89"
+    };
 
-  // Initialize Firebase (Compat version)
-  firebase.initializeApp(firebaseConfig);
-  const database = firebase.database();
-</script>
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+  </script>
 
   <style>
     :root {
@@ -41,8 +40,6 @@
       --border: rgba(201, 148, 58, 0.2);
       --border-focus: rgba(243, 207, 122, 0.6);
       --grad-gold: linear-gradient(135deg, #f5d485 0%, #c9943a 50%, #7e561a 100%);
-      --danger: #ef4444;
-      --success: #22c55e;
       --sidebar-w: 260px;
     }
 
@@ -55,7 +52,6 @@
       overflow-x: hidden;
     }
 
-    /* Top Bar */
     .topbar {
       display: flex; align-items: center; justify-content: space-between;
       padding: 14px 20px; background: rgba(14, 10, 7, 0.96);
@@ -79,7 +75,6 @@
       cursor: pointer; font-size: 1.2rem;
     }
 
-    /* Layout */
     .app-shell { display: flex; min-height: calc(100vh - 65px); }
     .sidebar {
       width: var(--sidebar-w); background: var(--surface);
@@ -112,7 +107,6 @@
       flex: 1; padding: 20px 16px 80px; max-width: 900px; margin: 0 auto;
     }
 
-    /* Cards & Form */
     .panel-module { display: none; }
     .panel-module.active { display: block; }
     .card {
@@ -130,12 +124,12 @@
 
     .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
     label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 700; }
-    input, select, textarea {
+    input, select {
       width: 100%; border-radius: 12px; border: 1px solid var(--border);
       background: rgba(0, 0, 0, 0.45); color: #fff;
       padding: 12px 14px; font-family: inherit; font-size: 0.92rem; outline: none;
     }
-    input:focus, select:focus, textarea:focus {
+    input:focus, select:focus {
       border-color: var(--border-focus);
       box-shadow: 0 0 0 3px rgba(201, 148, 58, 0.15);
     }
@@ -151,9 +145,7 @@
       background: var(--grad-gold); color: #170d03;
       box-shadow: 0 6px 20px rgba(201, 148, 58, 0.25);
     }
-    .btn-sm { padding: 6px 10px; border-radius: 8px; font-size: 0.8rem; width: auto; }
 
-    /* Visual Showcase Cards (Screenshot Matching) */
     .showcase-grid { display: flex; flex-direction: column; gap: 16px; }
     .showcase-card {
       background: var(--surface-2); border: 1px solid var(--border);
@@ -185,7 +177,6 @@
     .showcase-title { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
     .showcase-sub { font-size: 0.8rem; color: var(--text-muted); display: flex; align-items: center; gap: 4px; }
 
-    /* Alert Banner */
     .banner-alert {
       display: none; padding: 12px 16px; border-radius: 12px;
       margin-bottom: 20px; font-size: 0.85rem; font-weight: 600;
@@ -193,7 +184,6 @@
     .banner-alert.success { display: block; background: rgba(34, 197, 94, 0.14); border: 1px solid rgba(34, 197, 94, 0.4); color: #4ade80; }
     .banner-alert.error { display: block; background: rgba(239, 68, 68, 0.14); border: 1px solid rgba(239, 68, 68, 0.4); color: #f87171; }
 
-    /* Edit Modal */
     .modal-backdrop {
       display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85);
       z-index: 200; place-items: center; padding: 20px;
@@ -221,7 +211,6 @@
     <button class="nav-btn active" onclick="switchTab('portfolio')">🖼️ Portfolio Photos</button>
     <button class="nav-btn" onclick="switchTab('topHero')">🎬 Top Loop Videos</button>
     <button class="nav-btn" onclick="switchTab('reels')">📱 Video Walkthroughs</button>
-    <button class="nav-btn" onclick="switchTab('firebaseTab')">⚙️ Firebase Settings</button>
   </aside>
 
   <main class="main-stage">
@@ -231,15 +220,15 @@
     <section id="portfolioModule" class="panel-module active">
       <div class="card">
         <h2 class="card-title">Add New Portfolio Project</h2>
-        <p class="card-subtitle">Website ke gallery mein photo ya project add karein.</p>
+        <p class="card-subtitle">Website gallery ke liye real-time photo add karein.</p>
         <form id="addPortForm">
           <div class="form-group">
             <label>Project Title / Name</label>
-            <input type="text" id="addPortTitle" placeholder="e.g. Italian Modern Kitchen" required>
+            <input type="text" id="addPortTitle" placeholder="e.g. Modern Kitchen" required>
           </div>
           <div class="form-group">
             <label>Location City / Area</label>
-            <input type="text" id="addPortLoc" placeholder="e.g. Bandra West, Mumbai" required>
+            <input type="text" id="addPortLoc" placeholder="e.g. Thane West, Mumbai" required>
           </div>
           <div class="form-group">
             <label>Category</label>
@@ -251,9 +240,8 @@
             </select>
           </div>
           <div class="form-group">
-            <label>Image (Upload File ya Direct Link)</label>
-            <input type="file" id="addPortFile" accept="image/*" style="margin-bottom:6px;">
-            <input type="url" id="addPortUrl" placeholder="Or paste direct image URL">
+            <label>Image Direct Link (URL)</label>
+            <input type="url" id="addPortUrl" placeholder="https://example.com/photo.jpg" required>
           </div>
           <button type="submit" class="btn btn-gold">➕ Publish to Live Portfolio</button>
         </form>
@@ -262,7 +250,7 @@
       <div class="card">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
           <h3 class="card-title" style="font-size:1.3rem;">Live Portfolio Showcase</h3>
-          <span id="portCount" style="font-size:0.8rem; color:var(--gold-bright);">3 Projects Shown</span>
+          <span id="portCount" style="font-size:0.8rem; color:var(--gold-bright);">0 Projects Shown</span>
         </div>
         <div class="showcase-grid" id="portGrid"></div>
       </div>
@@ -283,9 +271,8 @@
             <input type="text" id="addHeroTag" placeholder="e.g. LUXURY ARCHITECTURE" required>
           </div>
           <div class="form-group">
-            <label>Video File or Direct MP4 Link</label>
-            <input type="file" id="addHeroFile" accept="video/mp4,video/*" style="margin-bottom:6px;">
-            <input type="url" id="addHeroUrl" placeholder="https://cdn.example.com/video.mp4">
+            <label>Direct MP4 Video Link</label>
+            <input type="url" id="addHeroUrl" placeholder="https://example.com/video.mp4" required>
           </div>
           <button type="submit" class="btn btn-gold">➕ Add to Top Loop</button>
         </form>
@@ -301,7 +288,7 @@
     <section id="reelsModule" class="panel-module">
       <div class="card">
         <h2 class="card-title">Add Video Walkthrough (Reel)</h2>
-        <p class="card-subtitle">Gallery ke neeche project ke video tour add karein.</p>
+        <p class="card-subtitle">Project ke video tour add karein.</p>
         <form id="addReelForm">
           <div class="form-group">
             <label>Video Title</label>
@@ -312,9 +299,8 @@
             <input type="text" id="addReelTag" placeholder="e.g. 45-DAY TURNKEY" required>
           </div>
           <div class="form-group">
-            <label>Video File or Direct MP4 Link</label>
-            <input type="file" id="addReelFile" accept="video/mp4,video/*" style="margin-bottom:6px;">
-            <input type="url" id="addReelUrl" placeholder="https://cdn.example.com/reel.mp4">
+            <label>Direct MP4 Video Link</label>
+            <input type="url" id="addReelUrl" placeholder="https://example.com/reel.mp4" required>
           </div>
           <button type="submit" class="btn btn-gold">➕ Update Promotional Video</button>
         </form>
@@ -325,24 +311,10 @@
         <div class="showcase-grid" id="reelsGrid"></div>
       </div>
     </section>
-
-    <!-- MODULE 4: FIREBASE SETTINGS -->
-    <section id="firebaseTabModule" class="panel-module">
-      <div class="card">
-        <h2 class="card-title">Firebase Realtime Sync</h2>
-        <p class="card-subtitle">Apna database URL yahan daalein taaki changes seedhe live site par reflect hon.</p>
-        <div class="form-group">
-          <label>Firebase Database URL</label>
-          <input type="url" id="cfgDbUrl" placeholder="https://diamond-interiors-default-rtdb.firebaseio.com">
-        </div>
-        <button type="button" class="btn btn-gold" onclick="saveFirebaseUrl()">Save & Sync Database</button>
-      </div>
-    </section>
-
   </main>
 </div>
 
-<!-- UNIVERSAL EDIT MODAL -->
+<!-- EDIT MODAL -->
 <div class="modal-backdrop" id="editModal">
   <div class="edit-modal-box">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
@@ -375,9 +347,8 @@
       </div>
 
       <div class="form-group">
-        <label>Update Media File or URL</label>
-        <input type="file" id="editNewFile" style="margin-bottom:6px;">
-        <input type="url" id="editNewMediaUrl" placeholder="Or change direct media URL">
+        <label>Update Media URL</label>
+        <input type="url" id="editNewMediaUrl" placeholder="https://example.com/media.jpg" required>
       </div>
 
       <button type="submit" class="btn btn-gold">💾 Save Changes (Live Update)</button>
@@ -386,90 +357,6 @@
 </div>
 
 <script>
-/* -------------------------------------------------------------
-   INDEXED-DB ENGINE (Permanent Lifetime Storage)
-------------------------------------------------------------- */
-const DB_NAME = "DiamondInteriorsSafeVault";
-const DB_VERSION = 3;
-let idb = null;
-
-function initDB() {
-  return new Promise((resolve, reject) => {
-    const req = indexedDB.open(DB_NAME, DB_VERSION);
-    req.onupgradeneeded = (e) => {
-      const db = e.target.result;
-      if (!db.objectStoreNames.contains("portfolio")) db.createObjectStore("portfolio", { keyPath: "id" });
-      if (!db.objectStoreNames.contains("hero_videos")) db.createObjectStore("hero_videos", { keyPath: "id" });
-      if (!db.objectStoreNames.contains("reels")) db.createObjectStore("reels", { keyPath: "id" });
-    };
-    req.onsuccess = (e) => { idb = e.target.result; resolve(idb); };
-    req.onerror = (e) => reject(e);
-  });
-}
-
-function dbPut(store, item) {
-  return new Promise((resolve, reject) => {
-    const tx = idb.transaction(store, "readwrite");
-    tx.objectStore(store).put(item);
-    tx.oncomplete = () => resolve(true);
-    tx.onerror = (e) => reject(e);
-  });
-}
-
-function dbGetAll(store) {
-  return new Promise((resolve, reject) => {
-    const tx = idb.transaction(store, "readonly");
-    const req = tx.objectStore(store).getAll();
-    req.onsuccess = () => resolve(req.result || []);
-    req.onerror = (e) => reject(e);
-  });
-}
-
-function dbGet(store, id) {
-  return new Promise((resolve, reject) => {
-    const tx = idb.transaction(store, "readonly");
-    const req = tx.objectStore(store).get(id);
-    req.onsuccess = () => resolve(req.result);
-    req.onerror = (e) => reject(e);
-  });
-}
-
-function dbDelete(store, id) {
-  return new Promise((resolve, reject) => {
-    const tx = idb.transaction(store, "readwrite");
-    tx.objectStore(store).delete(id);
-    tx.oncomplete = () => resolve(true);
-    tx.onerror = (e) => reject(e);
-  });
-}
-
-/* -------------------------------------------------------------
-   DEFAULT SEED (Diamond Interiors Visual Projects)
-------------------------------------------------------------- */
-const SEED_PORTFOLIO = [
-  { id: "p1", title: "Modular Kitchen Suite", location: "Bandra West, Mumbai", category: "Kitchens", url: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800" },
-  { id: "p2", title: "Luxury Master Bedroom Suite", location: "Hiranandani Estate, Thane", category: "Bedrooms", url: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800" },
-  { id: "p3", title: "Executive Corporate Office", location: "BKC, Mumbai", category: "Commercial & Hotels", url: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800" }
-];
-
-const SEED_HERO = [
-  { id: "h1", title: "Signature Living & Modular Architecture", tag: "LUXURY SHOWCASE", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" }
-];
-
-async function seedDataIfEmpty() {
-  const p = await dbGetAll("portfolio");
-  if (p.length === 0) {
-    for (let item of SEED_PORTFOLIO) await dbPut("portfolio", item);
-  }
-  const h = await dbGetAll("hero_videos");
-  if (h.length === 0) {
-    for (let item of SEED_HERO) await dbPut("hero_videos", item);
-  }
-}
-
-/* -------------------------------------------------------------
-   UI NAVIGATION & HELPERS
-------------------------------------------------------------- */
 function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
 
 function switchTab(modId) {
@@ -493,230 +380,205 @@ function showAlert(msg, type = "success") {
   setTimeout(() => { el.style.display = 'none'; }, 4000);
 }
 
-/* -------------------------------------------------------------
-   RENDER LIVE CARDS WITH EDIT & DELETE BUTTONS
-------------------------------------------------------------- */
-async function renderAll() {
-  // 1. Portfolio
-  const portItems = await dbGetAll("portfolio");
-  document.getElementById('portCount').textContent = `${portItems.length} Projects Shown`;
-  const portGrid = document.getElementById('portGrid');
-  portGrid.innerHTML = "";
+// REALTIME LISTENERS DIRECTLY FROM FIREBASE
+function listenToDatabase() {
+  // 1. Portfolio Sync
+  db.ref('portfolio').on('value', snapshot => {
+    const data = snapshot.val() || {};
+    const items = Object.keys(data).map(key => ({ id: key, ...data[key] }));
+    document.getElementById('portCount').textContent = `${items.length} Projects Shown`;
+    const portGrid = document.getElementById('portGrid');
+    portGrid.innerHTML = "";
 
-  portItems.forEach(item => {
-    let mediaSrc = item.url;
-    if (item.fileData) mediaSrc = URL.createObjectURL(item.fileData);
-
-    portGrid.innerHTML += `
-      <div class="showcase-card">
-        <span class="badge-tag">${item.category}</span>
-        <div class="action-badge-group">
-          <button class="icon-btn" title="Edit Item" onclick="openEditModal('portfolio', '${item.id}')">✏️</button>
-          <button class="icon-btn delete" title="Delete Item" onclick="removeItem('portfolio', '${item.id}')">🗑️</button>
+    items.forEach(item => {
+      portGrid.innerHTML += `
+        <div class="showcase-card">
+          <span class="badge-tag">${item.category}</span>
+          <div class="action-badge-group">
+            <button class="icon-btn" title="Edit Item" onclick="openEditModal('portfolio', '${item.id}')">✏️</button>
+            <button class="icon-btn delete" title="Delete Item" onclick="removeItem('portfolio', '${item.id}')">🗑️</button>
+          </div>
+          <img class="showcase-media" src="${item.url}" alt="${item.title}">
+          <div class="showcase-body">
+            <div class="showcase-title">${item.title}</div>
+            <div class="showcase-sub">📍 ${item.location}</div>
+          </div>
         </div>
-        <img class="showcase-media" src="${mediaSrc}" alt="${item.title}" onerror="this.src='https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800'">
-        <div class="showcase-body">
-          <div class="showcase-title">${item.title}</div>
-          <div class="showcase-sub">📍 ${item.location}</div>
-        </div>
-      </div>
-    `;
+      `;
+    });
   });
 
-  // 2. Hero Videos
-  const heroItems = await dbGetAll("hero_videos");
-  const heroGrid = document.getElementById('heroGrid');
-  heroGrid.innerHTML = "";
-  heroItems.forEach(item => {
-    let mediaSrc = item.url;
-    if (item.fileData) mediaSrc = URL.createObjectURL(item.fileData);
+  // 2. Hero Videos Sync
+  db.ref('hero_videos').on('value', snapshot => {
+    const data = snapshot.val() || {};
+    const items = Object.keys(data).map(key => ({ id: key, ...data[key] }));
+    const heroGrid = document.getElementById('heroGrid');
+    heroGrid.innerHTML = "";
 
-    heroGrid.innerHTML += `
-      <div class="showcase-card">
-        <span class="badge-tag">${item.tag || 'HERO LOOP'}</span>
-        <div class="action-badge-group">
-          <button class="icon-btn" title="Edit Item" onclick="openEditModal('hero_videos', '${item.id}')">✏️</button>
-          <button class="icon-btn delete" title="Delete Item" onclick="removeItem('hero_videos', '${item.id}')">🗑️</button>
+    items.forEach(item => {
+      heroGrid.innerHTML += `
+        <div class="showcase-card">
+          <span class="badge-tag">${item.tag || 'HERO LOOP'}</span>
+          <div class="action-badge-group">
+            <button class="icon-btn" title="Edit Item" onclick="openEditModal('hero_videos', '${item.id}')">✏️</button>
+            <button class="icon-btn delete" title="Delete Item" onclick="removeItem('hero_videos', '${item.id}')">🗑️</button>
+          </div>
+          <video class="showcase-media" src="${item.url}" controls autoplay loop muted playsinline></video>
+          <div class="showcase-body">
+            <div class="showcase-title">${item.title}</div>
+          </div>
         </div>
-        <video class="showcase-media" src="${mediaSrc}" controls autoplay loop muted playsinline></video>
-        <div class="showcase-body">
-          <div class="showcase-title">${item.title}</div>
-        </div>
-      </div>
-    `;
+      `;
+    });
   });
 
-  // 3. Reels
-  const reelItems = await dbGetAll("reels");
-  const reelsGrid = document.getElementById('reelsGrid');
-  reelsGrid.innerHTML = "";
-  reelItems.forEach(item => {
-    let mediaSrc = item.url;
-    if (item.fileData) mediaSrc = URL.createObjectURL(item.fileData);
+  // 3. Reels Sync
+  db.ref('reels').on('value', snapshot => {
+    const data = snapshot.val() || {};
+    const items = Object.keys(data).map(key => ({ id: key, ...data[key] }));
+    const reelsGrid = document.getElementById('reelsGrid');
+    reelsGrid.innerHTML = "";
 
-    reelsGrid.innerHTML += `
-      <div class="showcase-card">
-        <span class="badge-tag">${item.tag || 'WALKTHROUGH'}</span>
-        <div class="action-badge-group">
-          <button class="icon-btn" title="Edit Item" onclick="openEditModal('reels', '${item.id}')">✏️</button>
-          <button class="icon-btn delete" title="Delete Item" onclick="removeItem('reels', '${item.id}')">🗑️</button>
+    items.forEach(item => {
+      reelsGrid.innerHTML += `
+        <div class="showcase-card">
+          <span class="badge-tag">${item.tag || 'WALKTHROUGH'}</span>
+          <div class="action-badge-group">
+            <button class="icon-btn" title="Edit Item" onclick="openEditModal('reels', '${item.id}')">✏️</button>
+            <button class="icon-btn delete" title="Delete Item" onclick="removeItem('reels', '${item.id}')">🗑️</button>
+          </div>
+          <video class="showcase-media" src="${item.url}" controls playsinline></video>
+          <div class="showcase-body">
+            <div class="showcase-title">${item.title}</div>
+          </div>
         </div>
-        <video class="showcase-media" src="${mediaSrc}" controls playsinline></video>
-        <div class="showcase-body">
-          <div class="showcase-title">${item.title}</div>
-        </div>
-      </div>
-    `;
+      `;
+    });
   });
 }
 
-/* -------------------------------------------------------------
-   EDIT MODAL SYSTEM (Edit Name, Location, Tag, Media)
-------------------------------------------------------------- */
-async function openEditModal(store, id) {
-  const item = await dbGet(store, id);
-  if (!item) return;
+// FORM SUBMISSIONS TO FIREBASE
+document.getElementById('addPortForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const title = document.getElementById('addPortTitle').value.trim();
+  const location = document.getElementById('addPortLoc').value.trim();
+  const category = document.getElementById('addPortCat').value;
+  const url = document.getElementById('addPortUrl').value.trim();
 
-  document.getElementById('editItemStore').value = store;
-  document.getElementById('editItemId').value = id;
-  document.getElementById('editTitle').value = item.title || "";
-  document.getElementById('editNewMediaUrl').value = item.url || "";
-  document.getElementById('editNewFile').value = "";
+  db.ref('portfolio').push({ title, location, category, url }, (err) => {
+    if (!err) {
+      showAlert("✅ Naya project Firebase par sync ho gaya!");
+      document.getElementById('addPortForm').reset();
+    } else {
+      showAlert("❌ Error: " + err.message, "error");
+    }
+  });
+});
 
-  const extraGroup = document.getElementById('editExtraFieldGroup');
-  const catGroup = document.getElementById('editCatGroup');
+document.getElementById('addHeroForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const title = document.getElementById('addHeroTitle').value.trim();
+  const tag = document.getElementById('addHeroTag').value.trim();
+  const url = document.getElementById('addHeroUrl').value.trim();
 
-  if (store === 'portfolio') {
-    extraGroup.style.display = 'block';
-    document.getElementById('editExtraFieldLabel').textContent = "Location City / Area";
-    document.getElementById('editExtraField').value = item.location || "";
-    catGroup.style.display = 'block';
-    document.getElementById('editCatSelect').value = item.category || "Kitchens";
-  } else {
-    extraGroup.style.display = 'block';
-    document.getElementById('editExtraFieldLabel').textContent = "Badge / Tagline";
-    document.getElementById('editExtraField').value = item.tag || "";
-    catGroup.style.display = 'none';
+  db.ref('hero_videos').push({ title, tag, url }, (err) => {
+    if (!err) {
+      showAlert("✅ Hero video Firebase par sync ho gayi!");
+      document.getElementById('addHeroForm').reset();
+    } else {
+      showAlert("❌ Error: " + err.message, "error");
+    }
+  });
+});
+
+document.getElementById('addReelForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const title = document.getElementById('addReelTitle').value.trim();
+  const tag = document.getElementById('addReelTag').value.trim();
+  const url = document.getElementById('addReelUrl').value.trim();
+
+  db.ref('reels').push({ title, tag, url }, (err) => {
+    if (!err) {
+      showAlert("✅ Reel video Firebase par sync ho gayi!");
+      document.getElementById('addReelForm').reset();
+    } else {
+      showAlert("❌ Error: " + err.message, "error");
+    }
+  });
+});
+
+// DELETE DIRECTLY FROM FIREBASE
+function removeItem(path, id) {
+  if (confirm("Kya aap ise database se permanently remove karna chahte hain?")) {
+    db.ref(`${path}/${id}`).remove()
+      .then(() => showAlert("✅ Item successfully remove ho gaya."))
+      .catch(err => showAlert("❌ Error removing: " + err.message, "error"));
   }
+}
 
-  document.getElementById('editModal').classList.add('active');
+// EDIT MODAL HANDLING
+function openEditModal(path, id) {
+  db.ref(`${path}/${id}`).once('value').then(snapshot => {
+    const item = snapshot.val();
+    if (!item) return;
+
+    document.getElementById('editItemStore').value = path;
+    document.getElementById('editItemId').value = id;
+    document.getElementById('editTitle').value = item.title || "";
+    document.getElementById('editNewMediaUrl').value = item.url || "";
+
+    const extraGroup = document.getElementById('editExtraFieldGroup');
+    const catGroup = document.getElementById('editCatGroup');
+
+    if (path === 'portfolio') {
+      extraGroup.style.display = 'block';
+      document.getElementById('editExtraFieldLabel').textContent = "Location City / Area";
+      document.getElementById('editExtraField').value = item.location || "";
+      catGroup.style.display = 'block';
+      document.getElementById('editCatSelect').value = item.category || "Kitchens";
+    } else {
+      extraGroup.style.display = 'block';
+      document.getElementById('editExtraFieldLabel').textContent = "Badge / Tagline";
+      document.getElementById('editExtraField').value = item.tag || "";
+      catGroup.style.display = 'none';
+    }
+
+    document.getElementById('editModal').classList.add('active');
+  });
 }
 
 function closeEditModal() {
   document.getElementById('editModal').classList.remove('active');
 }
 
-document.getElementById('editForm').addEventListener('submit', async (e) => {
+document.getElementById('editForm').addEventListener('submit', (e) => {
   e.preventDefault();
-  const store = document.getElementById('editItemStore').value;
+  const path = document.getElementById('editItemStore').value;
   const id = document.getElementById('editItemId').value;
 
-  const item = await dbGet(store, id);
-  if (!item) return;
-
-  item.title = document.getElementById('editTitle').value.trim();
-  const newUrl = document.getElementById('editNewMediaUrl').value.trim();
-  if (newUrl) {
-    item.url = newUrl;
-    delete item.fileData;
-  }
-
-  const fileInput = document.getElementById('editNewFile');
-  if (fileInput.files[0]) {
-    item.fileData = fileInput.files[0];
-  }
-
-  if (store === 'portfolio') {
-    item.location = document.getElementById('editExtraField').value.trim();
-    item.category = document.getElementById('editCatSelect').value;
-  } else {
-    item.tag = document.getElementById('editExtraField').value.trim();
-  }
-
-  await dbPut(store, item);
-  closeEditModal();
-  showAlert("✅ Changes saved! Live website par update ho gaya.");
-  await renderAll();
-});
-
-/* -------------------------------------------------------------
-   ADD FORM SUBMISSIONS
-------------------------------------------------------------- */
-document.getElementById('addPortForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const title = document.getElementById('addPortTitle').value.trim();
-  const location = document.getElementById('addPortLoc').value.trim();
-  const category = document.getElementById('addPortCat').value;
-  const url = document.getElementById('addPortUrl').value.trim();
-  const fileInput = document.getElementById('addPortFile');
-
-  const item = {
-    id: "port_" + Date.now(),
-    title, location, category,
-    url: url || "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800"
+  const updates = {
+    title: document.getElementById('editTitle').value.trim(),
+    url: document.getElementById('editNewMediaUrl').value.trim()
   };
 
-  if (fileInput.files[0]) item.fileData = fileInput.files[0];
-
-  await dbPut("portfolio", item);
-  showAlert("✅ Naya project gallery mein add ho gaya!");
-  document.getElementById('addPortForm').reset();
-  await renderAll();
-});
-
-document.getElementById('addHeroForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const title = document.getElementById('addHeroTitle').value.trim();
-  const tag = document.getElementById('addHeroTag').value.trim();
-  const url = document.getElementById('addHeroUrl').value.trim();
-  const fileInput = document.getElementById('addHeroFile');
-
-  const item = { id: "hero_" + Date.now(), title, tag, url };
-  if (fileInput.files[0]) item.fileData = fileInput.files[0];
-
-  await dbPut("hero_videos", item);
-  showAlert("✅ Hero banner video safely update ho gayi!");
-  document.getElementById('addHeroForm').reset();
-  await renderAll();
-});
-
-document.getElementById('addReelForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const title = document.getElementById('addReelTitle').value.trim();
-  const tag = document.getElementById('addReelTag').value.trim();
-  const url = document.getElementById('addReelUrl').value.trim();
-  const fileInput = document.getElementById('addReelFile');
-
-  const item = { id: "reel_" + Date.now(), title, tag, url };
-  if (fileInput.files[0]) item.fileData = fileInput.files[0];
-
-  await dbPut("reels", item);
-  showAlert("✅ Video walkthrough add ho gaya!");
-  document.getElementById('addReelForm').reset();
-  await renderAll();
-});
-
-async function removeItem(store, id) {
-  if (confirm("Kya aap ise website se remove karna chahte hain?")) {
-    await dbDelete(store, id);
-    showAlert("Item safely remove kar diya gaya.");
-    await renderAll();
+  if (path === 'portfolio') {
+    updates.location = document.getElementById('editExtraField').value.trim();
+    updates.category = document.getElementById('editCatSelect').value;
+  } else {
+    updates.tag = document.getElementById('editExtraField').value.trim();
   }
-}
 
-function saveFirebaseUrl() {
-  const url = document.getElementById('cfgDbUrl').value.trim();
-  if (url) {
-    localStorage.setItem('di_fb_db', url);
-    showAlert("Firebase Database URL linked successfully!");
-  }
-}
+  db.ref(`${path}/${id}`).update(updates)
+    .then(() => {
+      closeEditModal();
+      showAlert("✅ Changes live database par update ho gaye!");
+    })
+    .catch(err => showAlert("❌ Update error: " + err.message, "error"));
+});
 
-// App Boot
-window.addEventListener('DOMContentLoaded', async () => {
-  await initDB();
-  await seedDataIfEmpty();
-  await renderAll();
+// Boot listener
+window.addEventListener('DOMContentLoaded', () => {
+  listenToDatabase();
 });
 </script>
 
