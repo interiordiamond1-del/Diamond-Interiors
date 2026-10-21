@@ -1,64 +1,68 @@
 <!DOCTYPE html>
-<html lang="en-IN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>Diamond Interiors - Master Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diamond Interiors — Management Studio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 
-  <!-- Firebase Compat Libraries -->
+  <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script>
 
   <script>
     const firebaseConfig = {
-      apiKey: "AIzaSyAFEcOjXg-UgcDLiXJaidvDLmo065tHnYc",
+      apiKey: "AIzaSyAFEcOjXg-UgcDLixJaidvDLmo065tHnYc",
       authDomain: "diamond-interior.firebaseapp.com",
       databaseURL: "https://diamond-interior-default-rtdb.firebaseio.com",
       projectId: "diamond-interior",
-      storageBucket: "diamond-interior.appspot.com",
+      storageBucket: "diamond-interior.firebasestorage.app",
       messagingSenderId: "743080237212",
       appId: "1:743080237212:web:3801f08600dd2b54293559",
       measurementId: "G-VPJ952EL89"
     };
 
-    firebase.initializeApp(firebaseConfig);
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
     const db = firebase.database();
     const storage = firebase.storage();
   </script>
 
   <style>
     :root {
-      --void: #060403;
-      --surface: #0e0a07;
-      --surface-2: #16110b;
-      --card: #120d09;
-      --gold: #c9943a;
-      --gold-bright: #f3cf7a;
-      --platinum: #eae2d3;
-      --text-muted: #9f9382;
-      --border: rgba(201, 148, 58, 0.25);
-      --grad-gold: linear-gradient(135deg, #f5d485 0%, #c9943a 50%, #7e561a 100%);
+      --bg: #070503;
+      --surface: #0f0b07;
+      --surface-elevated: #17110b;
+      --gold: #d8a243;
+      --gold-light: #f5d485;
+      --text: #f0e9df;
+      --text-dim: #9b8f80;
+      --border: rgba(216, 162, 67, 0.22);
+      --red: #ef4444;
+      --green: #22c55e;
+      --radius: 12px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: var(--void);
-      color: var(--platinum);
+      background: var(--bg);
+      color: var(--text);
       font-family: 'Plus Jakarta Sans', sans-serif;
       min-height: 100vh;
       display: flex;
     }
 
+    /* Sidebar */
     .sidebar {
-      width: 260px;
+      width: 270px;
       background: var(--surface);
       border-right: 1px solid var(--border);
-      padding: 24px 16px;
+      padding: 24px 18px;
       display: flex;
       flex-direction: column;
       gap: 24px;
@@ -66,197 +70,316 @@
       top: 0;
       height: 100vh;
     }
-    .brand-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--gold-bright);
-      text-transform: uppercase;
-      letter-spacing: 1px;
+    .brand-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
     }
-    .nav-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .brand-logo {
+      width: 42px; height: 42px; border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      object-fit: cover;
+    }
+    .brand-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+    .brand-tag { font-size: 0.72rem; color: var(--text-dim); }
+
+    .nav-list { list-style: none; display: flex; flex-direction: column; gap: 8px; flex: 1; }
     .nav-btn {
       width: 100%;
       text-align: left;
       padding: 12px 14px;
-      border-radius: 8px;
+      border-radius: var(--radius);
       background: transparent;
       border: 1px solid transparent;
-      color: var(--text-muted);
-      font-size: 0.95rem;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      font-weight: 600;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 10px;
-      transition: 0.2s;
+      gap: 12px;
+      transition: all 0.2s ease;
     }
     .nav-btn:hover, .nav-btn.active {
-      background: var(--surface-2);
+      background: var(--surface-elevated);
       border-color: var(--border);
-      color: var(--gold-bright);
+      color: var(--gold-light);
     }
 
-    .main-content {
+    .main {
       flex: 1;
-      padding: 32px 36px;
-      max-width: 1100px;
+      padding: 32px 40px;
+      max-width: 1300px;
       margin: 0 auto;
+      overflow-y: auto;
     }
+
+    /* Top Stats Dashboard */
+    .dashboard-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+    .metric-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+    .metric-title { font-size: 0.75rem; text-transform: uppercase; color: var(--text-dim); letter-spacing: 0.8px; }
+    .metric-num { font-size: 1.8rem; font-weight: 700; color: var(--gold-light); margin-top: 6px; font-family: 'Space Grotesk', sans-serif; }
+
+    /* Views */
     .view-panel { display: none; }
     .view-panel.active { display: block; }
 
-    .header-box { margin-bottom: 24px; }
-    .header-box h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
-      color: var(--gold-bright);
-      margin-bottom: 6px;
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
     }
-    .header-box p { color: var(--text-muted); font-size: 0.95rem; }
+    .panel-header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      color: #fff;
+    }
 
+    /* Upload Form Card */
     .form-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: var(--radius);
       padding: 24px;
-      margin-bottom: 36px;
+      margin-bottom: 30px;
     }
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
     }
-    .form-group { margin-bottom: 16px; }
+    .form-group { margin-bottom: 14px; }
     .form-group.full { grid-column: span 2; }
     .form-group label {
       display: block;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 6px;
-      color: var(--text-muted);
+      color: var(--text-dim);
+      font-weight: 600;
     }
     .form-control {
       width: 100%;
       padding: 12px 14px;
-      background: var(--surface-2);
+      background: var(--surface-elevated);
       border: 1px solid var(--border);
       border-radius: 8px;
       color: #fff;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       outline: none;
     }
-    .form-control:focus { border-color: var(--gold-bright); }
+    .form-control:focus { border-color: var(--gold-light); }
 
-    .file-input-box {
-      border: 1px dashed var(--border);
-      background: var(--surface-2);
-      padding: 20px;
-      border-radius: 8px;
+    /* Drag Drop Area */
+    .drop-zone {
+      border: 2px dashed var(--border);
+      background: var(--surface-elevated);
+      padding: 30px 20px;
+      border-radius: var(--radius);
       text-align: center;
-    }
-    .file-input-box input[type="file"] {
-      color: var(--platinum);
       cursor: pointer;
+      position: relative;
     }
+    .drop-zone.hover { border-color: var(--gold-light); background: rgba(216, 162, 67, 0.08); }
+    .drop-zone input[type="file"] {
+      position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+    }
+    .drop-text { font-size: 0.88rem; color: var(--text-dim); }
+    .drop-highlight { color: var(--gold-light); font-weight: 600; }
 
-    .progress-wrapper {
+    /* Progress bar */
+    .progress-box {
       margin-top: 14px;
       display: none;
     }
-    .progress-bar {
+    .progress-bar-wrap {
+      width: 100%;
       height: 8px;
-      width: 0%;
-      background: var(--grad-gold);
-      border-radius: 6px;
-      transition: width 0.3s;
+      background: #251c14;
+      border-radius: 99px;
+      overflow: hidden;
     }
-    .progress-text {
-      font-size: 0.85rem;
-      color: var(--gold-bright);
+    .progress-bar-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #c9943a, #f5d485);
+      transition: width 0.2s;
+    }
+    .progress-info {
+      font-size: 0.78rem;
+      color: var(--gold-light);
       margin-top: 6px;
+      display: flex;
+      justify-content: space-between;
     }
 
-    .submit-btn {
-      background: var(--grad-gold);
-      color: #000;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #f5d485 0%, #d8a243 100%);
+      color: #120a02;
       font-weight: 700;
       border: none;
-      padding: 14px 28px;
+      padding: 12px 24px;
       border-radius: 8px;
       cursor: pointer;
-      font-size: 0.95rem;
-      margin-top: 8px;
+      font-size: 0.9rem;
+      transition: transform 0.15s, opacity 0.15s;
     }
-    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn:hover { opacity: 0.95; }
+    .btn:active { transform: scale(0.98); }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-    /* Category Filter Buttons in Admin */
-    .filter-bar {
+    /* Search & Filter Bar */
+    .action-bar {
       display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
       flex-wrap: wrap;
     }
-    .filter-btn {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      padding: 8px 16px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.85rem;
-    }
-    .filter-btn.active, .filter-btn:hover {
-      background: var(--gold);
-      color: #000;
-      font-weight: 600;
-    }
-
-    .items-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-    }
-    .card-item {
+    .search-input {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 10px;
+      padding: 10px 16px;
+      border-radius: 30px;
+      color: #fff;
+      font-size: 0.88rem;
+      min-width: 260px;
+      outline: none;
+    }
+    .filter-group { display: flex; gap: 8px; flex-wrap: wrap; }
+    .pill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      padding: 8px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .pill.active {
+      background: var(--gold);
+      color: #120a02;
+      border-color: var(--gold);
+    }
+
+    /* Cards Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
       overflow: hidden;
       display: flex;
       flex-direction: column;
     }
-    .card-media {
-      height: 190px;
+    .card-media-box {
       width: 100%;
-      object-fit: cover;
+      height: 200px;
       background: #000;
+      overflow: hidden;
+      position: relative;
     }
-    .card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
-    .card-title { font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 4px; }
-    .card-tag {
-      display: inline-block;
-      font-size: 0.75rem;
-      background: rgba(201, 148, 58, 0.15);
-      color: var(--gold-bright);
+    .card-media-box img, .card-media-box video {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .card-badge {
+      position: absolute;
+      top: 10px; left: 10px;
+      background: rgba(10, 7, 4, 0.8);
+      border: 1px solid var(--border);
+      color: var(--gold-light);
+      font-size: 0.7rem;
       padding: 3px 8px;
-      border-radius: 4px;
-      margin-bottom: 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      font-weight: 700;
     }
-    .card-loc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px; }
-    .delete-btn {
-      background: rgba(239, 68, 68, 0.15);
-      border: 1px solid rgba(239, 68, 68, 0.4);
-      color: #f87171;
-      padding: 8px 12px;
+    .card-details {
+      padding: 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card-title { font-size: 1rem; font-weight: 600; color: #fff; margin-bottom: 4px; }
+    .card-subtitle { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 14px; }
+    .card-footer {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+    }
+    .btn-secondary {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 12px;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 0.85rem;
+      font-size: 0.78rem;
+    }
+    .btn-delete {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: #f87171;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.78rem;
       font-weight: 600;
+      margin-left: auto;
     }
 
-    @media (max-width: 768px) {
+    /* Modal for Edit & Replace */
+    .modal {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.8);
+      display: none; align-items: center; justify-content: center;
+      z-index: 1000; padding: 20px;
+    }
+    .modal.open { display: flex; }
+    .modal-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      width: 100%; max-width: 500px;
+      padding: 24px;
+    }
+
+    @media (max-width: 900px) {
       body { flex-direction: column; }
       .sidebar { width: 100%; height: auto; position: static; }
+      .dashboard-metrics { grid-template-columns: repeat(2, 1fr); }
       .form-grid { grid-template-columns: 1fr; }
       .form-group.full { grid-column: span 1; }
     }
@@ -264,331 +387,523 @@
 </head>
 <body>
 
+  <!-- Sidebar -->
   <aside class="sidebar">
-    <div class="brand-logo">Diamond Interiors</div>
+    <div class="brand-box">
+      <img src="file_000000006020720882563cb278c0b2e6.png" class="brand-logo" alt="Logo" onerror="this.src='https://via.placeholder.com/42x42?text=DI'">
+      <div>
+        <div class="brand-name">Diamond Studio</div>
+        <div class="brand-tag">Master Admin Panel</div>
+      </div>
+    </div>
     <ul class="nav-list">
-      <li><button class="nav-btn active" onclick="switchTab('portfolio')">📸 Portfolio Photos</button></li>
-      <li><button class="nav-btn" onclick="switchTab('hero')">🎞️ Top Loop Videos</button></li>
-      <li><button class="nav-btn" onclick="switchTab('reels')">🎬 Video Walkthroughs</button></li>
+      <li><button class="nav-btn active" onclick="navigate('portfolio')">📸 Portfolio Images</button></li>
+      <li><button class="nav-btn" onclick="navigate('hero')">🎞️ Hero Header Video</button></li>
+      <li><button class="nav-btn" onclick="navigate('reels')">🎬 Project Walkthroughs</button></li>
+      <li><button class="nav-btn" onclick="openWebsite()">🌐 View Live Website</button></li>
     </ul>
   </aside>
 
-  <main class="main-content">
+  <!-- Main Container -->
+  <main class="main">
     
-    <!-- 1. PORTFOLIO PHOTOS -->
-    <section id="tab-portfolio" class="view-panel active">
-      <div class="header-box">
-        <h1>Portfolio Showcase</h1>
-        <p>फ़ोटो अपलोड करें और सही कैटेगरी व लोकेशन चुनें।</p>
+    <!-- Top Stats -->
+    <div class="dashboard-metrics">
+      <div class="metric-card">
+        <div class="metric-title">Portfolio Items</div>
+        <div class="metric-num" id="statPortfolio">0</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-title">Hero Videos</div>
+        <div class="metric-num" id="statHero">0</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-title">Reel Walkthroughs</div>
+        <div class="metric-num" id="statReels">0</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-title">Database Sync</div>
+        <div class="metric-num" style="color:var(--green); font-size:1.3rem;">● Connected</div>
+      </div>
+    </div>
+
+    <!-- 1. PORTFOLIO PANEL -->
+    <section id="panel-portfolio" class="view-panel active">
+      <div class="panel-header">
+        <div>
+          <h1>Portfolio Collection</h1>
+          <p style="color:var(--text-dim); font-size:0.85rem;">Manage luxury photo assets shown on the public site.</p>
+        </div>
       </div>
 
+      <!-- Upload Form -->
       <div class="form-card">
-        <form id="portfolioForm" onsubmit="handlePortfolioUpload(event)">
+        <form id="portfolioForm" onsubmit="uploadPortfolio(event)">
           <div class="form-grid">
             <div class="form-group">
-              <label>Project Title (नाम)</label>
-              <input type="text" id="pTitle" class="form-control" placeholder="उदा: Modular Kitchen Suite" required>
+              <label>Project Title</label>
+              <input type="text" id="pTitle" class="form-control" placeholder="e.g. Master Bedroom Suite" required>
             </div>
             <div class="form-group">
-              <label>Category (श्रेणी)</label>
+              <label>Category</label>
               <select id="pCategory" class="form-control" required>
-                <option value="kitchens">Kitchens</option>
-                <option value="bedrooms">Bedrooms</option>
+                <option value="kitchen">Kitchens</option>
+                <option value="bedroom">Bedrooms</option>
                 <option value="living">Living & Dining</option>
                 <option value="commercial">Commercial & Hotels</option>
               </select>
             </div>
             <div class="form-group full">
-              <label>Location (स्थान)</label>
-              <input type="text" id="pLocation" class="form-control" placeholder="उदा: Bandra, Mumbai या Thane West" required>
+              <label>Location / Area</label>
+              <input type="text" id="pLocation" class="form-control" placeholder="e.g. Bandra West, Mumbai or Hiranandani, Thane" required>
             </div>
             <div class="form-group full">
-              <label>Photo File</label>
-              <div class="file-input-box">
-                <input type="file" id="pFile" accept="image/*" required>
+              <label>Image Asset</label>
+              <div class="drop-zone" id="pDropZone">
+                <input type="file" id="pFile" accept="image/*" required onchange="showFileName(this, 'pDropLabel')">
+                <div class="drop-text" id="pDropLabel">Drag & drop photo here or <span class="drop-highlight">Browse</span></div>
               </div>
-              <div class="progress-wrapper" id="pProgressWrapper">
-                <div class="progress-bar" id="pProgressBar"></div>
-                <div class="progress-text" id="pProgressText">Uploading... 0%</div>
+              <div class="progress-box" id="pProgress">
+                <div class="progress-bar-wrap"><div class="progress-bar-fill" id="pBar"></div></div>
+                <div class="progress-info"><span id="pState">Uploading...</span><span id="pPercent">0%</span></div>
               </div>
             </div>
           </div>
-          <button type="submit" id="pSubmitBtn" class="submit-btn">Upload & Publish Photo</button>
+          <button type="submit" id="pBtn" class="btn">Upload to Live Website</button>
         </form>
       </div>
 
-      <!-- Category Filter -->
-      <div class="filter-bar">
-        <button class="filter-btn active" onclick="filterPortfolio('all')">All Work</button>
-        <button class="filter-btn" onclick="filterPortfolio('kitchens')">Kitchens</button>
-        <button class="filter-btn" onclick="filterPortfolio('bedrooms')">Bedrooms</button>
-        <button class="filter-btn" onclick="filterPortfolio('living')">Living & Dining</button>
-        <button class="filter-btn" onclick="filterPortfolio('commercial')">Commercial & Hotels</button>
+      <!-- Action Bar (Search & Filter) -->
+      <div class="action-bar">
+        <div class="filter-group">
+          <button class="pill active" onclick="applyPortfolioFilter('all', this)">All Categories</button>
+          <button class="pill" onclick="applyPortfolioFilter('kitchen', this)">Kitchens</button>
+          <button class="pill" onclick="applyPortfolioFilter('bedroom', this)">Bedrooms</button>
+          <button class="pill" onclick="applyPortfolioFilter('living', this)">Living</button>
+          <button class="pill" onclick="applyPortfolioFilter('commercial', this)">Commercial</button>
+        </div>
+        <input type="text" class="search-input" id="pSearch" placeholder="Search by title or location..." oninput="renderPortfolioList()">
       </div>
 
-      <div id="portfolioGrid" class="items-grid"></div>
+      <div class="grid" id="portfolioGrid"></div>
     </section>
 
-    <!-- 2. HERO VIDEOS -->
-    <section id="tab-hero" class="view-panel">
-      <div class="header-box">
-        <h1>Hero Header Loop Video</h1>
-        <p>होमपेज के बैकग्राउंड में लूप होने वाला वीडियो।</p>
-      </div>
-
-<form id="hero-header-form">
-  <label for="showcase-title">SHOWCASE TITLE</label>
-  <input type="text" id="showcase-title" placeholder="उदा: Luxury MMR Living" required>
-
-  <label for="video-link">VIDEO LINK</label>
-  <input type="url" id="video-link" placeholder="उदा: https://www.youtube.com/watch?v=..." required>
-
-  <button type="submit">Upload Video Link</button>
-</form>
-
-
-      <div id="heroGrid" class="items-grid"></div>
-    </section>
-
-    <!-- 3. REELS -->
-    <section id="tab-reels" class="view-panel">
-      <div class="header-box">
-        <h1>Video Walkthroughs (Reels)</h1>
-        <p>प्रोजेक्ट्स की वर्टिकल रील्स या वॉकथ्रू वीडियो अपलोड करें।</p>
+    <!-- 2. HERO VIDEO PANEL -->
+    <section id="panel-hero" class="view-panel">
+      <div class="panel-header">
+        <div>
+          <h1>Hero Header Video</h1>
+          <p style="color:var(--text-dim); font-size:0.85rem;">Upload the main loop video displayed in the website showcase.</p>
+        </div>
       </div>
 
       <div class="form-card">
-        <form id="reelForm" onsubmit="handleReelUpload(event)">
+        <form id="heroForm" onsubmit="uploadHero(event)">
           <div class="form-group">
-            <label>Reel Title</label>
-            <input type="text" id="rTitle" class="form-control" placeholder="उदा: 3BHK Turnkey Reveal" required>
+            <label>Showcase Headline</label>
+            <input type="text" id="hTitle" class="form-control" placeholder="e.g. Signature Living & Architecture" required>
           </div>
           <div class="form-group">
-            <label>Video File (MP4)</label>
-            <div class="file-input-box">
-              <input type="file" id="rFile" accept="video/mp4,video/webm" required>
+            <label>Video File (MP4, WebM)</label>
+            <div class="drop-zone" id="hDropZone">
+              <input type="file" id="hFile" accept="video/mp4,video/webm" required onchange="showFileName(this, 'hDropLabel')">
+              <div class="drop-text" id="hDropLabel">Drag & drop showcase video or <span class="drop-highlight">Browse</span></div>
             </div>
-            <div class="progress-wrapper" id="rProgressWrapper">
-              <div class="progress-bar" id="rProgressBar"></div>
-              <div class="progress-text" id="rProgressText">Uploading... 0%</div>
+            <div class="progress-box" id="hProgress">
+              <div class="progress-bar-wrap"><div class="progress-bar-fill" id="hBar"></div></div>
+              <div class="progress-info"><span id="hState">Uploading...</span><span id="hPercent">0%</span></div>
             </div>
           </div>
-          <button type="submit" id="rSubmitBtn" class="submit-btn">Upload Reel</button>
+          <button type="submit" id="hBtn" class="btn">Publish Video</button>
         </form>
       </div>
 
-      <div id="reelsGrid" class="items-grid"></div>
+      <div class="grid" id="heroGrid"></div>
     </section>
 
+    <!-- 3. REELS PANEL -->
+    <section id="panel-reels" class="view-panel">
+      <div class="panel-header">
+        <div>
+          <h1>Project Walkthroughs (Reels)</h1>
+          <p style="color:var(--text-dim); font-size:0.85rem;">Manage vertical architectural site walkthroughs.</p>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <form id="reelForm" onsubmit="uploadReel(event)">
+          <div class="form-group">
+            <label>Reel Title</label>
+            <input type="text" id="rTitle" class="form-control" placeholder="e.g. 3BHK Complete Turnkey Handover" required>
+          </div>
+          <div class="form-group">
+            <label>Video File (MP4)</label>
+            <div class="drop-zone" id="rDropZone">
+              <input type="file" id="rFile" accept="video/mp4,video/webm" required onchange="showFileName(this, 'rDropLabel')">
+              <div class="drop-text" id="rDropLabel">Drag & drop reel video or <span class="drop-highlight">Browse</span></div>
+            </div>
+            <div class="progress-box" id="rProgress">
+              <div class="progress-bar-wrap"><div class="progress-bar-fill" id="rBar"></div></div>
+              <div class="progress-info"><span id="rState">Uploading...</span><span id="rPercent">0%</span></div>
+            </div>
+          </div>
+          <button type="submit" id="rBtn" class="btn">Upload Walkthrough</button>
+        </form>
+      </div>
+
+      <div class="grid" id="reelsGrid"></div>
+    </section>
   </main>
 
+  <!-- Edit / Rename Modal -->
+  <div class="modal" id="editModal">
+    <div class="modal-box">
+      <h3 style="font-family:'Space Grotesk', sans-serif; font-size:1.2rem; margin-bottom:16px;">Edit Item Details</h3>
+      <input type="hidden" id="editItemKey">
+      <input type="hidden" id="editItemType">
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" id="editTitle" class="form-control" required>
+      </div>
+      <div class="form-group" id="editLocationGroup">
+        <label>Location</label>
+        <input type="text" id="editLocation" class="form-control">
+      </div>
+      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+        <button class="btn-secondary" onclick="closeModal()">Cancel</button>
+        <button class="btn" style="padding:8px 16px; font-size:0.82rem;" onclick="saveItemEdit()">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
   <script>
-    let allPortfolioItems = {};
+    let portfolioData = {};
+    let heroData = {};
+    let reelsData = {};
     let currentFilter = 'all';
 
-    function switchTab(tabId) {
-      document.querySelectorAll('.view-panel').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
-      document.getElementById('tab-' + tabId).classList.add('active');
+    function navigate(tabId) {
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('panel-' + tabId).classList.add('active');
       event.currentTarget.classList.add('active');
     }
 
-    // Helper: Resumable Upload with Progress Bar
-    function uploadWithProgress(file, folder, wrapperId, barId, textId) {
+    function openWebsite() {
+      window.open('index.html', '_blank');
+    }
+
+    function showFileName(input, labelId) {
+      if (input.files && input.files[0]) {
+        document.getElementById(labelId).innerText = input.files[0].name;
+      }
+    }
+
+    // Generic Resumable Upload
+    function runUpload(file, folder, boxId, barId, stateId, percentId) {
       return new Promise((resolve, reject) => {
-        const wrapper = document.getElementById(wrapperId);
+        const box = document.getElementById(boxId);
         const bar = document.getElementById(barId);
-        const text = document.getElementById(textId);
+        const state = document.getElementById(stateId);
+        const percent = document.getElementById(percentId);
 
-        wrapper.style.display = 'block';
+        box.style.display = 'block';
         bar.style.width = '0%';
-        text.innerText = 'Starting upload... 0%';
+        percent.innerText = '0%';
+        state.innerText = 'Uploading...';
 
-        const fileName = `${Date.now()}_${file.name.replace(/[^a-zA-Z0-9._-]/g, '')}`;
-        const uploadTask = storage.ref(`${folder}/${fileName}`).put(file);
+        const sanitized = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+        const storagePath = `${folder}/${Date.now()}_${sanitized}`;
+        const ref = storage.ref(storagePath);
+        const task = ref.put(file);
 
-        uploadTask.on('state_changed', 
+        task.on('state_changed',
           (snapshot) => {
-            const progress = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(0);
-            bar.style.width = progress + '%';
-            text.innerText = `Uploading: ${progress}% (${(snapshot.bytesTransferred / (1024*1024)).toFixed(1)}MB / ${(snapshot.totalBytes / (1024*1024)).toFixed(1)}MB)`;
-          }, 
-          (error) => {
-            wrapper.style.display = 'none';
-            reject(error);
-          }, 
+            const p = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(0);
+            bar.style.width = p + '%';
+            percent.innerText = p + '%';
+            state.innerText = `Uploaded ${(snapshot.bytesTransferred / (1024*1024)).toFixed(1)}MB / ${(snapshot.totalBytes / (1024*1024)).toFixed(1)}MB`;
+          },
+          (err) => {
+            box.style.display = 'none';
+            reject(err);
+          },
           async () => {
-            const url = await uploadTask.snapshot.ref.getDownloadURL();
-            wrapper.style.display = 'none';
-            resolve(url);
+            const url = await task.snapshot.ref.getDownloadURL();
+            box.style.display = 'none';
+            resolve({ url, storagePath });
           }
         );
       });
     }
 
-    // 1. Portfolio Upload
-    async function handlePortfolioUpload(e) {
+    // 1. Portfolio Handling
+    async function uploadPortfolio(e) {
       e.preventDefault();
-      const title = document.getElementById('pTitle').value;
+      const title = document.getElementById('pTitle').value.trim();
       const category = document.getElementById('pCategory').value;
-      const location = document.getElementById('pLocation').value;
+      const location = document.getElementById('pLocation').value.trim();
       const file = document.getElementById('pFile').files[0];
-      const btn = document.getElementById('pSubmitBtn');
+      const btn = document.getElementById('pBtn');
 
       if (!file) return;
 
       try {
         btn.disabled = true;
-        const imageUrl = await uploadWithProgress(file, 'portfolio_images', 'pProgressWrapper', 'pProgressBar', 'pProgressText');
+        const uploadResult = await runUpload(file, 'portfolio_assets', 'pProgress', 'pBar', 'pState', 'pPercent');
 
         await db.ref('portfolio').push({
-          title: title,
-          category: category,
-          location: location,
-          image: imageUrl,
+          title,
+          category,
+          location,
+          image: uploadResult.url,
+          storagePath: uploadResult.storagePath,
           timestamp: Date.now()
         });
 
         document.getElementById('portfolioForm').reset();
-        alert('फ़ोटो सफलतापूर्वक अपलोड हो गई है!');
+        document.getElementById('pDropLabel').innerHTML = 'Drag & drop photo here or <span class="drop-highlight">Browse</span>';
       } catch (err) {
-        alert('Upload Error: ' + err.message);
+        alert('Upload Failed: ' + err.message);
       } finally {
         btn.disabled = false;
       }
     }
 
-    // Load & Filter Portfolio
-    db.ref('portfolio').on('value', snap => {
-      allPortfolioItems = snap.val() || {};
-      renderPortfolio();
-    });
-
-    function filterPortfolio(cat) {
+    function applyPortfolioFilter(cat, btn) {
       currentFilter = cat;
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      event.target.classList.add('active');
-      renderPortfolio();
+      document.querySelectorAll('.filter-group .pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderPortfolioList();
     }
 
-    function renderPortfolio() {
+    function renderPortfolioList() {
       const grid = document.getElementById('portfolioGrid');
+      const search = (document.getElementById('pSearch').value || '').toLowerCase();
       grid.innerHTML = '';
 
-      const entries = Object.entries(allPortfolioItems);
-      if (entries.length === 0) {
-        grid.innerHTML = '<p style="color:var(--text-muted)">अभी तक कोई फ़ोटो नहीं है।</p>';
+      const entries = Object.entries(portfolioData);
+      document.getElementById('statPortfolio').innerText = entries.length;
+
+      const filtered = entries.filter(([_, item]) => {
+        const matchesCategory = currentFilter === 'all' || item.category === currentFilter;
+        const matchesSearch = !search || (item.title && item.title.toLowerCase().includes(search)) || (item.location && item.location.toLowerCase().includes(search));
+        return matchesCategory && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<p style="color:var(--text-dim); grid-column:span 3;">No matching portfolio items found.</p>';
         return;
       }
 
-      entries.forEach(([id, item]) => {
-        if (currentFilter !== 'all' && item.category !== currentFilter) return;
-
+      filtered.reverse().forEach(([key, item]) => {
         grid.innerHTML += `
-          <div class="card-item">
-            <img src="${item.image}" class="card-media" alt="${item.title}">
-            <div class="card-body">
+          <div class="card">
+            <div class="card-media-box">
+              <span class="card-badge">${item.category || 'Interior'}</span>
+              <img src="${item.image}" alt="${item.title}" loading="lazy">
+            </div>
+            <div class="card-details">
               <div>
-                <span class="card-tag">${item.category.toUpperCase()}</span>
                 <div class="card-title">${item.title}</div>
-                <div class="card-loc">📍 ${item.location || 'Mumbai/Thane'}</div>
+                <div class="card-subtitle">📍 ${item.location || 'Mumbai & Thane'}</div>
               </div>
-              <button class="delete-btn" onclick="deleteEntry('portfolio', '${id}')">Delete</button>
+              <div class="card-footer">
+                <button class="btn-secondary" onclick="openEditModal('portfolio', '${key}', '${escape(item.title)}', '${escape(item.location || '')}')">Edit</button>
+                <button class="btn-delete" onclick="deleteItem('portfolio', '${key}', '${item.storagePath || ''}')">Delete</button>
+              </div>
             </div>
           </div>
         `;
       });
     }
 
-    // 2. Hero Video Upload
-    async function handleHeroUpload(e) {
+    // 2. Hero Video Handling
+    async function uploadHero(e) {
       e.preventDefault();
-      const title = document.getElementById('hTitle').value;
+      const title = document.getElementById('hTitle').value.trim();
       const file = document.getElementById('hFile').files[0];
-      const btn = document.getElementById('hSubmitBtn');
-
-      if (!file) return;
-
-      try {
-   document.getElementById('hero-header-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const title = document.getElementById('showcase-title').value;
-  const link = document.getElementById('video-link').value;
-  
-  // Realtime Database में डेटा सेव करने की लॉजिक यहाँ आएगी
-  console.log("Saving to DB:", title, link);
-  alert("Link saved successfully!");
-});
-
-    }
-
-    db.ref('hero_videos').on('value', snap => {
-      const grid = document.getElementById('heroGrid');
-      grid.innerHTML = '';
-      const data = snap.val() || {};
-      Object.entries(data).forEach(([id, item]) => {
-        grid.innerHTML += `
-          <div class="card-item">
-            <video src="${item.videoUrl}" class="card-media" controls autoplay muted loop></video>
-            <div class="card-body">
-              <div class="card-title">${item.title}</div>
-              <button class="delete-btn" onclick="deleteEntry('hero_videos', '${id}')">Delete</button>
-            </div>
-          </div>
-        `;
-      });
-    });
-
-    // 3. Reels Upload
-    async function handleReelUpload(e) {
-      e.preventDefault();
-      const title = document.getElementById('rTitle').value;
-      const file = document.getElementById('rFile').files[0];
-      const btn = document.getElementById('rSubmitBtn');
+      const btn = document.getElementById('hBtn');
 
       if (!file) return;
 
       try {
         btn.disabled = true;
-        const videoUrl = await uploadWithProgress(file, 'reel_videos', 'rProgressWrapper', 'rProgressBar', 'rProgressText');
+        const res = await runUpload(file, 'hero_videos', 'hProgress', 'hBar', 'hState', 'hPercent');
 
-        await db.ref('reels').push({
-          title: title,
-          videoUrl: videoUrl,
+        await db.ref('hero_videos').push({
+          title,
+          videoUrl: res.url,
+          storagePath: res.storagePath,
           timestamp: Date.now()
         });
 
-        document.getElementById('reelForm').reset();
-        alert('रील अपलोड हो गई!');
+        document.getElementById('heroForm').reset();
+        document.getElementById('hDropLabel').innerHTML = 'Drag & drop showcase video or <span class="drop-highlight">Browse</span>';
       } catch (err) {
-        alert('Reel Upload Error: ' + err.message);
+        alert('Video upload error: ' + err.message);
       } finally {
         btn.disabled = false;
       }
     }
 
-    db.ref('reels').on('value', snap => {
-      const grid = document.getElementById('reelsGrid');
+    function renderHeroList() {
+      const grid = document.getElementById('heroGrid');
       grid.innerHTML = '';
-      const data = snap.val() || {};
-      Object.entries(data).forEach(([id, item]) => {
+      const entries = Object.entries(heroData);
+      document.getElementById('statHero').innerText = entries.length;
+
+      if (entries.length === 0) {
+        grid.innerHTML = '<p style="color:var(--text-dim)">No loop videos uploaded.</p>';
+        return;
+      }
+
+      entries.reverse().forEach(([key, item]) => {
         grid.innerHTML += `
-          <div class="card-item">
-            <video src="${item.videoUrl}" class="card-media" controls></video>
-            <div class="card-body">
+          <div class="card">
+            <div class="card-media-box">
+              <video src="${item.videoUrl}" controls muted></video>
+            </div>
+            <div class="card-details">
               <div class="card-title">${item.title}</div>
-              <button class="delete-btn" onclick="deleteEntry('reels', '${id}')">Delete</button>
+              <div class="card-footer">
+                <button class="btn-secondary" onclick="openEditModal('hero_videos', '${key}', '${escape(item.title)}')">Rename</button>
+                <button class="btn-delete" onclick="deleteItem('hero_videos', '${key}', '${item.storagePath || ''}')">Delete</button>
+              </div>
             </div>
           </div>
         `;
       });
-    });
+    }
 
-    async function deleteEntry(path, id) {
-      if (confirm('क्या आप इसे हटाना चाहते हैं?')) {
-        await db.ref(`${path}/${id}`).remove();
+    // 3. Reels Handling
+    async function uploadReel(e) {
+      e.preventDefault();
+      const title = document.getElementById('rTitle').value.trim();
+      const file = document.getElementById('rFile').files[0];
+      const btn = document.getElementById('rBtn');
+
+      if (!file) return;
+
+      try {
+        btn.disabled = true;
+        const res = await runUpload(file, 'reels_walkthroughs', 'rProgress', 'rBar', 'rState', 'rPercent');
+
+        await db.ref('reels').push({
+          title,
+          videoUrl: res.url,
+          storagePath: res.storagePath,
+          timestamp: Date.now()
+        });
+
+        document.getElementById('reelForm').reset();
+        document.getElementById('rDropLabel').innerHTML = 'Drag & drop reel video or <span class="drop-highlight">Browse</span>';
+      } catch (err) {
+        alert('Walkthrough upload failed: ' + err.message);
+      } finally {
+        btn.disabled = false;
       }
     }
+
+    function renderReelsList() {
+      const grid = document.getElementById('reelsGrid');
+      grid.innerHTML = '';
+      const entries = Object.entries(reelsData);
+      document.getElementById('statReels').innerText = entries.length;
+
+      if (entries.length === 0) {
+        grid.innerHTML = '<p style="color:var(--text-dim)">No video walkthroughs uploaded yet.</p>';
+        return;
+      }
+
+      entries.reverse().forEach(([key, item]) => {
+        grid.innerHTML += `
+          <div class="card">
+            <div class="card-media-box">
+              <video src="${item.videoUrl}" controls></video>
+            </div>
+            <div class="card-details">
+              <div class="card-title">${item.title}</div>
+              <div class="card-footer">
+                <button class="btn-secondary" onclick="openEditModal('reels', '${key}', '${escape(item.title)}')">Rename</button>
+                <button class="btn-delete" onclick="deleteItem('reels', '${key}', '${item.storagePath || ''}')">Delete</button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    // Unified Delete (Deletes from Storage and Database)
+    async function deleteItem(table, key, storagePath) {
+      if (!confirm('Are you sure you want to permanently delete this asset?')) return;
+
+      try {
+        // Delete Storage File if path exists
+        if (storagePath) {
+          try {
+            await storage.ref(storagePath).delete();
+          } catch (e) {
+            console.warn('Storage file was already removed or unreachable:', e);
+          }
+        }
+        // Delete DB record
+        await db.ref(`${table}/${key}`).remove();
+      } catch (err) {
+        alert('Delete failed: ' + err.message);
+      }
+    }
+
+    // Edit Modal Logic
+    function openEditModal(table, key, titleEscaped, locEscaped = '') {
+      document.getElementById('editItemType').value = table;
+      document.getElementById('editItemKey').value = key;
+      document.getElementById('editTitle').value = unescape(titleEscaped);
+
+      const locGroup = document.getElementById('editLocationGroup');
+      if (table === 'portfolio') {
+        locGroup.style.display = 'block';
+        document.getElementById('editLocation').value = unescape(locEscaped);
+      } else {
+        locGroup.style.display = 'none';
+      }
+
+      document.getElementById('editModal').classList.add('open');
+    }
+
+    function closeModal() {
+      document.getElementById('editModal').classList.remove('open');
+    }
+
+    async function saveItemEdit() {
+      const table = document.getElementById('editItemType').value;
+      const key = document.getElementById('editItemKey').value;
+      const title = document.getElementById('editTitle').value.trim();
+
+      const updates = { title };
+      if (table === 'portfolio') {
+        updates.location = document.getElementById('editLocation').value.trim();
+      }
+
+      await db.ref(`${table}/${key}`).update(updates);
+      closeModal();
+    }
+
+    // Firebase Realtime Listeners
+    db.ref('portfolio').on('value', snap => {
+      portfolioData = snap.val() || {};
+      renderPortfolioList();
+    });
+
+    db.ref('hero_videos').on('value', snap => {
+      heroData = snap.val() || {};
+      renderHeroList();
+    });
+
+    db.ref('reels').on('value', snap => {
+      reelsData = snap.val() || {};
+      renderReelsList();
+    });
   </script>
 </body>
 </html>
