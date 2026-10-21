@@ -194,7 +194,7 @@
     }
     .btn-sm { padding: 7px 16px; font-size: 0.78rem; }
 
-    /* Top Hero Video Box with Play/Pause and Sound */
+    /* Top Hero Video Box (Sound ON by Default, No Mute System) */
     .hero-reel { padding: 16px 0 10px; border-bottom: 1px solid var(--line); }
     .video-box {
       width: 100%; aspect-ratio: 16 / 9; max-height: 480px;
@@ -213,7 +213,7 @@
     .video-ctrl-btns { display: flex; gap: 8px; }
     .v-btn {
       background: rgba(201, 148, 58, 0.25); border: 1px solid var(--gold);
-      color: #fff; padding: 5px 12px; border-radius: 999px; font-size: 0.75rem;
+      color: #fff; padding: 5px 14px; border-radius: 999px; font-size: 0.75rem;
       cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-weight: 600;
     }
     .v-btn:hover { background: var(--gold); color: #000; }
@@ -255,7 +255,7 @@
     .sec-head h2 { font-size: 1.9rem; color: #fff; margin-bottom: 6px; }
     .sec-head p { font-size: 0.85rem; color: var(--text-dim); }
 
-    /* 2-COLUMN COMPACT GALLERY (Space Efficient) */
+    /* COMPACT 2-COLUMN GALLERY (Mobile Friendly) */
     .gallery-filter-bar { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
     .filter-btn {
       background: rgba(201, 148, 58, 0.08); border: 1px solid var(--line);
@@ -267,7 +267,7 @@
     .gallery-grid-2col {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
+      gap: 14px;
       max-width: 1060px;
       margin: 0 auto;
     }
@@ -279,27 +279,49 @@
     .gallery-item:hover { transform: translateY(-4px); border-color: var(--gold-bright); }
     .gallery-img-box { width: 100%; aspect-ratio: 16 / 11; overflow: hidden; background: #000; }
     .gallery-img-box img { width: 100%; height: 100%; object-fit: cover; }
-    .gallery-meta { padding: 12px 14px; display: flex; justify-content: space-between; align-items: center; }
-    .gallery-meta h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.88rem; color: #fff; }
-    .gallery-meta span { font-size: 0.74rem; color: var(--gold-bright); }
+    .gallery-meta { padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+    .gallery-meta h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.82rem; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .gallery-meta span { font-size: 0.70rem; color: var(--gold-bright); white-space: nowrap; }
 
-    /* Gallery Secondary Walkthrough Video Section */
-    .gallery-video-section {
+    /* DEDICATED ON-SITE WORK VIDEO SHOWCASE SECTION (BELOW GALLERY) */
+    .work-video-section {
+      padding: 40px 0 20px;
+    }
+    .video-showcase-container {
       max-width: 1060px;
-      margin: 28px auto 0;
+      margin: 0 auto;
       border: 1px solid var(--line-bright);
       border-radius: var(--radius);
       overflow: hidden;
       background: #000;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 10px 35px rgba(0,0,0,0.6);
     }
-    .gallery-video-section video { width: 100%; max-height: 460px; object-fit: cover; display: block; }
-    .gallery-video-details {
-      padding: 16px 20px; background: var(--surface-2);
-      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    .video-showcase-container video {
+      width: 100%;
+      max-height: 480px;
+      object-fit: cover;
+      display: block;
     }
-    .gallery-video-details strong { color: var(--gold-bright); font-size: 0.95rem; font-family: 'Space Grotesk', sans-serif; }
-    .gallery-video-details p { font-size: 0.78rem; color: var(--text-dim); margin-top: 3px; }
+    .video-showcase-body {
+      padding: 18px 22px;
+      background: var(--surface-2);
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .video-showcase-body h3 {
+      color: var(--gold-bright);
+      font-size: 1.15rem;
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 4px;
+    }
+    .video-showcase-body p {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
 
     /* Locations Bar */
     .loc-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 18px 0 22px; }
@@ -369,7 +391,10 @@
 
     @media (max-width: 768px) {
       .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-      .gallery-grid-2col { grid-template-columns: 1fr; }
+      /* Maintain 2 columns on mobile to keep page compact */
+      .gallery-grid-2col { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .gallery-meta h4 { font-size: 0.74rem; }
+      .gallery-meta span { font-size: 0.65rem; }
       .footer-grid { grid-template-columns: 1fr; }
       .topbar { display: none; }
     }
@@ -405,18 +430,17 @@
   </header>
 
   <main>
-    <!-- TOP HERO BANNER (Direct Video Player with Play/Pause and Mute Controls) -->
+    <!-- TOP HERO BANNER (Unmuted Sound On Always, No Mute Toggle) -->
     <section class="hero-reel">
       <div class="wrap">
         <div class="video-box">
-          <video id="promoVideo" playsinline autoplay muted loop poster="1664.png">
+          <video id="promoVideo" playsinline autoplay loop poster="1664.png">
             <source src="1781411966399.mp4" type="video/mp4">
           </video>
           <div class="video-controls">
             <span class="video-title" id="videoTitle">Featured Ad • Signature Living & Modular Architecture</span>
             <div class="video-ctrl-btns">
               <button class="v-btn" id="playPauseBtn" onclick="togglePlayPause()">⏸ Pause</button>
-              <button class="v-btn" id="soundBtn" onclick="toggleMute()">🔇 Mute</button>
             </div>
           </div>
         </div>
@@ -447,7 +471,7 @@
       </div>
     </div>
 
-    <!-- 2-COLUMN COMPACT PORTFOLIO GALLERY (Preserved Exact Image Links) -->
+    <!-- 2-COLUMN COMPACT PORTFOLIO GALLERY (Space Saving 2-Cols on Mobile & Desktop) -->
     <section id="gallery">
       <div class="wrap">
         <div class="sec-head">
@@ -471,8 +495,8 @@
               <img src="file_00000000b0b0722fbfd54bef48c55ef5.png" alt="Modular Kitchen Bandra" loading="lazy">
             </div>
             <div class="gallery-meta">
-              <h4>Modular Kitchen Suite</h4>
-              <span>📍 Bandra, Mumbai</span>
+              <h4>Modular Kitchen</h4>
+              <span>📍 Bandra</span>
             </div>
           </div>
 
@@ -482,8 +506,8 @@
               <img src="file_000000009c1071f5be1f883ff3b950f5.png" alt="Luxury Master Suite Thane" loading="lazy">
             </div>
             <div class="gallery-meta">
-              <h4>Luxury Master Suite</h4>
-              <span>📍 Hiranandani, Thane</span>
+              <h4>Master Suite</h4>
+              <span>📍 Thane</span>
             </div>
           </div>
 
@@ -493,8 +517,8 @@
               <img src="file_000000003ca8722fa8dc95c584e4ca15.png" alt="Minimalist Living Room" loading="lazy">
             </div>
             <div class="gallery-meta">
-              <h4>Minimalist Living Room</h4>
-              <span>📍 Palm Beach, Navi Mumbai</span>
+              <h4>Living Room</h4>
+              <span>📍 Navi Mumbai</span>
             </div>
           </div>
 
@@ -504,8 +528,8 @@
               <img src="file_00000000a7ec720ca067e4985a2b86e1.png" alt="Executive Corporate Office BKC" loading="lazy">
             </div>
             <div class="gallery-meta">
-              <h4>Executive Corporate Office</h4>
-              <span>📍 BKC, Mumbai</span>
+              <h4>Corporate Office</h4>
+              <span>📍 BKC</span>
             </div>
           </div>
 
@@ -515,8 +539,8 @@
               <img src="file_00000000949c722fbce254b51e2155ee.png" alt="Fluted Glass Wardrobe Thane" loading="lazy">
             </div>
             <div class="gallery-meta">
-              <h4>Fluted Glass Wardrobe</h4>
-              <span>📍 Ghodbunder Rd, Thane</span>
+              <h4>Glass Wardrobe</h4>
+              <span>📍 Thane</span>
             </div>
           </div>
 
@@ -526,8 +550,8 @@
               <img src="file_000000007cfc71f5b9ebab0e03b8362a.png" alt="Boutique Guest Bedroom Worli" loading="lazy">
             </div>
             <div class="gallery-meta">
-              <h4>Boutique Guest Bedroom</h4>
-              <span>📍 Worli, Mumbai</span>
+              <h4>Guest Bedroom</h4>
+              <span>📍 Worli</span>
             </div>
           </div>
 
@@ -537,8 +561,8 @@
               <img src="file_00000000e7ac71f5800fc9308dd81a80.png" alt="Architectural False Ceiling" loading="lazy">
             </div>
             <div class="gallery-meta">
-              <h4>Architectural False Ceiling</h4>
-              <span>📍 Majiwada, Thane</span>
+              <h4>False Ceiling</h4>
+              <span>📍 Majiwada</span>
             </div>
           </div>
 
@@ -548,8 +572,8 @@
               <img src="file_00000000c86471fd86a7b1e5af6dda30.png" alt="Signature Dining Lounge" loading="lazy">
             </div>
             <div class="gallery-meta">
-              <h4>Signature Dining Lounge</h4>
-              <span>📍 Kharghar, Navi Mumbai</span>
+              <h4>Dining Lounge</h4>
+              <span>📍 Kharghar</span>
             </div>
           </div>
 
@@ -559,8 +583,8 @@
               <img src="file_000000006d8871fabb84289dd98f7664.png" alt="Hotel Hospitality Suite Juhu" loading="lazy">
             </div>
             <div class="gallery-meta">
-              <h4>Hotel Hospitality Suite</h4>
-              <span>📍 Juhu, Mumbai</span>
+              <h4>Hospitality Suite</h4>
+              <span>📍 Juhu</span>
             </div>
           </div>
 
@@ -570,23 +594,33 @@
               <img src="file_00000000e65c7206abb07b5177c9e5a9.png" alt="Bespoke Stone Flooring" loading="lazy">
             </div>
             <div class="gallery-meta">
-              <h4>Bespoke Stone Flooring</h4>
-              <span>📍 Lower Parel, Mumbai</span>
+              <h4>Stone Flooring</h4>
+              <span>📍 Lower Parel</span>
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- SECONDARY WALKTHROUGH VIDEO LOOP SECTION (DIRECTLY UNDER GALLERY) -->
-        <div class="gallery-video-section">
+    <!-- NEW DEDICATED WORK VIDEO REEL & SITE SHOWCASE (BELOW PHOTO GALLERY) -->
+    <section class="work-video-section">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-tag">Craftsmanship In Motion</span>
+          <h2>Live Site Walkthrough & Quality Standards</h2>
+          <p>Real-time look at our on-site execution, finish quality, and materials.</p>
+        </div>
+
+        <div class="video-showcase-container">
           <video id="galleryTourVideo" autoplay loop muted playsinline poster="1664.png">
             <source src="AQMaFX3Nvxn9MSUgWzbaojbyHqqkSSIp_2m2zx0ly3dE4Pi7ovTHC6fjJe65yU3SAMwao4H57MZ5wYMQ_euCVYsSi9aIGNGo30yI7DJwBNMQ.mp4" type="video/mp4">
           </video>
-          <div class="gallery-video-details">
+          <div class="video-showcase-body">
             <div>
-              <strong>Site Walkthrough & Turnkey Quality Showcase</strong>
-              <p>Live glimpse into craftsmanship, finishes, and flawless handover standards.</p>
+              <h3>Turnkey Execution & Fit-out Standards</h3>
+              <p>Witness our precision German fittings, seamless joinery, and premium handovers.</p>
             </div>
-            <a href="https://wa.me/919152838906?text=Hi,%20I%20watched%20your%20walkthrough%20video%20and%20want%20to%20book%20a%20site%20visit." class="btn btn-gold btn-sm">Book Free Site Visit</a>
+            <a href="https://wa.me/919152838906?text=Hi,%20I%20watched%20your%20walkthrough%20video%20and%20want%20to%20book%20a%20site%20visit." class="btn btn-gold btn-sm" target="_blank">Book Free Site Visit</a>
           </div>
         </div>
       </div>
@@ -695,26 +729,32 @@
   </div>
 
   <script>
-    // Top Hero Video: Play/Pause and Mute Controls
     const topVideo = document.getElementById('promoVideo');
     const playPauseBtn = document.getElementById('playPauseBtn');
-    const soundBtn = document.getElementById('soundBtn');
+
+    // Ensure video sound plays with user interaction bypass
+    function ensureUnmutedAudio() {
+      if (topVideo) {
+        topVideo.muted = false;
+        topVideo.volume = 1.0;
+        topVideo.play().catch(() => {});
+      }
+      window.removeEventListener('click', ensureUnmutedAudio);
+      window.removeEventListener('touchstart', ensureUnmutedAudio);
+    }
+    window.addEventListener('click', ensureUnmutedAudio, { once: true });
+    window.addEventListener('touchstart', ensureUnmutedAudio, { once: true });
 
     function togglePlayPause() {
       if (!topVideo) return;
       if (topVideo.paused) {
+        topVideo.muted = false;
         topVideo.play();
         playPauseBtn.textContent = '⏸ Pause';
       } else {
         topVideo.pause();
         playPauseBtn.textContent = '▶ Play';
       }
-    }
-
-    function toggleMute() {
-      if (!topVideo) return;
-      topVideo.muted = !topVideo.muted;
-      soundBtn.textContent = topVideo.muted ? '🔇 Mute' : '🔊 Sound On';
     }
 
     // 2-Column Gallery Filter Logic
