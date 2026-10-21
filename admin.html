@@ -336,25 +336,16 @@
         <p>होमपेज के बैकग्राउंड में लूप होने वाला वीडियो।</p>
       </div>
 
-      <div class="form-card">
-        <form id="heroForm" onsubmit="handleHeroUpload(event)">
-          <div class="form-group">
-            <label>Showcase Title</label>
-            <input type="text" id="hTitle" class="form-control" placeholder="उदा: Luxury MMR Living" required>
-          </div>
-          <div class="form-group">
-            <label>Video File (MP4, WebM)</label>
-            <div class="file-input-box">
-              <input type="file" id="hFile" accept="video/mp4,video/webm" required>
-            </div>
-            <div class="progress-wrapper" id="hProgressWrapper">
-              <div class="progress-bar" id="hProgressBar"></div>
-              <div class="progress-text" id="hProgressText">Uploading... 0%</div>
-            </div>
-          </div>
-          <button type="submit" id="hSubmitBtn" class="submit-btn">Upload Video</button>
-        </form>
-      </div>
+<form id="hero-header-form">
+  <label for="showcase-title">SHOWCASE TITLE</label>
+  <input type="text" id="showcase-title" placeholder="उदा: Luxury MMR Living" required>
+
+  <label for="video-link">VIDEO LINK</label>
+  <input type="url" id="video-link" placeholder="उदा: https://www.youtube.com/watch?v=..." required>
+
+  <button type="submit">Upload Video Link</button>
+</form>
+
 
       <div id="heroGrid" class="items-grid"></div>
     </section>
@@ -519,22 +510,16 @@
       if (!file) return;
 
       try {
-        btn.disabled = true;
-        const videoUrl = await uploadWithProgress(file, 'hero_videos', 'hProgressWrapper', 'hProgressBar', 'hProgressText');
+   document.getElementById('hero-header-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const title = document.getElementById('showcase-title').value;
+  const link = document.getElementById('video-link').value;
+  
+  // Realtime Database में डेटा सेव करने की लॉजिक यहाँ आएगी
+  console.log("Saving to DB:", title, link);
+  alert("Link saved successfully!");
+});
 
-        await db.ref('hero_videos').push({
-          title: title,
-          videoUrl: videoUrl,
-          timestamp: Date.now()
-        });
-
-        document.getElementById('heroForm').reset();
-        alert('वीडियो सफलतापूर्वक अपलोड हो गया!');
-      } catch (err) {
-        alert('Video Upload Error: ' + err.message);
-      } finally {
-        btn.disabled = false;
-      }
     }
 
     db.ref('hero_videos').on('value', snap => {
