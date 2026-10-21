@@ -14,86 +14,15 @@
   <meta name="author" content="Diamond Interiors" />
 
   <link rel="canonical" href="https://diamondinteriordesigner.in/" />
-  <link rel="alternate" hreflang="en-IN" href="https://diamondinteriordesigner.in/" />
-
-  <!-- Geo Meta Tags for Mumbai, Thane & Navi Mumbai SEO -->
-  <meta name="geo.region" content="IN-MH" />
-  <meta name="geo.placename" content="Mumbai, Thane, Navi Mumbai" />
-  <meta name="geo.position" content="19.0760;72.8777" />
-  <meta name="ICBM" content="19.0760, 72.8777" />
-
-  <!-- OpenGraph & Twitter Cards -->
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="en_IN" />
-  <meta property="og:site_name" content="Diamond Interiors" />
-  <meta property="og:title" content="Diamond Interiors | Luxury Interior Design Studio" />
-  <meta property="og:description" content="Bespoke modular kitchens, master suites, commercial architecture, and turnkey residences across Mumbai, Thane & Navi Mumbai." />
-  <meta property="og:url" content="https://diamondinteriordesigner.in/" />
-  <meta property="og:image" content="1664.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Diamond Interiors | Luxury Interior Design Mumbai" />
-  <meta name="twitter:description" content="500+ Projects Delivered. Luxury modular kitchens, turnkey homes, and commercial offices." />
-  <meta name="twitter:image" content="1664.png" />
-
   <link rel="icon" type="image/png" href="1664.png" />
   <link rel="apple-touch-icon" href="1664.png" />
 
-  <!-- Google Web Fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Schema.org Rich Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "InteriorDesigner",
-    "@id": "https://diamondinteriordesigner.in/#business",
-    "name": "Diamond Interiors",
-    "alternateName": ["Diamond Interior Designer Mumbai", "Diamond Interiors Thane"],
-    "url": "https://diamondinteriordesigner.in/",
-    "logo": "file_000000006020720882563cb278c0b2e6.png",
-    "image": "https://diamondinteriordesigner.in/1664.png",
-    "telephone": "+91-9152838906",
-    "email": "interiordiamond1@gmail.com",
-    "priceRange": "₹₹₹",
-    "currenciesAccepted": "INR",
-    "paymentAccepted": "Cash, Bank Transfer, UPI, Cheque",
-    "description": "Diamond Interiors is a luxury interior design and turnkey architectural studio in Mumbai offering modular kitchens, luxury bedrooms, false ceilings, pooja units, and B2B commercial fit-outs across Mumbai, Thane, and Navi Mumbai.",
-    "foundingDate": "2009",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Mumbai",
-      "addressRegion": "Maharashtra",
-      "addressCountry": "IN"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "19.0760",
-      "longitude": "72.8777"
-    },
-    "hasMap": "https://share.google/Hlmxe9SlQ8lC2yt4R",
-    "areaServed": [
-      {"@type": "City", "name": "Mumbai"},
-      {"@type": "City", "name": "Thane"},
-      {"@type": "City", "name": "Navi Mumbai"},
-      {"@type": "AdministrativeArea", "name": "Maharashtra"}
-    ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "bestRating": "5",
-      "worstRating": "1",
-      "ratingCount": "520"
-    }
-  }
-  </script>
-<!DOCTYPE html>
-<html lang="en-IN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diamond Interiors | Luxury Architecture & Interior Design Mumbai</title>
+  <!-- Firebase Compat SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
   <script>
@@ -107,27 +36,12 @@
       appId: "1:743080237212:web:3801f08600dd2b54293559",
       measurementId: "G-VPJ952EL89"
     };
-    firebase.initializeApp(firebaseConfig);
+
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
     const db = firebase.database();
   </script>
-</head>
-<body>
-  <!-- Aapka website ka structure yahan aayega -->
-  <div id="portfolio-container"></div>
-  <div id="hero-container"></div>
-  <div id="reels-container"></div>
-
-  <script>
-    // Data fetch karne ka logic
-    db.ref('portfolio').on('value', snapshot => {
-      const data = snapshot.val();
-      // Yahan DOM update karein
-    });
-    // Baaki modules ke liye bhi same logic
-  </script>
-</body>
-</html>
-
 
   <style>
     :root {
@@ -144,9 +58,7 @@
       --line: rgba(201, 148, 58, 0.16);
       --line-bright: rgba(240, 201, 106, 0.35);
       --accent: linear-gradient(135deg, #f0c96a 0%, #c9943a 50%, #7a5620 100%);
-      --radius-sm: 8px;
       --radius: 12px;
-      --radius-lg: 20px;
       --max: 1320px;
       --nav-h: 66px;
     }
@@ -166,19 +78,19 @@
     h1, h2, h3, h4 { font-family: 'Cormorant Garamond', Georgia, serif; line-height: 1.15; }
 
     .wrap { width: min(var(--max), calc(100% - 28px)); margin: 0 auto; position: relative; }
-    section { padding: 36px 0; position: relative; }
+    section { padding: 40px 0; position: relative; }
 
-    /* TOP BAR */
+    /* Top Bar */
     .topbar {
       background: rgba(201, 148, 58, 0.06);
       border-bottom: 1px solid var(--line);
       font-size: 0.78rem;
       color: var(--text-dim);
     }
-    .topbar .wrap { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; flex-wrap: wrap; }
+    .topbar .wrap { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; flex-wrap: wrap; }
     .topbar a { color: var(--gold-bright); font-weight: 600; }
 
-    /* NAVBAR */
+    /* Navbar */
     .nav {
       position: sticky; top: 0; z-index: 1000;
       height: var(--nav-h);
@@ -189,8 +101,7 @@
     }
     .nav-inner { display: flex; justify-content: space-between; align-items: center; height: 100%; }
     
-    /* LOGO FIX */
-    .brand { display: flex; align-items: center; gap: 10px; }
+    .brand { display: flex; align-items: center; gap: 12px; }
     .brand-logo-frame {
       width: 44px; height: 44px; border-radius: 50%;
       border: 1.5px solid var(--gold-bright);
@@ -210,21 +121,7 @@
     }
     .brand-text p { font-size: 0.7rem; color: var(--gold-bright); }
 
-    .nav-menu { display: flex; gap: 2px; align-items: center; }
-    .nav-menu a {
-      padding: 6px 10px; border-radius: 6px;
-      font-size: 0.82rem; font-weight: 500;
-      color: var(--text-dim); transition: 0.2s;
-    }
-    .nav-menu a:hover { color: var(--gold-bright); }
-    .nav-right { display: flex; gap: 8px; align-items: center; }
-    .burger {
-      display: none; background: none; border: 1px solid var(--line);
-      color: var(--platinum); width: 36px; height: 36px; border-radius: 8px;
-      cursor: pointer; font-size: 1.1rem;
-    }
-
-    /* BUTTONS */
+    /* Buttons */
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 6px;
       border-radius: 999px; padding: 9px 18px; font-weight: 700;
@@ -237,38 +134,24 @@
       background: var(--accent); color: #1a0e02;
       box-shadow: 0 4px 14px rgba(201, 148, 58, 0.35);
     }
-    .btn-outline {
-      border: 1px solid var(--line-bright);
-      background: rgba(201, 148, 58, 0.08); color: var(--platinum);
-    }
     .btn-wa {
       background: #25D366; color: #fff;
       box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
     }
     .btn-sm { padding: 6px 14px; font-size: 0.76rem; }
 
-    /* HERO COMPACT VIDEO */
-    .hero-reel {
-      padding: 12px 0 10px;
-      border-bottom: 1px solid var(--line);
-    }
+    /* Hero Video Box */
+    .hero-reel { padding: 14px 0 10px; border-bottom: 1px solid var(--line); }
     .video-box {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      max-height: 440px;
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--line-bright);
-      position: relative;
-      background: #000;
+      width: 100%; aspect-ratio: 16 / 9; max-height: 440px;
+      border-radius: var(--radius); overflow: hidden;
+      border: 1px solid var(--line-bright); position: relative; background: #000;
     }
-    .video-box video {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-    }
+    .video-box video { width: 100%; height: 100%; object-fit: cover; display: block; }
     .video-controls {
       position: absolute; bottom: 8px; left: 10px; right: 10px;
       display: flex; justify-content: space-between; align-items: center;
-      background: rgba(10, 7, 5, 0.7); backdrop-filter: blur(8px);
+      background: rgba(10, 7, 5, 0.75); backdrop-filter: blur(8px);
       padding: 6px 12px; border-radius: 8px; font-size: 0.75rem;
     }
     .v-btn {
@@ -276,8 +159,8 @@
       color: #fff; padding: 4px 10px; border-radius: 6px; cursor: pointer;
     }
 
-    /* HERO TEXT */
-    .hero-main { text-align: center; padding: 20px 0 24px; }
+    /* Hero Content */
+    .hero-main { text-align: center; padding: 22px 0 24px; }
     .hero-tag {
       display: inline-block; padding: 3px 12px; border-radius: 999px;
       border: 1px solid var(--line); background: rgba(201, 148, 58, 0.08);
@@ -291,93 +174,106 @@
       -webkit-text-fill-color: transparent;
     }
     .hero-sub { color: var(--text-dim); font-size: 0.88rem; max-width: 58ch; margin: 0 auto 16px; }
-    .hero-actions { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+    .hero-actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
 
-    /* STATS BAR */
+    /* Trust Stats */
     .trust-bar {
       background: var(--surface-2); border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line); padding: 12px 0;
+      border-bottom: 1px solid var(--line); padding: 14px 0;
     }
     .trust-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; text-align: center; }
-    .trust-grid strong { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; color: var(--gold-bright); }
-    .trust-grid span { font-size: 0.7rem; color: var(--text-dim); }
+    .trust-grid strong { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; color: var(--gold-bright); }
+    .trust-grid span { font-size: 0.72rem; color: var(--text-dim); }
 
-    /* SECTION HEADER */
-    .sec-head { text-align: center; margin-bottom: 18px; }
+    /* Headers */
+    .sec-head { text-align: center; margin-bottom: 22px; }
     .sec-tag {
       display: inline-block; padding: 3px 10px; border-radius: 999px;
       border: 1px solid var(--line); color: var(--gold-bright);
       font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;
     }
-    .sec-head h2 { font-size: 1.65rem; color: #fff; margin-bottom: 4px; }
+    .sec-head h2 { font-size: 1.8rem; color: #fff; margin-bottom: 4px; }
     .sec-head p { font-size: 0.82rem; color: var(--text-dim); }
 
-    /* ULTRA COMPACT 8 SERVICES GRID */
+    /* Services Grid */
     .services-grid-compact {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
     }
     .svc-card-compact {
       background: var(--card-bg); border: 1px solid var(--line);
-      border-radius: var(--radius); padding: 12px 10px;
+      border-radius: var(--radius); padding: 14px 12px;
       display: flex; flex-direction: column; justify-content: space-between;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, transform 0.2s;
     }
-    .svc-card-compact:hover { border-color: var(--gold-bright); }
-    .svc-top { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
-    .svc-icon { font-size: 1.15rem; }
+    .svc-card-compact:hover { border-color: var(--gold-bright); transform: translateY(-2px); }
+    .svc-top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .svc-icon { font-size: 1.25rem; }
     .svc-card-compact h3 {
-      font-family: 'Space Grotesk', sans-serif; font-size: 0.82rem;
+      font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem;
       font-weight: 700; color: #fff;
     }
-    .svc-card-compact p { font-size: 0.72rem; color: var(--text-dim); line-height: 1.35; margin-bottom: 8px; }
-    .svc-link { font-size: 0.74rem; font-weight: 700; color: var(--gold-bright); }
+    .svc-card-compact p { font-size: 0.74rem; color: var(--text-dim); line-height: 1.4; margin-bottom: 10px; }
+    .svc-link { font-size: 0.76rem; font-weight: 700; color: var(--gold-bright); }
 
-    /* RESTORED PORTFOLIO SLIDER */
-    .gallery-filter-bar { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+    /* Portfolio Track & Cards */
+    .gallery-filter-bar { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
     .filter-btn {
       background: rgba(201, 148, 58, 0.06); border: 1px solid var(--line);
-      color: var(--text-dim); padding: 5px 12px; border-radius: 999px;
-      font-size: 0.74rem; font-weight: 600; cursor: pointer;
+      color: var(--text-dim); padding: 5px 14px; border-radius: 999px;
+      font-size: 0.76rem; font-weight: 600; cursor: pointer; transition: 0.2s;
     }
-    .filter-btn.active { background: var(--accent); color: #1a0e02; font-weight: 700; }
+    .filter-btn.active, .filter-btn:hover { background: var(--accent); color: #1a0e02; font-weight: 700; }
     
-    .gallery-track {
-      display: flex; gap: 12px; overflow-x: auto;
-      scroll-snap-type: x mandatory; padding-bottom: 10px;
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 16px;
     }
     .gallery-item-compact {
-      flex: 0 0 260px; scroll-snap-align: start;
       background: var(--surface-2); border: 1px solid var(--line);
       border-radius: var(--radius); overflow: hidden; cursor: zoom-in;
+      transition: transform 0.2s, border-color 0.2s;
     }
+    .gallery-item-compact:hover { transform: translateY(-3px); border-color: var(--gold-bright); }
     .gallery-img-box { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; background: #110c08; }
     .gallery-img-box img { width: 100%; height: 100%; object-fit: cover; }
-    .gallery-meta { padding: 8px 10px; }
-    .gallery-meta h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.82rem; color: #fff; }
-    .gallery-meta span { font-size: 0.7rem; color: var(--gold-bright); }
+    .gallery-meta { padding: 10px 12px; }
+    .gallery-meta h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.86rem; color: #fff; margin-bottom: 2px; }
+    .gallery-meta span { font-size: 0.72rem; color: var(--gold-bright); }
 
-    /* FOOTER FIX */
+    /* Reels Horizontal Slider */
+    .reels-track {
+      display: flex; gap: 14px; overflow-x: auto;
+      scroll-snap-type: x mandatory; padding-bottom: 12px;
+    }
+    .reel-card {
+      flex: 0 0 240px; scroll-snap-align: start;
+      background: var(--surface-2); border: 1px solid var(--line);
+      border-radius: var(--radius); overflow: hidden;
+    }
+    .reel-card video { width: 100%; height: 380px; object-fit: cover; display: block; }
+    .reel-meta { padding: 10px 12px; font-size: 0.85rem; font-weight: 600; color: #fff; }
+
+    /* Footer */
     footer {
       background: var(--surface-2); border-top: 1px solid var(--line);
-      padding: 30px 0 110px;
+      padding: 34px 0 110px;
     }
-    .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 20px; }
+    .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 24px; }
     .footer-brand-logo {
       width: 44px; height: 44px; border-radius: 50%;
       border: 1.5px solid var(--line-bright); overflow: hidden;
-      margin-bottom: 8px; background: #000;
+      margin-bottom: 10px; background: #000;
     }
-    .footer-brand-logo img {
-      width: 100%; height: 100%; object-fit: cover;
-      image-rendering: -webkit-optimize-contrast;
-    }
+    .footer-brand-logo img { width: 100%; height: 100%; object-fit: cover; }
     .footer-col h4 {
-      font-family: 'Space Grotesk', sans-serif; font-size: 0.82rem;
-      font-weight: 700; color: #fff; text-transform: uppercase; margin-bottom: 10px;
+      font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem;
+      font-weight: 700; color: #fff; text-transform: uppercase; margin-bottom: 12px;
     }
-    .footer-links a { display: block; font-size: 0.78rem; color: var(--text-dim); margin-bottom: 5px; }
+    .footer-links a { display: block; font-size: 0.8rem; color: var(--text-dim); margin-bottom: 6px; }
+    .footer-links a:hover { color: var(--gold-bright); }
 
-    /* FAST RESPONSIVE GLOWING FLOATING BUTTONS */
+    /* Floating WhatsApp & Call Buttons */
     .floating-cta {
       position: fixed; right: 16px; bottom: 20px; z-index: 9999;
       display: flex; flex-direction: column; gap: 12px;
@@ -406,7 +302,7 @@
       50% { box-shadow: 0 0 24px rgba(240, 201, 106, 1); transform: scale(1.05); }
     }
 
-    /* LIGHTBOX */
+    /* Lightbox */
     .lightbox {
       position: fixed; inset: 0; z-index: 10000;
       background: rgba(4, 3, 2, 0.95); display: none;
@@ -417,24 +313,25 @@
     .lb-close { position: fixed; top: 16px; right: 16px; font-size: 1.5rem; background: none; border: none; color: #fff; cursor: pointer; }
 
     @media (max-width: 900px) {
-      .services-grid-compact { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .services-grid-compact { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .trust-grid { grid-template-columns: repeat(3, 1fr); }
       .footer-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
       .topbar { display: none; }
       .trust-grid { grid-template-columns: repeat(2, 1fr); }
-      .services-grid-compact { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+      .services-grid-compact { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .gallery-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 
 <body>
 
-<!-- TOP BAR -->
+<!-- TOP ANNOUNCEMENT BAR -->
 <div class="topbar">
   <div class="wrap">
-    <div>✦ Interior Studio · Mumbai · Thane · Navi Mumbai | 500+ Fit-outs</div>
+    <div>✦ Interior Studio · Mumbai · Thane · Navi Mumbai | 500+ Luxury Fit-outs</div>
     <div>
       <a href="tel:+919152838906">📞 +91 9152838906</a> | 
       <a href="https://wa.me/919152838906?text=Hi%20Diamond%20Interiors,%20I%20need%20a%20quote." target="_blank">💬 WhatsApp</a>
@@ -442,12 +339,12 @@
   </div>
 </div>
 
-<!-- NAVBAR -->
+<!-- NAVBAR WITH LOGO -->
 <header class="nav">
   <div class="wrap nav-inner">
     <a class="brand" href="#">
       <div class="brand-logo-frame">
-        <img src="file_000000006020720882563cb278c0b2e6.png" width="44" height="44">
+        <img src="file_000000006020720882563cb278c0b2e6.png" width="44" height="44" alt="Diamond Interiors Logo" onerror="this.src='1664.png'">
       </div>
       <div class="brand-text">
         <h2>Diamond Interiors</h2>
@@ -460,16 +357,16 @@
 
 <main>
 
-<!-- SHOWCASE VIDEO REEL -->
+<!-- SHOWCASE VIDEO REEL (REALTIME SYNCED) -->
 <section class="hero-reel">
   <div class="wrap">
-    <div class="video-box">
+    <div class="video-box" id="heroVideoContainer">
       <video id="promoVideo" playsinline autoplay muted loop poster="1664.png">
         <source src="https://assets.mixkit.co/videos/preview/mixkit-modern-interior-design-of-a-living-room-42358-large.mp4" type="video/mp4">
       </video>
       <div class="video-controls">
         <span id="videoTitle">Signature Living & Modular Architecture</span>
-        <button class="v-btn" id="soundBtn">🔇 Mute</button>
+        <button class="v-btn" id="soundBtn" onclick="toggleSound()">🔇 Mute</button>
       </div>
     </div>
   </div>
@@ -501,7 +398,7 @@
   </div>
 </div>
 
-<!-- COMPACT 8 SERVICES SECTION -->
+<!-- ALL 8 SPECIALIZED SERVICES WITH DIRECT WHATSAPP ENQUIRY -->
 <section id="services">
   <div class="wrap">
     <div class="sec-head">
@@ -514,207 +411,110 @@
       <div class="svc-card-compact">
         <div class="svc-top"><span class="svc-icon">🍳</span><h3>Modular Kitchens</h3></div>
         <p>German soft-close fittings, anti-scratch quartz counters.</p>
-        <a class="svc-link" href="https://wa.me/919152838906?text=Quote%20for%20Modular%20Kitchen" target="_blank">Get Quote →</a>
+        <a class="svc-link" href="https://wa.me/919152838906?text=Quote%20for%20Modular%20Kitchen" target="_blank">Enquire on WhatsApp →</a>
       </div>
 
       <div class="svc-card-compact">
         <div class="svc-top"><span class="svc-icon">🛏️</span><h3>Bedroom Interiors</h3></div>
         <p>Bespoke upholstered beds and ambient cove lighting.</p>
-        <a class="svc-link" href="https://wa.me/919152838906?text=Quote%20for%20Bedroom%20Interior" target="_blank">Get Quote →</a>
+        <a class="svc-link" href="https://wa.me/919152838906?text=Quote%20for%20Bedroom%20Interior" target="_blank">Enquire on WhatsApp →</a>
       </div>
 
       <div class="svc-card-compact">
         <div class="svc-top"><span class="svc-icon">🚪</span><h3>Wardrobes & Storage</h3></div>
         <p>Floor-to-ceiling profiles, tinted glass walk-in closets.</p>
-        <a class="svc-link" href="https://wa.me/919152838906?text=Quote%20for%20Wardrobes" target="_blank">Get Quote →</a>
+        <a class="svc-link" href="https://wa.me/919152838906?text=Quote%20for%20Wardrobes" target="_blank">Enquire on WhatsApp →</a>
       </div>
 
       <div class="svc-card-compact">
         <div class="svc-top"><span class="svc-icon">✨</span><h3>False Ceiling & POP</h3></div>
         <p>Gypsum coves, perimeter LED magnetic track channels.</p>
-        <a class="svc-link" href="https://wa.me/919152838906?text=Quote%20for%20False%20Ceiling" target="_blank">Get Quote →</a>
+        <a class="svc-link" href="https://wa.me/919152838906?text=Quote%20for%20False%20Ceiling" target="_blank">Enquire on WhatsApp →</a>
       </div>
 
       <div class="svc-card-compact">
         <div class="svc-top"><span class="svc-icon">🪵</span><h3>Luxury Flooring</h3></div>
         <p>Bookmatched Italian marble laying, vitrified slabs.</p>
-        <a class="svc-link" href="https://wa.me/919152838906?text=Quote%20for%20Flooring" target="_blank">Get Quote →</a>
+        <a class="svc-link" href="https://wa.me/919152838906?text=Quote%20for%20Flooring" target="_blank">Enquire on WhatsApp →</a>
       </div>
 
       <div class="svc-card-compact">
         <div class="svc-top"><span class="svc-icon">📺</span><h3>TV & Media Consoles</h3></div>
         <p>Fluted charcoal panels, back-lit floating onyx units.</p>
-        <a class="svc-link" href="https://wa.me/919152838906?text=Quote%20for%20TV%20Unit" target="_blank">Get Quote →</a>
+        <a class="svc-link" href="https://wa.me/919152838906?text=Quote%20for%20TV%20Unit" target="_blank">Enquire on WhatsApp →</a>
       </div>
 
       <div class="svc-card-compact">
         <div class="svc-top"><span class="svc-icon">🕉️</span><h3>Mandir & Pooja Units</h3></div>
         <p>CNC jali laser carvings, backlit onyx marble sanctums.</p>
-        <a class="svc-link" href="https://wa.me/919152838906?text=Quote%20for%20Pooja%20Unit" target="_blank">Get Quote →</a>
+        <a class="svc-link" href="https://wa.me/919152838906?text=Quote%20for%20Pooja%20Unit" target="_blank">Enquire on WhatsApp →</a>
       </div>
 
       <div class="svc-card-compact">
         <div class="svc-top"><span class="svc-icon">🏗️</span><h3>Turnkey Execution</h3></div>
         <p>Civil, plumbing, electrical, and carpentry on a single contract.</p>
-        <a class="svc-link" href="https://wa.me/919152838906?text=Quote%20for%20Turnkey%20Fitout" target="_blank">Get Quote →</a>
+        <a class="svc-link" href="https://wa.me/919152838906?text=Quote%20for%20Turnkey%20Fitout" target="_blank">Enquire on WhatsApp →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- RESTORED PORTFOLIO SHOWCASE GALLERY (ALL 10 PROJECTS) -->
+<!-- PORTFOLIO SHOWCASE GALLERY (ALL 10 PROJECTS + REALTIME SYNC) -->
 <section id="gallery">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-tag">Portfolio Showcase</span>
       <h2>Featured Projects Across MMR</h2>
-      <p>Swipe horizontally to explore our completed projects.</p>
+      <p>Filter by spaces or tap on any picture to view in high definition.</p>
     </div>
 
     <div class="gallery-filter-bar">
-      <button class="filter-btn active" onclick="filterGallery('all')">All Work</button>
-      <button class="filter-btn" onclick="filterGallery('kitchen')">Kitchens</button>
-      <button class="filter-btn" onclick="filterGallery('bedroom')">Bedrooms</button>
-      <button class="filter-btn" onclick="filterGallery('living')">Living & Dining</button>
-      <button class="filter-btn" onclick="filterGallery('commercial')">Commercial & Hotels</button>
+      <button class="filter-btn active" onclick="filterGallery('all', this)">All Work</button>
+      <button class="filter-btn" onclick="filterGallery('kitchen', this)">Kitchens</button>
+      <button class="filter-btn" onclick="filterGallery('bedroom', this)">Bedrooms</button>
+      <button class="filter-btn" onclick="filterGallery('living', this)">Living & Dining</button>
+      <button class="filter-btn" onclick="filterGallery('commercial', this)">Commercial & Hotels</button>
     </div>
 
-    <div class="gallery-track" id="galleryTrack">
-      <!-- 1 -->
-      <div class="gallery-item-compact" data-cat="kitchen" onclick="openLightbox('file_00000000b0b0722fbfd54bef48c55ef5.png', 'Modular Kitchen Suite — Bandra, Mumbai')">
-        <div class="gallery-img-box">
-          <img src="file_00000000b0b0722fbfd54bef48c55ef5.png" alt="Modular Kitchen Bandra" onerror="this.src='https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=700&q=80'" loading="lazy">
-        </div>
-        <div class="gallery-meta">
-          <h4>Modular Kitchen Suite</h4>
-          <span>📍 Bandra, Mumbai</span>
-        </div>
-      </div>
-
-      <!-- 2 -->
-      <div class="gallery-item-compact" data-cat="bedroom" onclick="openLightbox('file_000000009c1071f5be1f883ff3b950f5.png', 'Luxury Master Suite — Thane')">
-        <div class="gallery-img-box">
-          <img src="file_000000009c1071f5be1f883ff3b950f5.png" alt="Luxury Master Suite Thane" onerror="this.src='https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=700&q=80'" loading="lazy">
-        </div>
-        <div class="gallery-meta">
-          <h4>Luxury Master Suite</h4>
-          <span>📍 Hiranandani Estate, Thane</span>
-        </div>
-      </div>
-
-      <!-- 3 -->
-      <div class="gallery-item-compact" data-cat="living" onclick="openLightbox('file_000000003ca8722fa8dc95c584e4ca15.png', 'Minimalist Living Room — Navi Mumbai')">
-        <div class="gallery-img-box">
-          <img src="file_000000003ca8722fa8dc95c584e4ca15.png" alt="Minimalist Living Room" onerror="this.src='https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=700&q=80'" loading="lazy">
-        </div>
-        <div class="gallery-meta">
-          <h4>Minimalist Living Room</h4>
-          <span>📍 Palm Beach Rd, Navi Mumbai</span>
-        </div>
-      </div>
-
-      <!-- 4 -->
-      <div class="gallery-item-compact" data-cat="commercial" onclick="openLightbox('file_00000000a7ec720ca067e4985a2b86e1.png', 'Executive Corporate Office — BKC')">
-        <div class="gallery-img-box">
-          <img src="file_00000000a7ec720ca067e4985a2b86e1.png" alt="Executive Corporate Office BKC" onerror="this.src='https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=700&q=80'" loading="lazy">
-        </div>
-        <div class="gallery-meta">
-          <h4>Executive Corporate Office</h4>
-          <span>📍 BKC, Mumbai</span>
-        </div>
-      </div>
-
-      <!-- 5 -->
-      <div class="gallery-item-compact" data-cat="bedroom" onclick="openLightbox('file_00000000949c722fbce254b51e2155ee.png', 'Fluted Glass Wardrobe — Thane')">
-        <div class="gallery-img-box">
-          <img src="file_00000000949c722fbce254b51e2155ee.png" alt="Fluted Glass Wardrobe Thane" onerror="this.src='https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=700&q=80'" loading="lazy">
-        </div>
-        <div class="gallery-meta">
-          <h4>Fluted Glass Wardrobe</h4>
-          <span>📍 Ghodbunder Rd, Thane</span>
-        </div>
-      </div>
-
-      <!-- 6 -->
-      <div class="gallery-item-compact" data-cat="bedroom" onclick="openLightbox('file_000000007cfc71f5b9ebab0e03b8362a.png', 'Boutique Guest Bedroom — Worli')">
-        <div class="gallery-img-box">
-          <img src="file_000000007cfc71f5b9ebab0e03b8362a.png" alt="Boutique Guest Bedroom Worli" onerror="this.src='https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=700&q=80'" loading="lazy">
-        </div>
-        <div class="gallery-meta">
-          <h4>Boutique Guest Bedroom</h4>
-          <span>📍 Worli, Mumbai</span>
-        </div>
-      </div>
-
-      <!-- 7 -->
-      <div class="gallery-item-compact" data-cat="living" onclick="openLightbox('file_00000000e7ac71f5800fc9308dd81a80.png', 'Architectural False Ceiling — Majiwada')">
-        <div class="gallery-img-box">
-          <img src="file_00000000e7ac71f5800fc9308dd81a80.png" alt="Architectural False Ceiling" onerror="this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=700&q=80'" loading="lazy">
-        </div>
-        <div class="gallery-meta">
-          <h4>Architectural False Ceiling</h4>
-          <span>📍 Majiwada, Thane</span>
-        </div>
-      </div>
-
-      <!-- 8 -->
-      <div class="gallery-item-compact" data-cat="living" onclick="openLightbox('file_00000000c86471fd86a7b1e5af6dda30.png', 'Signature Dining Lounge — Kharghar')">
-        <div class="gallery-img-box">
-          <img src="file_00000000c86471fd86a7b1e5af6dda30.png" alt="Signature Dining Lounge" onerror="this.src='https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=700&q=80'" loading="lazy">
-        </div>
-        <div class="gallery-meta">
-          <h4>Signature Dining Lounge</h4>
-          <span>📍 Kharghar, Navi Mumbai</span>
-        </div>
-      </div>
-
-      <!-- 9 -->
-      <div class="gallery-item-compact" data-cat="commercial" onclick="openLightbox('file_000000006d8871fabb84289dd98f7664.png', 'Hotel Hospitality Suite — Juhu')">
-        <div class="gallery-img-box">
-          <img src="file_000000006d8871fabb84289dd98f7664.png" alt="Hotel Hospitality Suite Juhu" onerror="this.src='https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=700&q=80'" loading="lazy">
-        </div>
-        <div class="gallery-meta">
-          <h4>Hotel Hospitality Suite</h4>
-          <span>📍 Juhu, Mumbai</span>
-        </div>
-      </div>
-
-      <!-- 10 -->
-      <div class="gallery-item-compact" data-cat="living" onclick="openLightbox('file_00000000e65c7206abb07b5177c9e5a9.png', 'Bespoke Stone Flooring — Lower Parel')">
-        <div class="gallery-img-box">
-          <img src="file_00000000e65c7206abb07b5177c9e5a9.png" alt="Bespoke Stone Flooring" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80'" loading="lazy">
-        </div>
-        <div class="gallery-meta">
-          <h4>Bespoke Stone Flooring</h4>
-          <span>📍 Lower Parel, Mumbai</span>
-        </div>
-      </div>
-    </div>
+    <div class="gallery-grid" id="galleryContainer"></div>
   </div>
 </section>
 
-<!-- SERVICE LOCATIONS (30+ AREAS) -->
+<!-- VIDEO WALKTHROUGHS SECTION (REELS) -->
+<section id="walkthroughs" style="background:var(--surface);">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">Site Tours</span>
+      <h2>Project Video Walkthroughs</h2>
+      <p>Explore actual handovers and finished architectural spaces.</p>
+    </div>
+
+    <div class="reels-track" id="reelsContainer"></div>
+  </div>
+</section>
+
+<!-- 30+ SERVICE LOCATIONS ACROSS MMR -->
 <section id="location" style="background:var(--surface);">
   <div class="wrap" style="text-align:center;">
     <span class="sec-tag">Service Footprint</span>
     <h2>Serving 30+ Neighborhoods Across MMR</h2>
-    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:6px; margin:14px 0 16px;">
-      <span style="background:var(--surface-2); border:1px solid var(--line); padding:4px 8px; border-radius:12px; font-size:0.72rem;">Mumbai City</span>
-      <span style="background:var(--surface-2); border:1px solid var(--line); padding:4px 8px; border-radius:12px; font-size:0.72rem;">Bandra West</span>
-      <span style="background:var(--surface-2); border:1px solid var(--line); padding:4px 8px; border-radius:12px; font-size:0.72rem;">Juhu</span>
-      <span style="background:var(--surface-2); border:1px solid var(--line); padding:4px 8px; border-radius:12px; font-size:0.72rem;">Andheri West</span>
-      <span style="background:var(--surface-2); border:1px solid var(--line); padding:4px 8px; border-radius:12px; font-size:0.72rem;">Powai</span>
-      <span style="background:var(--surface-2); border:1px solid var(--line); padding:4px 8px; border-radius:12px; font-size:0.72rem;">Thane West</span>
-      <span style="background:var(--surface-2); border:1px solid var(--line); padding:4px 8px; border-radius:12px; font-size:0.72rem;">Ghodbunder Road</span>
-      <span style="background:var(--surface-2); border:1px solid var(--line); padding:4px 8px; border-radius:12px; font-size:0.72rem;">Hiranandani Estate</span>
-      <span style="background:var(--surface-2); border:1px solid var(--line); padding:4px 8px; border-radius:12px; font-size:0.72rem;">Majiwada</span>
-      <span style="background:var(--surface-2); border:1px solid var(--line); padding:4px 8px; border-radius:12px; font-size:0.72rem;">Kalyan</span>
-      <span style="background:var(--surface-2); border:1px solid var(--line); padding:4px 8px; border-radius:12px; font-size:0.72rem;">Dombivli</span>
-      <span style="background:var(--surface-2); border:1px solid var(--line); padding:4px 8px; border-radius:12px; font-size:0.72rem;">Vashi</span>
-      <span style="background:var(--surface-2); border:1px solid var(--line); padding:4px 8px; border-radius:12px; font-size:0.72rem;">Nerul</span>
-      <span style="background:var(--surface-2); border:1px solid var(--line); padding:4px 8px; border-radius:12px; font-size:0.72rem;">Seawoods</span>
-      <span style="background:var(--surface-2); border:1px solid var(--line); padding:4px 8px; border-radius:12px; font-size:0.72rem;">Kharghar</span>
-      <span style="background:var(--surface-2); border:1px solid var(--line); padding:4px 8px; border-radius:12px; font-size:0.72rem;">Belapur</span>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin:16px 0 20px;">
+      <span style="background:var(--surface-2); border:1px solid var(--line); padding:6px 12px; border-radius:12px; font-size:0.75rem;">Mumbai City</span>
+      <span style="background:var(--surface-2); border:1px solid var(--line); padding:6px 12px; border-radius:12px; font-size:0.75rem;">Bandra West</span>
+      <span style="background:var(--surface-2); border:1px solid var(--line); padding:6px 12px; border-radius:12px; font-size:0.75rem;">Juhu</span>
+      <span style="background:var(--surface-2); border:1px solid var(--line); padding:6px 12px; border-radius:12px; font-size:0.75rem;">Andheri West</span>
+      <span style="background:var(--surface-2); border:1px solid var(--line); padding:6px 12px; border-radius:12px; font-size:0.75rem;">Powai</span>
+      <span style="background:var(--surface-2); border:1px solid var(--line); padding:6px 12px; border-radius:12px; font-size:0.75rem;">Thane West</span>
+      <span style="background:var(--surface-2); border:1px solid var(--line); padding:6px 12px; border-radius:12px; font-size:0.75rem;">Ghodbunder Road</span>
+      <span style="background:var(--surface-2); border:1px solid var(--line); padding:6px 12px; border-radius:12px; font-size:0.75rem;">Hiranandani Estate</span>
+      <span style="background:var(--surface-2); border:1px solid var(--line); padding:6px 12px; border-radius:12px; font-size:0.75rem;">Majiwada</span>
+      <span style="background:var(--surface-2); border:1px solid var(--line); padding:6px 12px; border-radius:12px; font-size:0.75rem;">Kalyan</span>
+      <span style="background:var(--surface-2); border:1px solid var(--line); padding:6px 12px; border-radius:12px; font-size:0.75rem;">Dombivli</span>
+      <span style="background:var(--surface-2); border:1px solid var(--line); padding:6px 12px; border-radius:12px; font-size:0.75rem;">Vashi</span>
+      <span style="background:var(--surface-2); border:1px solid var(--line); padding:6px 12px; border-radius:12px; font-size:0.75rem;">Nerul</span>
+      <span style="background:var(--surface-2); border:1px solid var(--line); padding:6px 12px; border-radius:12px; font-size:0.75rem;">Seawoods</span>
+      <span style="background:var(--surface-2); border:1px solid var(--line); padding:6px 12px; border-radius:12px; font-size:0.75rem;">Kharghar</span>
+      <span style="background:var(--surface-2); border:1px solid var(--line); padding:6px 12px; border-radius:12px; font-size:0.75rem;">Belapur</span>
     </div>
     <a class="btn btn-gold btn-sm" href="https://share.google/Hlmxe9SlQ8lC2yt4R" target="_blank">📍 Open Studio on Google Maps</a>
   </div>
@@ -722,13 +522,13 @@
 
 </main>
 
-<!-- FOOTER WITH CRISP LOGO -->
+<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="footer-grid">
       <div>
         <div class="footer-brand-logo">
-          <img src="file_000000006020720882563cb278c0b2e6.png">
+          <img src="file_000000006020720882563cb278c0b2e6.png" alt="Logo" onerror="this.src='1664.png'">
         </div>
         <h3 style="color:#fff; font-size:1.3rem; margin-bottom:4px;">Diamond Interiors</h3>
         <p style="font-size:0.8rem; color:var(--text-dim); line-height:1.5; margin-bottom:12px;">
@@ -736,6 +536,9 @@
         </p>
         <p style="font-size:0.82rem; color:var(--gold-bright);">
           📞 <a href="tel:+919152838906">+91 9152838906</a> | ✉️ <a href="mailto:interiordiamond1@gmail.com">interiordiamond1@gmail.com</a>
+        </p>
+        <p style="font-size:0.76rem; color:var(--text-dim); margin-top:6px;">
+          📍 Kasarvadavali, Thane West, Thane, Maharashtra 400615, India
         </p>
       </div>
 
@@ -757,6 +560,7 @@
           <a href="#gallery">Project Portfolio</a>
           <a href="#location">Service Locations</a>
           <a href="https://share.google/Hlmxe9SlQ8lC2yt4R" target="_blank">Google Maps Location</a>
+          <a href="https://wa.me/919152838906?text=Hello%20Diamond%20Interiors,%20I%20need%20a%20quote." target="_blank">Instant WhatsApp Estimate</a>
         </div>
       </div>
     </div>
@@ -767,16 +571,14 @@
   </div>
 </footer>
 
-<!-- CONTINUOUS GLOWING FLOATING BUTTONS (FAST ZERO-DELAY) -->
+<!-- CONTINUOUS GLOWING FLOATING BUTTONS -->
 <div class="floating-cta">
-  <!-- WhatsApp Instant Link -->
   <a class="fab fab-wa" href="https://wa.me/919152838906?text=Hello%20Diamond%20Interiors,%20I%20need%20a%20quote%20for%20interior%20design." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
     <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
       <path d="M20.5 3.5A11.5 11.5 0 0 0 1.7 17.1L1 22l4.9-.7A11.5 11.5 0 1 0 20.5 3.5Zm-8.8 17a9.1 9.1 0 0 1-4.6-1.3l-.3-.2-2.9.4.4-2.8-.2-.3A9.2 9.2 0 1 1 11.7 20.5Zm5.3-6.6c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-.9 1.2-.3.2-.6.1a7.6 7.6 0 0 1-2.2-1.4 8.4 8.4 0 0 1-1.5-1.9c-.2-.3 0-.5.1-.7l.5-.6c.1-.2.1-.4.2-.6s0-.4-.1-.5c-.1-.1-.7-1.6-1-2.2s-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1-1.1 2.4s1.2 2.9 1.3 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.8.7.7.2 1.3.2 1.8.1.5-.1 1.8-.7 2-1.3.2-.6.2-1.2.2-1.3 0-.1-.2-.2-.5-.3Z"/>
     </svg>
   </a>
 
-  <!-- Phone Call Instant Link -->
   <a class="fab fab-call" href="tel:+919152838906" aria-label="Call Now">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
       <path d="M6.6 10.8c1.3 2.6 3.2 4.5 5.8 5.8l1.9-1.9c.2-.2.5-.3.8-.2 1 .3 2 .5 3.1.5.5 0 .8.4.8.8V20c0 .5-.4.9-.9.9C9.8 20.9 3.1 14.2 3.1 5.9c0-.5.4-.9.9-.9h4.2c.4 0 .8.3.8.8 0 1.1.2 2.1.5 3.1.1.3 0 .6-.2.8l-1.9 1.1Z"/>
@@ -789,37 +591,129 @@
   <button class="lb-close" onclick="closeLightbox()">✕</button>
   <div class="lb-box" onclick="event.stopPropagation()">
     <img id="lbImage" src="" alt="Project Preview">
-    <p id="lbCaption" style="color:var(--gold-bright); margin-top:8px; font-weight:700;"></p>
+    <p id="lbCaption" style="color:var(--gold-bright); margin-top:8px; font-weight:700; text-align:center;"></p>
   </div>
 </div>
 
 <script>
-  // Simple Video Sound Toggle
-  const v = document.getElementById('promoVideo');
-  const sBtn = document.getElementById('soundBtn');
-  if (sBtn && v) {
-    sBtn.addEventListener('click', () => {
+  // All 10 Default High-Res Project Assets
+  const defaultProjects = [
+    { cat: 'kitchen', img: 'file_00000000b0b0722fbfd54bef48c55ef5.png', title: 'Modular Kitchen Suite', loc: 'Bandra, Mumbai' },
+    { cat: 'bedroom', img: 'file_000000009c1071f5be1f883ff3b950f5.png', title: 'Luxury Master Suite', loc: 'Hiranandani Estate, Thane' },
+    { cat: 'living', img: 'file_000000003ca8722fa8dc95c584e4ca15.png', title: 'Minimalist Living Room', loc: 'Palm Beach Rd, Navi Mumbai' },
+    { cat: 'commercial', img: 'file_00000000a7ec720ca067e4985a2b86e1.png', title: 'Executive Corporate Office', loc: 'BKC, Mumbai' },
+    { cat: 'bedroom', img: 'file_00000000949c722fbce254b51e2155ee.png', title: 'Fluted Glass Wardrobe', loc: 'Ghodbunder Rd, Thane' },
+    { cat: 'bedroom', img: 'file_000000007cfc71f5b9ebab0e03b8362a.png', title: 'Boutique Guest Bedroom', loc: 'Worli, Mumbai' },
+    { cat: 'living', img: 'file_00000000e7ac71f5800fc9308dd81a80.png', title: 'Architectural False Ceiling', loc: 'Majiwada, Thane' },
+    { cat: 'living', img: 'file_00000000c86471fd86a7b1e5af6dda30.png', title: 'Signature Dining Lounge', loc: 'Kharghar, Navi Mumbai' },
+    { cat: 'commercial', img: 'file_000000006d8871fabb84289dd98f7664.png', title: 'Hotel Hospitality Suite', loc: 'Juhu, Mumbai' },
+    { cat: 'living', img: 'file_00000000e65c7206abb07b5177c9e5a9.png', title: 'Bespoke Stone Flooring', loc: 'Lower Parel, Mumbai' }
+  ];
+
+  let activeProjects = [...defaultProjects];
+  let activeCategory = 'all';
+
+  // Toggle Video Sound
+  function toggleSound() {
+    const v = document.getElementById('promoVideo');
+    const sBtn = document.getElementById('soundBtn');
+    if (v && sBtn) {
       v.muted = !v.muted;
       sBtn.textContent = v.muted ? '🔇 Mute' : '🔊 Sound On';
-    });
+    }
   }
 
-  // Gallery Filter
-  function filterGallery(category) {
-    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-
-    const items = document.querySelectorAll('.gallery-item-compact');
-    items.forEach(el => {
-      if (category === 'all' || el.getAttribute('data-cat') === category) {
-        el.style.display = 'block';
-      } else {
-        el.style.display = 'none';
+  // Realtime Hero Video Sync
+  db.ref('hero_videos').limitToLast(1).on('value', snap => {
+    const data = snap.val();
+    if (data) {
+      const item = Object.values(data)[0];
+      const video = document.getElementById('promoVideo');
+      const title = document.getElementById('videoTitle');
+      if (video && item.videoUrl) {
+        video.src = item.videoUrl;
+        title.textContent = item.title || 'Signature Living & Architecture';
       }
+    }
+  });
+
+  // Realtime Portfolio Sync
+  db.ref('portfolio').on('value', snap => {
+    const data = snap.val();
+    if (data) {
+      const dynamicList = Object.values(data).map(d => ({
+        cat: d.category || 'living',
+        img: d.image,
+        title: d.title,
+        loc: d.location || 'Mumbai & Thane'
+      })).reverse();
+      // Combine newly uploaded items with default collection
+      activeProjects = [...dynamicList, ...defaultProjects];
+    } else {
+      activeProjects = [...defaultProjects];
+    }
+    renderGallery();
+  });
+
+  // Filter Projects
+  function filterGallery(category, btn) {
+    activeCategory = category;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderGallery();
+  }
+
+  function renderGallery() {
+    const container = document.getElementById('galleryContainer');
+    container.innerHTML = '';
+
+    const filtered = activeProjects.filter(p => activeCategory === 'all' || p.cat === activeCategory);
+
+    filtered.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'gallery-item-compact';
+      card.onclick = () => openLightbox(p.img, `${p.title} — ${p.loc}`);
+      card.innerHTML = `
+        <div class="gallery-img-box">
+          <img src="${p.img}" alt="${p.title}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=700&q=80'">
+        </div>
+        <div class="gallery-meta">
+          <h4>${p.title}</h4>
+          <span>📍 ${p.loc}</span>
+        </div>
+      `;
+      container.appendChild(card);
     });
   }
 
-  // Lightbox
+  // Realtime Video Reels Sync
+  db.ref('reels').on('value', snap => {
+    const data = snap.val();
+    const container = document.getElementById('reelsContainer');
+    container.innerHTML = '';
+
+    if (data) {
+      Object.values(data).reverse().forEach(r => {
+        const reel = document.createElement('div');
+        reel.className = 'reel-card';
+        reel.innerHTML = `
+          <video src="${r.videoUrl}" controls playsinline></video>
+          <div class="reel-meta">${r.title}</div>
+        `;
+        container.appendChild(reel);
+      });
+    } else {
+      // Default placeholder walkthrough
+      container.innerHTML = `
+        <div class="reel-card">
+          <video src="https://assets.mixkit.co/videos/preview/mixkit-modern-interior-design-of-a-living-room-42358-large.mp4" controls></video>
+          <div class="reel-meta">Signature Living Walkthrough</div>
+        </div>
+      `;
+    }
+  });
+
+  // Lightbox Modal
   function openLightbox(src, caption) {
     const modal = document.getElementById('lightboxModal');
     document.getElementById('lbImage').src = src;
@@ -830,283 +724,9 @@
   function closeLightbox() {
     document.getElementById('lightboxModal').classList.remove('open');
   }
+
+  // Initial Render
+  renderGallery();
 </script>
-<!DOCTYPE html>
-<html lang="en-IN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diamond Interiors | Luxury Interior Design Mumbai & Thane</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
-
-  <style>
-    :root {
-      --void: #060403;
-      --surface: #0e0a07;
-      --surface-2: #16110b;
-      --card: #120d09;
-      --gold: #c9943a;
-      --gold-bright: #f3cf7a;
-      --platinum: #eae2d3;
-      --text-muted: #9f9382;
-      --border: rgba(201, 148, 58, 0.25);
-      --grad-gold: linear-gradient(135deg, #f5d485 0%, #c9943a 50%, #7e561a 100%);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: var(--void);
-      color: var(--platinum);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* Navbar */
-    .nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(6, 4, 3, 0.9);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-    }
-    .logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--gold-bright);
-    }
-    .nav-links a {
-      color: var(--platinum);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      margin-left: 24px;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--gold-bright); }
-
-    /* Hero Section */
-    .hero {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-    .hero-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-      filter: brightness(0.4);
-    }
-    .hero-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3.5rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 16px;
-    }
-    .hero-tag {
-      display: inline-block;
-      font-size: 0.8rem;
-      background: rgba(201, 148, 58, 0.25);
-      color: var(--gold-bright);
-      padding: 6px 16px;
-      border-radius: 50px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-
-    /* Sections */
-    section { padding: 80px 40px; max-width: 1200px; margin: 0 auto; }
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.5rem;
-      color: var(--gold-bright);
-      margin-bottom: 40px;
-      text-align: center;
-    }
-
-    /* Grid Layouts */
-    .items-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 30px;
-    }
-    .card-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    .card-media {
-      height: 240px;
-      width: 100%;
-      object-fit: cover;
-      background: #000;
-    }
-    .card-body { padding: 24px; flex: 1; }
-    .card-title { font-size: 1.2rem; font-weight: 600; color: #fff; margin-bottom: 4px; }
-    .card-tag {
-      display: inline-block;
-      font-size: 0.75rem;
-      background: rgba(201, 148, 58, 0.15);
-      color: var(--gold-bright);
-      padding: 3px 8px;
-      border-radius: 4px;
-      margin-bottom: 12px;
-    }
-    .card-loc { font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; gap: 4px; }
-
-    /* Reels Section */
-    .reels-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 20px;
-    }
-    .reel-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    .reel-media { height: 350px; width: 100%; object-fit: cover; }
-    .reel-body { padding: 16px; }
-    .reel-title { font-size: 0.95rem; font-weight: 600; color: #fff; }
-
-    @media (max-width: 768px) {
-      .nav { padding: 16px 20px; }
-      .hero-title { font-size: 2.5rem; }
-      section { padding: 60px 20px; }
-    }
-  </style>
-</head>
-<body>
-
-  <nav class="nav">
-    <div class="logo">Diamond Interiors</div>
-    <div class="nav-links">
-      <a href="#portfolio">Our Work</a>
-      <a href="#reels">Video Tours</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
-
-  <header class="hero">
-    <div id="heroBgContainer">
-      <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-4.0.3" class="hero-bg" alt="Luxury Interior">
-    </div>
-    <div class="hero-content">
-      <span class="hero-tag">Mumbai & Thane's Premier Studio</span>
-      <h1 class="hero-title">Crafting Luxury Living</h1>
-    </div>
-  </header>
-
-  <section id="portfolio">
-    <h2 class="section-title">Portfolio Showcase</h2>
-    <div id="portfolioGrid" class="items-grid"></div>
-  </section>
-
-  <section id="reels" style="background: var(--surface);">
-    <h2 class="section-title">Project Video Walkthroughs</h2>
-    <div id="reelsGrid" class="reels-grid"></div>
-  </section>
-
-  <section id="contact">
-    <h2 class="section-title">Get in Touch</h2>
-    <div style="text-align: center; color: var(--text-muted);">
-      <p style="margin-bottom: 8px;">+91 9152838906 | interiordiamond1@gmail.com</p>
-      <p>1, 1, Kasarvadavali, Thane West, Thane, Maharashtra 400615, India</p>
-    </div>
-  </section>
-
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyAFEcOjXg-UgcDLiXJaidvDLmo065tHnYc",
-      authDomain: "diamond-interior.firebaseapp.com",
-      databaseURL: "https://diamond-interior-default-rtdb.firebaseio.com",
-      projectId: "diamond-interior",
-      storageBucket: "diamond-interior.appspot.com",
-      messagingSenderId: "743080237212",
-      appId: "1:743080237212:web:3801f08600dd2b54293559",
-      measurementId: "G-VPJ952EL89"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
-
-    db.ref('hero_videos').limitToLast(1).on('value', snap => {
-      const data = snap.val();
-      const container = document.getElementById('heroBgContainer');
-      if (data) {
-        const item = Object.values(data)[0];
-        container.innerHTML = `<video src="${item.videoUrl}" class="hero-bg" autoplay muted loop playsinline></video>`;
-      }
-    });
-
-    db.ref('portfolio').on('value', snap => {
-      const data = snap.val();
-      const grid = document.getElementById('portfolioGrid');
-      grid.innerHTML = '';
-      if (data) {
-        Object.values(data).reverse().forEach(item => {
-          grid.innerHTML += `
-            <div class="card-item">
-              <img src="${item.image}" class="card-media" alt="${item.title}">
-              <div class="card-body">
-                <span class="card-tag">${item.category.toUpperCase()}</span>
-                <div class="card-title">${item.title}</div>
-                <div class="card-loc">📍 ${item.location}</div>
-              </div>
-            </div>
-          `;
-        });
-      }
-    });
-
-    db.ref('reels').on('value', snap => {
-      const data = snap.val();
-      const grid = document.getElementById('reelsGrid');
-      grid.innerHTML = '';
-      if (data) {
-        Object.values(data).reverse().forEach(item => {
-          grid.innerHTML += `
-            <div class="reel-item">
-              <video src="${item.videoUrl}" class="reel-media" controls></video>
-              <div class="reel-body">
-                <div class="reel-title">${item.title}</div>
-              </div>
-            </div>
-          `;
-        });
-      }
-    });
-  </script>
-</body>
-</html>
-
 </body>
 </html>
