@@ -210,12 +210,13 @@
   box-shadow: 0 8px 30px rgba(0,0,0,0.6);
   position: relative;
 }
-.video-box video { 
-  width: 100%; 
-  height: 100%; 
-  object-fit: contain; 
-  display: block; 
+.video-box video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
+
 /* Title & Controls Ab Video Ke Niche */
 .video-bar-bottom {
   display: flex;
@@ -702,48 +703,33 @@
     const playPauseBtn = document.getElementById('playPauseBtn');
     const soundBtn = document.getElementById('soundBtn');
 
-    // Attempt direct audio playback
-    function initVideoAudio() {
-      if (!topVideo) return;
-      topVideo.muted = false;
-      topVideo.volume = 1.0;
-      const playPromise = topVideo.play();
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          soundBtn.textContent = '🔇 Mute';
-        }).catch(() => {
-          // Fallback if browser enforces mute on initial load
-          topVideo.muted = true;
-          topVideo.play();
-          soundBtn.textContent = '🔊 Sound On';
-        });
-      }
-    }
-    window.addEventListener('DOMContentLoaded', initVideoAudio);
+    // Video Auto-play & Continuous Loop Handler
+const topVideo = document.getElementById('promoVideo');
+const playPauseBtn = document.getElementById('playPauseBtn');
 
-    // Auto-unmute on first touch/click anywhere on page without pausing
-    function unlockAudioOnInteraction() {
-      if (topVideo && topVideo.muted) {
-        topVideo.muted = false;
-        topVideo.volume = 1.0;
-        soundBtn.textContent = '🔇 Mute';
-      }
-      window.removeEventListener('click', unlockAudioOnInteraction);
-      window.removeEventListener('touchstart', unlockAudioOnInteraction);
-    }
-    window.addEventListener('click', unlockAudioOnInteraction, { once: true });
-    window.addEventListener('touchstart', unlockAudioOnInteraction, { once: true });
+if (topVideo) {
+  // Sound muted rakhe bina rukawat background mein chalte rehne ke liye
+  topVideo.muted = true;
+  topVideo.loop = true;
+  topVideo.play().catch(function() {
+    // Autoplay fallback agar browser block kare
+    topVideo.muted = true;
+    topVideo.play();
+  });
+}
 
-    function togglePlayPause() {
-      if (!topVideo) return;
-      if (topVideo.paused) {
-        topVideo.play();
-        playPauseBtn.textContent = '⏸ Pause';
-      } else {
-        topVideo.pause();
-        playPauseBtn.textContent = '▶ Play';
-      }
-    }
+// User-controlled Pause/Play button
+function togglePlayPause() {
+  if (!topVideo) return;
+  if (topVideo.paused) {
+    topVideo.play();
+    if (playPauseBtn) playPauseBtn.innerHTML = '⏸ Pause';
+  } else {
+    topVideo.pause();
+    if (playPauseBtn) playPauseBtn.innerHTML = '▶ Play';
+  }
+}
+
 
     // Toggle mute smoothly without pausing
     function toggleMute(e) {
