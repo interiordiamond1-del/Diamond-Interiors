@@ -194,7 +194,7 @@
     }
     .btn-sm { padding: 7px 16px; font-size: 0.78rem; }
 
-    /* Top Hero Video Box (Sound ON by Default, No Mute System) */
+    /* Top Hero Video Box */
     .hero-reel { padding: 16px 0 10px; border-bottom: 1px solid var(--line); }
     .video-box {
       width: 100%; aspect-ratio: 16 / 9; max-height: 480px;
@@ -213,7 +213,7 @@
     .video-ctrl-btns { display: flex; gap: 8px; }
     .v-btn {
       background: rgba(201, 148, 58, 0.25); border: 1px solid var(--gold);
-      color: #fff; padding: 5px 14px; border-radius: 999px; font-size: 0.75rem;
+      color: #fff; padding: 5px 12px; border-radius: 999px; font-size: 0.75rem;
       cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-weight: 600;
     }
     .v-btn:hover { background: var(--gold); color: #000; }
@@ -255,7 +255,7 @@
     .sec-head h2 { font-size: 1.9rem; color: #fff; margin-bottom: 6px; }
     .sec-head p { font-size: 0.85rem; color: var(--text-dim); }
 
-    /* COMPACT 2-COLUMN GALLERY (Mobile Friendly) */
+    /* 2-COLUMN COMPACT GALLERY (Space Efficient on Desktop & Mobile) */
     .gallery-filter-bar { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
     .filter-btn {
       background: rgba(201, 148, 58, 0.08); border: 1px solid var(--line);
@@ -280,10 +280,10 @@
     .gallery-img-box { width: 100%; aspect-ratio: 16 / 11; overflow: hidden; background: #000; }
     .gallery-img-box img { width: 100%; height: 100%; object-fit: cover; }
     .gallery-meta { padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; gap: 6px; }
-    .gallery-meta h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.82rem; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .gallery-meta span { font-size: 0.70rem; color: var(--gold-bright); white-space: nowrap; }
+    .gallery-meta h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.84rem; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .gallery-meta span { font-size: 0.72rem; color: var(--gold-bright); white-space: nowrap; }
 
-    /* DEDICATED ON-SITE WORK VIDEO SHOWCASE SECTION (BELOW GALLERY) */
+    /* DEDICATED WORK VIDEO SHOWCASE SECTION (UNDER GALLERY) */
     .work-video-section {
       padding: 40px 0 20px;
     }
@@ -298,7 +298,7 @@
     }
     .video-showcase-container video {
       width: 100%;
-      max-height: 480px;
+      max-height: 500px;
       object-fit: cover;
       display: block;
     }
@@ -430,17 +430,18 @@
   </header>
 
   <main>
-    <!-- TOP HERO BANNER (Unmuted Sound On Always, No Mute Toggle) -->
+    <!-- TOP HERO BANNER (Autoplay with Sound Option & Manual Control) -->
     <section class="hero-reel">
       <div class="wrap">
         <div class="video-box">
-          <video id="promoVideo" playsinline autoplay loop poster="1664.png">
+          <video id="promoVideo" playsinline autoplay muted loop poster="1664.png">
             <source src="1781411966399.mp4" type="video/mp4">
           </video>
           <div class="video-controls">
             <span class="video-title" id="videoTitle">Featured Ad • Signature Living & Modular Architecture</span>
             <div class="video-ctrl-btns">
               <button class="v-btn" id="playPauseBtn" onclick="togglePlayPause()">⏸ Pause</button>
+              <button class="v-btn" id="soundBtn" onclick="toggleMute()">🔊 Sound On</button>
             </div>
           </div>
         </div>
@@ -612,7 +613,7 @@
         </div>
 
         <div class="video-showcase-container">
-          <video id="galleryTourVideo" autoplay loop muted playsinline poster="1664.png">
+          <video id="galleryTourVideo" autoplay loop muted playsinline poster="1664.png" controls>
             <source src="AQMaFX3Nvxn9MSUgWzbaojbyHqqkSSIp_2m2zx0ly3dE4Pi7ovTHC6fjJe65yU3SAMwao4H57MZ5wYMQ_euCVYsSi9aIGNGo30yI7DJwBNMQ.mp4" type="video/mp4">
           </video>
           <div class="video-showcase-body">
@@ -731,30 +732,36 @@
   <script>
     const topVideo = document.getElementById('promoVideo');
     const playPauseBtn = document.getElementById('playPauseBtn');
+    const soundBtn = document.getElementById('soundBtn');
 
-    // Ensure video sound plays with user interaction bypass
-    function ensureUnmutedAudio() {
+    // Auto-unmute on first touch/click
+    function autoUnmute() {
       if (topVideo) {
         topVideo.muted = false;
         topVideo.volume = 1.0;
-        topVideo.play().catch(() => {});
+        soundBtn.textContent = '🔇 Mute';
       }
-      window.removeEventListener('click', ensureUnmutedAudio);
-      window.removeEventListener('touchstart', ensureUnmutedAudio);
+      window.removeEventListener('click', autoUnmute);
+      window.removeEventListener('touchstart', autoUnmute);
     }
-    window.addEventListener('click', ensureUnmutedAudio, { once: true });
-    window.addEventListener('touchstart', ensureUnmutedAudio, { once: true });
+    window.addEventListener('click', autoUnmute, { once: true });
+    window.addEventListener('touchstart', autoUnmute, { once: true });
 
     function togglePlayPause() {
       if (!topVideo) return;
       if (topVideo.paused) {
-        topVideo.muted = false;
         topVideo.play();
         playPauseBtn.textContent = '⏸ Pause';
       } else {
         topVideo.pause();
         playPauseBtn.textContent = '▶ Play';
       }
+    }
+
+    function toggleMute() {
+      if (!topVideo) return;
+      topVideo.muted = !topVideo.muted;
+      soundBtn.textContent = topVideo.muted ? '🔊 Sound On' : '🔇 Mute';
     }
 
     // 2-Column Gallery Filter Logic
