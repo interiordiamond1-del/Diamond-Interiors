@@ -213,7 +213,7 @@
     .video-ctrl-btns { display: flex; gap: 8px; }
     .v-btn {
       background: rgba(201, 148, 58, 0.25); border: 1px solid var(--gold);
-      color: #fff; padding: 5px 12px; border-radius: 999px; font-size: 0.75rem;
+      color: #fff; padding: 5px 14px; border-radius: 999px; font-size: 0.75rem;
       cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-weight: 600;
     }
     .v-btn:hover { background: var(--gold); color: #000; }
@@ -430,18 +430,18 @@
   </header>
 
   <main>
-    <!-- TOP HERO BANNER (Autoplay with Sound Option & Manual Control) -->
+    <!-- TOP HERO BANNER -->
     <section class="hero-reel">
       <div class="wrap">
         <div class="video-box">
-          <video id="promoVideo" playsinline autoplay muted loop poster="1664.png">
+          <video id="promoVideo" playsinline autoplay loop poster="1664.png">
             <source src="1781411966399.mp4" type="video/mp4">
           </video>
           <div class="video-controls">
             <span class="video-title" id="videoTitle">Featured Ad • Signature Living & Modular Architecture</span>
             <div class="video-ctrl-btns">
               <button class="v-btn" id="playPauseBtn" onclick="togglePlayPause()">⏸ Pause</button>
-              <button class="v-btn" id="soundBtn" onclick="toggleMute()">🔊 Sound On</button>
+              <button class="v-btn" id="soundBtn" onclick="toggleMute()">🔇 Mute</button>
             </div>
           </div>
         </div>
@@ -603,7 +603,7 @@
       </div>
     </section>
 
-    <!-- NEW DEDICATED WORK VIDEO REEL & SITE SHOWCASE (BELOW PHOTO GALLERY) -->
+    <!-- DEDICATED WORK VIDEO REEL & SITE SHOWCASE -->
     <section class="work-video-section">
       <div class="wrap">
         <div class="sec-head">
@@ -734,18 +734,37 @@
     const playPauseBtn = document.getElementById('playPauseBtn');
     const soundBtn = document.getElementById('soundBtn');
 
-    // Auto-unmute on first touch/click
-    function autoUnmute() {
-      if (topVideo) {
+    // Attempt direct audio playback immediately
+    function initVideoAudio() {
+      if (!topVideo) return;
+      topVideo.muted = false;
+      topVideo.volume = 1.0;
+      const playPromise = topVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          soundBtn.textContent = '🔇 Mute';
+        }).catch(() => {
+          // Fallback if browser policy blocks instant audio before touch
+          topVideo.muted = true;
+          topVideo.play();
+          soundBtn.textContent = '🔊 Sound On';
+        });
+      }
+    }
+    window.addEventListener('DOMContentLoaded', initVideoAudio);
+
+    // Auto-unmute on user first interaction without pausing
+    function unlockAudioOnInteraction() {
+      if (topVideo && topVideo.muted) {
         topVideo.muted = false;
         topVideo.volume = 1.0;
         soundBtn.textContent = '🔇 Mute';
       }
-      window.removeEventListener('click', autoUnmute);
-      window.removeEventListener('touchstart', autoUnmute);
+      window.removeEventListener('click', unlockAudioOnInteraction);
+      window.removeEventListener('touchstart', unlockAudioOnInteraction);
     }
-    window.addEventListener('click', autoUnmute, { once: true });
-    window.addEventListener('touchstart', autoUnmute, { once: true });
+    window.addEventListener('click', unlockAudioOnInteraction, { once: true });
+    window.addEventListener('touchstart', unlockAudioOnInteraction, { once: true });
 
     function togglePlayPause() {
       if (!topVideo) return;
@@ -758,10 +777,19 @@
       }
     }
 
-    function toggleMute() {
+    // Toggle mute smoothly without pausing or resetting video stream
+    function toggleMute(e) {
+      if (e) e.stopPropagation();
       if (!topVideo) return;
+
       topVideo.muted = !topVideo.muted;
-      soundBtn.textContent = topVideo.muted ? '🔊 Sound On' : '🔇 Mute';
+      if (!topVideo.muted) {
+        topVideo.volume = 1.0;
+        soundBtn.textContent = '🔇 Mute';
+        if (topVideo.paused) topVideo.play();
+      } else {
+        soundBtn.textContent = '🔊 Sound On';
+      }
     }
 
     // 2-Column Gallery Filter Logic
