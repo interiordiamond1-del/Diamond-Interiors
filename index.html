@@ -47,7 +47,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Schema.org Rich Structured Data for AI & Search Engines -->
+  <!-- Schema.org Rich Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -255,7 +255,7 @@
     .sec-head h2 { font-size: 1.9rem; color: #fff; margin-bottom: 6px; }
     .sec-head p { font-size: 0.85rem; color: var(--text-dim); }
 
-    /* 2-COLUMN COMPACT GALLERY (Space Efficient on Desktop & Mobile) */
+    /* 2-COLUMN COMPACT GALLERY */
     .gallery-filter-bar { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
     .filter-btn {
       background: rgba(201, 148, 58, 0.08); border: 1px solid var(--line);
@@ -282,46 +282,6 @@
     .gallery-meta { padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; gap: 6px; }
     .gallery-meta h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.84rem; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .gallery-meta span { font-size: 0.72rem; color: var(--gold-bright); white-space: nowrap; }
-
-    /* DEDICATED WORK VIDEO SHOWCASE SECTION (UNDER GALLERY) */
-    .work-video-section {
-      padding: 40px 0 20px;
-    }
-    .video-showcase-container {
-      max-width: 1060px;
-      margin: 0 auto;
-      border: 1px solid var(--line-bright);
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: #000;
-      box-shadow: 0 10px 35px rgba(0,0,0,0.6);
-    }
-    .video-showcase-container video {
-      width: 100%;
-      max-height: 500px;
-      object-fit: cover;
-      display: block;
-    }
-    .video-showcase-body {
-      padding: 18px 22px;
-      background: var(--surface-2);
-      border-top: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-    .video-showcase-body h3 {
-      color: var(--gold-bright);
-      font-size: 1.15rem;
-      font-family: 'Space Grotesk', sans-serif;
-      margin-bottom: 4px;
-    }
-    .video-showcase-body p {
-      font-size: 0.8rem;
-      color: var(--text-dim);
-    }
 
     /* Locations Bar */
     .loc-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 18px 0 22px; }
@@ -391,7 +351,6 @@
 
     @media (max-width: 768px) {
       .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-      /* Maintain 2 columns on mobile to keep page compact */
       .gallery-grid-2col { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .gallery-meta h4 { font-size: 0.74rem; }
       .gallery-meta span { font-size: 0.65rem; }
@@ -430,15 +389,16 @@
   </header>
 
   <main>
-    <!-- TOP HERO BANNER -->
+    <!-- TOP HERO BANNER: RECENT PROJECT SHOWCASE -->
     <section class="hero-reel">
       <div class="wrap">
         <div class="video-box">
+          <!-- Apni recent project video file yahan replace kar sakte hain -->
           <video id="promoVideo" playsinline autoplay loop poster="1664.png">
             <source src="1781411966399.mp4" type="video/mp4">
           </video>
           <div class="video-controls">
-            <span class="video-title" id="videoTitle">Featured Ad • Signature Living & Modular Architecture</span>
+            <span class="video-title" id="videoTitle">Featured Work • Recent Project Showcase</span>
             <div class="video-ctrl-btns">
               <button class="v-btn" id="playPauseBtn" onclick="togglePlayPause()">⏸ Pause</button>
               <button class="v-btn" id="soundBtn" onclick="toggleMute()">🔇 Mute</button>
@@ -472,7 +432,7 @@
       </div>
     </div>
 
-    <!-- 2-COLUMN COMPACT PORTFOLIO GALLERY (Space Saving 2-Cols on Mobile & Desktop) -->
+    <!-- 2-COLUMN COMPACT PORTFOLIO GALLERY -->
     <section id="gallery">
       <div class="wrap">
         <div class="sec-head">
@@ -490,7 +450,6 @@
         </div>
 
         <div class="gallery-grid-2col" id="galleryContainer">
-          <!-- 1 -->
           <div class="gallery-item" data-cat="kitchen" onclick="openLightbox('file_00000000b0b0722fbfd54bef48c55ef5.png', 'Modular Kitchen Suite — Bandra, Mumbai')">
             <div class="gallery-img-box">
               <img src="file_00000000b0b0722fbfd54bef48c55ef5.png" alt="Modular Kitchen Bandra" loading="lazy">
@@ -501,7 +460,6 @@
             </div>
           </div>
 
-          <!-- 2 -->
           <div class="gallery-item" data-cat="bedroom" onclick="openLightbox('file_000000009c1071f5be1f883ff3b950f5.png', 'Luxury Master Suite — Thane')">
             <div class="gallery-img-box">
               <img src="file_000000009c1071f5be1f883ff3b950f5.png" alt="Luxury Master Suite Thane" loading="lazy">
@@ -512,7 +470,6 @@
             </div>
           </div>
 
-          <!-- 3 -->
           <div class="gallery-item" data-cat="living" onclick="openLightbox('file_000000003ca8722fa8dc95c584e4ca15.png', 'Minimalist Living Room — Navi Mumbai')">
             <div class="gallery-img-box">
               <img src="file_000000003ca8722fa8dc95c584e4ca15.png" alt="Minimalist Living Room" loading="lazy">
@@ -523,7 +480,6 @@
             </div>
           </div>
 
-          <!-- 4 -->
           <div class="gallery-item" data-cat="commercial" onclick="openLightbox('file_00000000a7ec720ca067e4985a2b86e1.png', 'Executive Corporate Office — BKC')">
             <div class="gallery-img-box">
               <img src="file_00000000a7ec720ca067e4985a2b86e1.png" alt="Executive Corporate Office BKC" loading="lazy">
@@ -534,7 +490,6 @@
             </div>
           </div>
 
-          <!-- 5 -->
           <div class="gallery-item" data-cat="bedroom" onclick="openLightbox('file_00000000949c722fbce254b51e2155ee.png', 'Fluted Glass Wardrobe — Thane')">
             <div class="gallery-img-box">
               <img src="file_00000000949c722fbce254b51e2155ee.png" alt="Fluted Glass Wardrobe Thane" loading="lazy">
@@ -545,7 +500,6 @@
             </div>
           </div>
 
-          <!-- 6 -->
           <div class="gallery-item" data-cat="bedroom" onclick="openLightbox('file_000000007cfc71f5b9ebab0e03b8362a.png', 'Boutique Guest Bedroom — Worli')">
             <div class="gallery-img-box">
               <img src="file_000000007cfc71f5b9ebab0e03b8362a.png" alt="Boutique Guest Bedroom Worli" loading="lazy">
@@ -556,7 +510,6 @@
             </div>
           </div>
 
-          <!-- 7 -->
           <div class="gallery-item" data-cat="living" onclick="openLightbox('file_00000000e7ac71f5800fc9308dd81a80.png', 'Architectural False Ceiling — Majiwada')">
             <div class="gallery-img-box">
               <img src="file_00000000e7ac71f5800fc9308dd81a80.png" alt="Architectural False Ceiling" loading="lazy">
@@ -567,7 +520,6 @@
             </div>
           </div>
 
-          <!-- 8 -->
           <div class="gallery-item" data-cat="living" onclick="openLightbox('file_00000000c86471fd86a7b1e5af6dda30.png', 'Signature Dining Lounge — Kharghar')">
             <div class="gallery-img-box">
               <img src="file_00000000c86471fd86a7b1e5af6dda30.png" alt="Signature Dining Lounge" loading="lazy">
@@ -578,7 +530,6 @@
             </div>
           </div>
 
-          <!-- 9 -->
           <div class="gallery-item" data-cat="commercial" onclick="openLightbox('file_000000006d8871fabb84289dd98f7664.png', 'Hotel Hospitality Suite — Juhu')">
             <div class="gallery-img-box">
               <img src="file_000000006d8871fabb84289dd98f7664.png" alt="Hotel Hospitality Suite Juhu" loading="lazy">
@@ -589,7 +540,6 @@
             </div>
           </div>
 
-          <!-- 10 -->
           <div class="gallery-item" data-cat="living" onclick="openLightbox('file_00000000e65c7206abb07b5177c9e5a9.png', 'Bespoke Stone Flooring — Lower Parel')">
             <div class="gallery-img-box">
               <img src="file_00000000e65c7206abb07b5177c9e5a9.png" alt="Bespoke Stone Flooring" loading="lazy">
@@ -598,30 +548,6 @@
               <h4>Stone Flooring</h4>
               <span>📍 Lower Parel</span>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- DEDICATED WORK VIDEO REEL & SITE SHOWCASE -->
-    <section class="work-video-section">
-      <div class="wrap">
-        <div class="sec-head">
-          <span class="sec-tag">Craftsmanship In Motion</span>
-          <h2>Live Site Walkthrough & Quality Standards</h2>
-          <p>Real-time look at our on-site execution, finish quality, and materials.</p>
-        </div>
-
-        <div class="video-showcase-container">
-          <video id="galleryTourVideo" autoplay loop muted playsinline poster="1664.png" controls>
-            <source src="AQMaFX3Nvxn9MSUgWzbaojbyHqqkSSIp_2m2zx0ly3dE4Pi7ovTHC6fjJe65yU3SAMwao4H57MZ5wYMQ_euCVYsSi9aIGNGo30yI7DJwBNMQ.mp4" type="video/mp4">
-          </video>
-          <div class="video-showcase-body">
-            <div>
-              <h3>Turnkey Execution & Fit-out Standards</h3>
-              <p>Witness our precision German fittings, seamless joinery, and premium handovers.</p>
-            </div>
-            <a href="https://wa.me/919152838906?text=Hi,%20I%20watched%20your%20walkthrough%20video%20and%20want%20to%20book%20a%20site%20visit." class="btn btn-gold btn-sm" target="_blank">Book Free Site Visit</a>
           </div>
         </div>
       </div>
@@ -734,7 +660,7 @@
     const playPauseBtn = document.getElementById('playPauseBtn');
     const soundBtn = document.getElementById('soundBtn');
 
-    // Attempt direct audio playback immediately
+    // Attempt direct audio playback
     function initVideoAudio() {
       if (!topVideo) return;
       topVideo.muted = false;
@@ -744,7 +670,7 @@
         playPromise.then(() => {
           soundBtn.textContent = '🔇 Mute';
         }).catch(() => {
-          // Fallback if browser policy blocks instant audio before touch
+          // Fallback if browser enforces mute on initial load
           topVideo.muted = true;
           topVideo.play();
           soundBtn.textContent = '🔊 Sound On';
@@ -753,7 +679,7 @@
     }
     window.addEventListener('DOMContentLoaded', initVideoAudio);
 
-    // Auto-unmute on user first interaction without pausing
+    // Auto-unmute on first touch/click anywhere on page without pausing
     function unlockAudioOnInteraction() {
       if (topVideo && topVideo.muted) {
         topVideo.muted = false;
@@ -777,7 +703,7 @@
       }
     }
 
-    // Toggle mute smoothly without pausing or resetting video stream
+    // Toggle mute smoothly without pausing
     function toggleMute(e) {
       if (e) e.stopPropagation();
       if (!topVideo) return;
