@@ -427,24 +427,28 @@
   </header>
 
   <main>
-    <!-- TOP HERO BANNER: RECENT PROJECT SHOWCASE -->
-    <section class="hero-reel">
-      <div class="wrap">
-        <div class="video-box">
-          <!-- Apni recent project video file yahan replace kar sakte hain -->
-          <video id="promoVideo" playsinline autoplay loop poster="1664.png">
-            <source src="Diamond_Interiors_Promo.mp4">
-          </video>
-          <div class="video-controls">
-            <span class="video-title" id="videoTitle">Featured Work • Recent Project Showcase</span>
-            <div class="video-ctrl-btns">
-              <button class="v-btn" id="playPauseBtn" onclick="togglePlayPause()">⏸ Pause</button>
-              <button class="v-btn" id="soundBtn" onclick="toggleMute()">🔇 Mute</button>
-            </div>
-          </div>
-        </div>
+<!-- TOP HERO BANNER: RECENT PROJECT SHOWCASE -->
+<section class="hero-reel">
+  <div class="wrap">
+    <!-- 1. Pure Video Box (Autoplay, Loop, Muted hamesha bina ruke chalega) -->
+    <div class="video-box">
+      <video id="promoVideo" autoplay loop muted playsinline poster="1664.png">
+        <source src="Diamond_Interiors_Promo.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- 2. Video ke thik niche Title aur Pause Button -->
+    <div class="video-bar-bottom">
+      <span class="video-title-tag">
+        ✦ Featured Work • Recent Project Showcase
+      </span>
+      <div class="video-ctrl-btns">
+        <button class="v-btn" id="playPauseBtn" onclick="togglePlayPause()">⏸ Pause</button>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
 
     <!-- Compact Hero Headline -->
     <section class="hero-main">
